@@ -1,0 +1,13 @@
+{
+ "mode": "repro",
+ "accuracy": 0.8993,
+ "macro_f1": 0.8982,
+ "guard_eval": {
+  "dropped_tfidf": 38,
+  "dropped_e5_only": 112,
+  "dropped_total": 150,
+  "kept": 16381
+ },
+ "minutes": 3.69,
+ "pred_class_share_max": 0.3126
+}

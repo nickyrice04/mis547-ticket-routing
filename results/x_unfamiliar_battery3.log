@@ -1,0 +1,26 @@
+families in fold-0 train: 9337 of 12917 tickets; singletons: 6654
+fold 0 68s
+fold 1 165s
+fold 2 240s
+fold 3 306s
+fold 4 378s
+lr_C0.1                            unf=0.3614 all=0.3759
+lr_C0.3                            unf=0.3838 all=0.4246
+lr_C1.0                            unf=0.3895 all=0.4872
+lr_C3.0                            unf=0.3836 all=0.5447
+lr_famw_C1.0                       unf=0.3932 all=0.4719
+lr_famsqrt_C1.0                    unf=0.3903 all=0.4797
+lr_famw_C3.0                       unf=0.3948 all=0.5332
+lr_famsqrt_C3.0                    unf=0.3909 all=0.5405
+lr_famw_C10.0                      unf=0.3832 all=0.5822
+lr_famsqrt_C10.0                   unf=0.3812 all=0.5853
+bge_lr_C0.3                        unf=0.3893 all=0.4039
+mpnet_lr_C0.3                      unf=0.3935 all=0.4110
+bge_lr_famw_C0.3                   unf=0.3916 all=0.4025
+bge_lr_C1.0                        unf=0.3947 all=0.4170
+mpnet_lr_C1.0                      unf=0.3964 all=0.4200
+bge_lr_famw_C1.0                   unf=0.3941 all=0.4139
+ens:lr_C1+bge_C1                   unf=0.3966 all=0.4581
+ens:lr_C1+bge_C1+mpnet_C1          unf=0.4012 all=0.4502
+ens:lr_C0.3+bge_C0.3+mpnet_C0.3    unf=0.3945 all=0.4175
+ens:lr_famw_C3+bge_famw_C1         unf=0.3998 all=0.4858

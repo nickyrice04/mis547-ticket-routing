@@ -1,0 +1,147 @@
+{
+  "tier": "12_stack_semantic",
+  "model": "TF-IDF + 4 sentence embedders, nearest-neighbour features, gradient-boosted stacker",
+  "module": "x_semantic_final",
+  "accuracy": 0.8307,
+  "macro_f1": 0.8322,
+  "ece": 0.0149,
+  "unfamiliar_accuracy": 0.5885,
+  "familiar_accuracy": 0.9865,
+  "train_minutes": 4.8,
+  "by_similarity_to_nearest_training_ticket": [
+    {
+      "similarity": "0.0-0.2",
+      "share": 0.0263,
+      "n": 125,
+      "accuracy": 0.448
+    },
+    {
+      "similarity": "0.2-0.3",
+      "share": 0.1505,
+      "n": 715,
+      "accuracy": 0.4476
+    },
+    {
+      "similarity": "0.3-0.4",
+      "share": 0.1173,
+      "n": 557,
+      "accuracy": 0.5925
+    },
+    {
+      "similarity": "0.4-0.5",
+      "share": 0.0973,
+      "n": 462,
+      "accuracy": 0.8398
+    },
+    {
+      "similarity": "0.5-0.6",
+      "share": 0.1371,
+      "n": 651,
+      "accuracy": 0.9585
+    },
+    {
+      "similarity": "0.6-0.7",
+      "share": 0.1589,
+      "n": 755,
+      "accuracy": 0.9868
+    },
+    {
+      "similarity": "0.7-0.8",
+      "share": 0.1716,
+      "n": 815,
+      "accuracy": 0.9975
+    },
+    {
+      "similarity": "0.8-1.0",
+      "share": 0.1411,
+      "n": 670,
+      "accuracy": 1.0
+    }
+  ],
+  "per_queue": {
+    "Billing and Payments": {
+      "n": 484,
+      "recall": 0.9112
+    },
+    "Customer Service": {
+      "n": 714,
+      "recall": 0.8221
+    },
+    "General Inquiry": {
+      "n": 68,
+      "recall": 0.6176
+    },
+    "Human Resources": {
+      "n": 92,
+      "recall": 0.7609
+    },
+    "IT Support": {
+      "n": 567,
+      "recall": 0.7425
+    },
+    "Product Support": {
+      "n": 886,
+      "recall": 0.7641
+    },
+    "Returns and Exchanges": {
+      "n": 235,
+      "recall": 0.783
+    },
+    "Sales and Pre-Sales": {
+      "n": 145,
+      "recall": 0.7862
+    },
+    "Service Outages and Maintenance": {
+      "n": 187,
+      "recall": 0.7701
+    },
+    "Technical Support": {
+      "n": 1372,
+      "recall": 0.9227
+    }
+  },
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.8307,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.7783,
+      "accuracy_on_routed": 0.9656,
+      "sent_to_human": 0.2217
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.7491,
+      "accuracy_on_routed": 0.9815,
+      "sent_to_human": 0.2509
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.7345,
+      "accuracy_on_routed": 0.9882,
+      "sent_to_human": 0.2655
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.7187,
+      "accuracy_on_routed": 0.9918,
+      "sent_to_human": 0.2813
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.6992,
+      "accuracy_on_routed": 0.9955,
+      "sent_to_human": 0.3008
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.6771,
+      "accuracy_on_routed": 0.9972,
+      "sent_to_human": 0.3229
+    }
+  ]
+}

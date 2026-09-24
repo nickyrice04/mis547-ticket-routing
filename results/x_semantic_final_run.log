@@ -1,0 +1,26 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8395.95it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6551.03it/s]
+[x_semantic     80s] embedded with e5base
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3512.55it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4435.14it/s]
+[x_semantic    141s] embedded with bge
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3553.83it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9897.97it/s]
+[x_semantic    213s] embedded with mpnet
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4124.27it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7083.65it/s]
+[x_semantic    243s] embedded with gte
+[x_semantic    708s] classifier probabilities done
+[x_semantic    774s] features (161470, 43) -> meta model
+[x_semantic    787s] done
+core -> validation: accuracy 0.7835  macro-F1 0.7999  (13.1 min)
+  bucket   share     n   stack  lex1nn fused1nn
+ 0.0-0.2  0.0323    92  0.3913  0.3152   0.2935
+ 0.2-0.3  0.1867   532  0.4342  0.3045   0.3684
+ 0.3-0.4  0.1351   385  0.5377  0.4961   0.4883
+ 0.4-0.5  0.1000   285  0.8035  0.7579   0.7930
+ 0.5-0.6  0.1207   344  0.9564  0.9448   0.9535
+ 0.6-0.7  0.1453   414  0.9783  0.9758   0.9734
+ 0.7-0.8  0.1561   445  0.9955  0.9955   0.9955
+ 0.8-1.0  0.1239   353  1.0000  1.0000   1.0000

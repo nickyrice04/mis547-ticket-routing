@@ -1,0 +1,13 @@
+{
+ "mode": "shuffle_german",
+ "accuracy": 0.7849,
+ "macro_f1": 0.7915,
+ "guard_eval": {
+  "dropped_tfidf": 38,
+  "dropped_e5_only": 112,
+  "dropped_total": 150,
+  "kept": 16381
+ },
+ "minutes": 2.96,
+ "pred_class_share_max": 0.3972
+}

@@ -1,0 +1,15 @@
+{
+  "tier": "1_tfidf_logreg",
+  "kind": "sklearn",
+  "disk_mb": 8.2,
+  "rss_after_load_mb": 164.2,
+  "rss_model_only_mb": 118.6,
+  "latency": {
+    "1_thread": {
+      "p50_ms": 1.2,
+      "p95_ms": 1.3,
+      "mean_ms": 1.2
+    }
+  },
+  "machine": ""
+}

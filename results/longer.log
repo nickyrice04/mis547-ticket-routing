@@ -1,0 +1,15 @@
+=== 2c: DistilBERT, 12 epochs, no class weights 18:33 ===
+  EPOCH 0: loss 1.8337 acc 0.4213 macro-f1 0.2755
+  EPOCH 1: loss 1.5628 acc 0.4522 macro-f1 0.3444
+  EPOCH 2: loss 1.3378 acc 0.4985 macro-f1 0.4191
+  EPOCH 3: loss 1.0145 acc 0.5474 macro-f1 0.4884
+  EPOCH 4: loss 0.6925 acc 0.5931 macro-f1 0.5282
+  EPOCH 5: loss 0.4371 acc 0.6293 macro-f1 0.5921
+  EPOCH 6: loss 0.2727 acc 0.6499 macro-f1 0.6119
+  EPOCH 7: loss 0.1615 acc 0.6568 macro-f1 0.6321
+  EPOCH 8: loss 0.0922 acc 0.6737 macro-f1 0.6554
+  EPOCH 9: loss 0.0552 acc 0.6764 macro-f1 0.6604
+  EPOCH 10: loss 0.0370 acc 0.6768 macro-f1 0.6589
+  EPOCH 11: loss 0.0309 acc 0.6768 macro-f1 0.6584
+wrote /Users/nickyrice/Documents/Cloud Computing/ticket-routing/results/2c_distilbert_12ep.json
+=== DONE 19:04 ===

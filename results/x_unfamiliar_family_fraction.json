@@ -1,0 +1,83 @@
+{
+ "base_type_priority_agreement": 0.2698961937716263,
+ "base_same_queue_for_unrelated_neighbours": 0.27854671280276816,
+ "buckets": [
+  {
+   "bucket": "0.0-0.2",
+   "core_share": 0.035796123118845606,
+   "type_priority_agreement": 0.2698961937716263,
+   "family_share_pi": 0.0,
+   "nn_same_queue": 0.27854671280276816,
+   "implied_same_queue": 0.27854671280276816,
+   "oracle_gate_acc": 0.4
+  },
+  {
+   "bucket": "0.2-0.3",
+   "core_share": 0.18777481885179909,
+   "type_priority_agreement": 0.30145118733509235,
+   "family_share_pi": 0.04321987270067148,
+   "nn_same_queue": 0.31398416886543534,
+   "implied_same_queue": 0.30972783203491344,
+   "oracle_gate_acc": 0.4257158242568996
+  },
+  {
+   "bucket": "0.3-0.4",
+   "core_share": 0.13110794574843623,
+   "type_priority_agreement": 0.4756731223429381,
+   "family_share_pi": 0.28184612491520905,
+   "nn_same_queue": 0.4553613604156826,
+   "implied_same_queue": 0.48188552610664737,
+   "oracle_gate_acc": 0.5676984443245494
+  },
+  {
+   "bucket": "0.4-0.5",
+   "core_share": 0.09537375363844677,
+   "type_priority_agreement": 0.7961038961038961,
+   "family_share_pi": 0.7207299809195543,
+   "nn_same_queue": 0.7740259740259741,
+   "implied_same_queue": 0.7985197267187788,
+   "oracle_gate_acc": 0.8288343386471347
+  },
+  {
+   "bucket": "0.5-0.6",
+   "core_share": 0.12002229516318821,
+   "type_priority_agreement": 0.956140350877193,
+   "family_share_pi": 0.9399268312962501,
+   "nn_same_queue": 0.9489164086687306,
+   "implied_same_queue": 0.9566600149663258,
+   "oracle_gate_acc": 0.9592564646212688
+  },
+  {
+   "bucket": "0.6-0.7",
+   "core_share": 0.15259800582151484,
+   "type_priority_agreement": 0.9829545454545454,
+   "family_share_pi": 0.9766533821628608,
+   "nn_same_queue": 0.9837662337662337,
+   "implied_same_queue": 0.9831565058164584,
+   "oracle_gate_acc": 0.9811087623869021
+  },
+  {
+   "bucket": "0.7-0.8",
+   "core_share": 0.15532297021118474,
+   "type_priority_agreement": 0.9988038277511961,
+   "family_share_pi": 0.9983616408535341,
+   "nn_same_queue": 0.9976076555023924,
+   "implied_same_queue": 0.9988180004081725,
+   "oracle_gate_acc": 0.9940251763078527
+  },
+  {
+   "bucket": "0.8-1.0",
+   "core_share": 0.1220040874465845,
+   "type_priority_agreement": 0.9969543147208122,
+   "family_share_pi": 0.99582842158443,
+   "nn_same_queue": 0.9979695431472081,
+   "implied_same_queue": 0.9969904010392859,
+   "oracle_gate_acc": 0.9925179108427358
+  }
+ ],
+ "share_of_tickets_with_family_nn_in_pool": 0.6522177611676138,
+ "share_of_unfamiliar_lt0.4_with_family_nn": 0.12706668421056985,
+ "oracle_gate_ceiling_core_loo": 0.7880695678947301,
+ "oracle_gate_ceiling_validation_shares": 0.7884025341983665,
+ "specialist_acc_assumed": 0.4
+}

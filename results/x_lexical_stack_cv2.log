@@ -1,0 +1,9 @@
+base                                               acc 0.7253 low 0.4313 high 0.9439 ll 0.7758 nfeat 55 t 18s
+base + cand(no meta)                               acc 0.7261 low 0.4322 high 0.9445 ll 0.7670 nfeat 69 t 23s
+base + cand(all)                                   acc 0.7254 low 0.4307 high 0.9444 ll 0.7663 nfeat 73 t 20s
+base + cand(all) + auxctx                          acc 0.7278 low 0.4342 high 0.9460 ll 0.7652 nfeat 80 t 23s
+no mlp + cand(all)                                 acc 0.7260 low 0.4317 high 0.9447 ll 0.7661 nfeat 71 t 25s
+only lr1 + cand(all)                               acc 0.7256 low 0.4314 high 0.9443 ll 0.7674 nfeat 65 t 25s
+no text models + cand(all)                         acc 0.7196 low 0.4172 high 0.9444 ll 0.7816 nfeat 63 t 26s
+view wc only + cand(all)                           acc 0.7260 low 0.4316 high 0.9447 ll 0.7689 nfeat 47 t 23s
+base + cand(all), no gaps                          acc 0.7256 low 0.4313 high 0.9444 ll 0.7711 nfeat 50 t 21s

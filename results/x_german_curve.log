@@ -1,0 +1,4 @@
+{'german_fraction': 0.25, 'german_tickets': 4132, 'stacker_core_cv_accuracy': np.float64(0.7748), 'merged_tfidf_1nn_core_oof_accuracy': 0.7214}
+{'german_fraction': 0.5, 'german_tickets': 8265, 'stacker_core_cv_accuracy': np.float64(0.8171), 'merged_tfidf_1nn_core_oof_accuracy': 0.7549}
+{'german_fraction': 0.75, 'german_tickets': 12398, 'stacker_core_cv_accuracy': np.float64(0.8504), 'merged_tfidf_1nn_core_oof_accuracy': 0.78}
+{'german_fraction': 1.0, 'german_tickets': 16531, 'stacker_core_cv_accuracy': np.float64(0.8768), 'merged_tfidf_1nn_core_oof_accuracy': 0.8013}

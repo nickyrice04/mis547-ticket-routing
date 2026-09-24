@@ -1,0 +1,51 @@
+{
+ "encoder": "sentence-transformers/all-mpnet-base-v2",
+ "aux": true,
+ "log": [
+  {
+   "epoch": 1,
+   "complete": true,
+   "minutes": 6.249737886587779,
+   "train_loss": 3.1973150697084938,
+   "heldout_all": 0.39876160990712073,
+   "heldout_unfamiliar": 0.3946415640839971,
+   "n_unf": 1381
+  },
+  {
+   "epoch": 2,
+   "complete": true,
+   "minutes": 12.700777967770895,
+   "train_loss": 2.4572709373908466,
+   "heldout_all": 0.4244582043343653,
+   "heldout_unfamiliar": 0.40188269370021723,
+   "n_unf": 1381
+  },
+  {
+   "epoch": 3,
+   "complete": true,
+   "minutes": 21.68338443438212,
+   "train_loss": 2.2898143391207895,
+   "heldout_all": 0.448297213622291,
+   "heldout_unfamiliar": 0.3997103548153512,
+   "n_unf": 1381
+  },
+  {
+   "epoch": 4,
+   "complete": true,
+   "minutes": 30.232992935180665,
+   "train_loss": 2.1606090576341836,
+   "heldout_all": 0.47337461300309597,
+   "heldout_unfamiliar": 0.4055032585083273,
+   "n_unf": 1381
+  },
+  {
+   "epoch": 5,
+   "complete": true,
+   "minutes": 38.27645428578059,
+   "train_loss": 2.0605171113321097,
+   "heldout_all": 0.4764705882352941,
+   "heldout_unfamiliar": 0.39608979000724115,
+   "n_unf": 1381
+  }
+ ]
+}

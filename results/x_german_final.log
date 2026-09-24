@@ -1,0 +1,8 @@
+  fold 0: guard {'dropped_tfidf': 63, 'dropped_e5_only': 111, 'dropped_total': 174, 'kept': 16357}  [75s]
+  fold 1: guard {'dropped_tfidf': 63, 'dropped_e5_only': 129, 'dropped_total': 192, 'kept': 16339}  [88s]
+  fold 2: guard {'dropped_tfidf': 58, 'dropped_e5_only': 148, 'dropped_total': 206, 'kept': 16325}  [100s]
+  fold 3: guard {'dropped_tfidf': 69, 'dropped_e5_only': 157, 'dropped_total': 226, 'kept': 16305}  [110s]
+  fold 4: guard {'dropped_tfidf': 48, 'dropped_e5_only': 127, 'dropped_total': 175, 'kept': 16356}  [121s]
+  evaluation guard: {'dropped_tfidf': 38, 'dropped_e5_only': 112, 'dropped_total': 150, 'kept': 16381}  [134s]
+core -> validation: accuracy 89.93%  macro-F1 0.8982  (2.2 min)
+German tickets dropped by the leak guard: {"dropped_tfidf": 38, "dropped_e5_only": 112, "dropped_total": 150, "kept": 16381}

@@ -1,0 +1,46 @@
+0 w12 29
+0 w11 39
+0 w11bin 45
+0 c25wb 115
+1 w12 138
+1 w11 145
+1 w11bin 147
+1 c25wb 191
+2 w12 212
+2 w11 219
+2 w11bin 222
+2 c25wb 262
+3 w12 280
+3 w11 286
+3 w11bin 289
+3 c25wb 346
+4 w12 362
+4 w11 369
+4 w11bin 371
+4 c25wb 407
+w12|SVC C=0.1                    all 0.4894 low 0.3939 high 0.5603
+w12|LR C=1                       all 0.4872 low 0.3894 high 0.5599
+ens w12LR1+c25LR1                all 0.4682 low 0.3886 high 0.5273
+w11|SVC C=0.03                   all 0.4240 low 0.3880 high 0.4506
+w12|SVC C=0.03                   all 0.4263 low 0.3877 high 0.4548
+w12|CNB a=1.0                    all 0.4540 low 0.3876 high 0.5031
+w12|CNB a=0.3                    all 0.4962 low 0.3875 high 0.5769
+w11|LR C=0.3                     all 0.4231 low 0.3846 high 0.4517
+ens w12LR1+w11LR1+c25LR1         all 0.4591 low 0.3840 high 0.5149
+w12|LR C=3                       all 0.5447 low 0.3836 high 0.6644
+w12|CNB a=0.1                    all 0.5164 low 0.3836 high 0.6151
+w12|LR C=0.3                     all 0.4246 low 0.3836 high 0.4549
+c25wb|LR C=1                     all 0.4435 low 0.3829 high 0.4885
+c25wb|LR C=0.3                   all 0.4198 low 0.3828 high 0.4473
+w11|SVC C=0.1                    all 0.4424 low 0.3815 high 0.4877
+w11bin|LR C=0.3                  all 0.4157 low 0.3787 high 0.4431
+w11|CNB a=0.3                    all 0.4179 low 0.3756 high 0.4492
+w11|CNB a=1.0                    all 0.4138 low 0.3745 high 0.4430
+w11|LR C=1                       all 0.4408 low 0.3743 high 0.4902
+w11|CNB a=0.1                    all 0.4191 low 0.3736 high 0.4528
+c25wb|LR C=3                     all 0.4619 low 0.3720 high 0.5287
+w11bin|LR C=1                    all 0.4357 low 0.3692 high 0.4851
+w11|LR C=3                       all 0.4558 low 0.3648 high 0.5235
+w11bin|LR C=3                    all 0.4510 low 0.3607 high 0.5182
+w12|LR C=1 balanced              all 0.4714 low 0.3443 high 0.5658
+w11|LR C=1 balanced              all 0.3763 low 0.2997 high 0.4332

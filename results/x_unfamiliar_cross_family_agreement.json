@@ -1,0 +1,51 @@
+{
+ "chance_same_queue_random_pair": 0.17090608464165097,
+ "tfidf_0.3-0.4": {
+  "pairs_different_family": 11116,
+  "same_queue_given_different_family": 0.25692695214105793,
+  "pairs_same_type_priority": 6174,
+  "same_queue_given_same_type_priority": 0.4112406867508908
+ },
+ "tfidf_0.4-0.5": {
+  "pairs_different_family": 1940,
+  "same_queue_given_different_family": 0.21030927835051547,
+  "pairs_same_type_priority": 2982,
+  "same_queue_given_same_type_priority": 0.7702883970489605
+ },
+ "tfidf_0.5-0.6": {
+  "pairs_different_family": 318,
+  "same_queue_given_different_family": 0.15723270440251572,
+  "pairs_same_type_priority": 3365,
+  "same_queue_given_same_type_priority": 0.9592867756315008
+ },
+ "tfidf_0.6-1.01": {
+  "pairs_different_family": 112,
+  "same_queue_given_different_family": 0.2857142857142857,
+  "pairs_same_type_priority": 9598,
+  "same_queue_given_same_type_priority": 0.99562408835174
+ },
+ "mpnet_0.8-0.85": {
+  "pairs_different_family": 22051,
+  "same_queue_given_different_family": 0.31830755974785724,
+  "pairs_same_type_priority": 8440,
+  "same_queue_given_same_type_priority": 0.35924170616113743
+ },
+ "mpnet_0.85-0.9": {
+  "pairs_different_family": 25618,
+  "same_queue_given_different_family": 0.2655554688109923,
+  "pairs_same_type_priority": 10717,
+  "same_queue_given_same_type_priority": 0.3651208360548661
+ },
+ "mpnet_0.9-0.95": {
+  "pairs_different_family": 16821,
+  "same_queue_given_different_family": 0.21288865109089827,
+  "pairs_same_type_priority": 11526,
+  "same_queue_given_same_type_priority": 0.5101509630400833
+ },
+ "mpnet_0.95-1.01": {
+  "pairs_different_family": 966,
+  "same_queue_given_different_family": 0.2329192546583851,
+  "pairs_same_type_priority": 11406,
+  "same_queue_given_same_type_priority": 0.9661581623706821
+ }
+}

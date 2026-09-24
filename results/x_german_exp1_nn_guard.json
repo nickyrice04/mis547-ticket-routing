@@ -1,0 +1,132 @@
+[
+ {
+  "pool": "all",
+  "thr": null,
+  "n_german": 16531,
+  "dropped_by_guard": 0,
+  "nn": [
+   0.8449,
+   0.8427
+  ],
+  "nn_from_german": 0.1825,
+  "acc_when_german": 0.8481,
+  "acc_when_english": 0.8442
+ },
+ {
+  "pool": "all",
+  "thr": 0.7,
+  "n_german": 16523,
+  "dropped_by_guard": 8,
+  "nn": [
+   0.8446,
+   0.8425
+  ],
+  "nn_from_german": 0.1821,
+  "acc_when_german": 0.8459,
+  "acc_when_english": 0.8443
+ },
+ {
+  "pool": "all",
+  "thr": 0.6,
+  "n_german": 16493,
+  "dropped_by_guard": 38,
+  "nn": [
+   0.8439,
+   0.8421
+  ],
+  "nn_from_german": 0.1786,
+  "acc_when_german": 0.8428,
+  "acc_when_english": 0.8441
+ },
+ {
+  "pool": "all",
+  "thr": 0.5,
+  "n_german": 16331,
+  "dropped_by_guard": 200,
+  "nn": [
+   0.834,
+   0.8332
+  ],
+  "nn_from_german": 0.166,
+  "acc_when_german": 0.8203,
+  "acc_when_english": 0.8368
+ },
+ {
+  "pool": "all",
+  "thr": 0.4,
+  "n_german": 15913,
+  "dropped_by_guard": 618,
+  "nn": [
+   0.8137,
+   0.8117
+  ],
+  "nn_from_german": 0.1323,
+  "acc_when_german": 0.7931,
+  "acc_when_english": 0.8168
+ },
+ {
+  "pool": "all",
+  "thr": 0.3,
+  "n_german": 14780,
+  "dropped_by_guard": 1751,
+  "nn": [
+   0.773,
+   0.7638
+  ],
+  "nn_from_german": 0.0698,
+  "acc_when_german": 0.7085,
+  "acc_when_english": 0.7778
+ },
+ {
+  "pool": "english_source_only",
+  "thr": null,
+  "n_german": 3442,
+  "dropped_by_guard": 0,
+  "nn": [
+   0.7772,
+   0.7657
+  ],
+  "nn_from_german": 0.0674,
+  "acc_when_german": 0.7604,
+  "acc_when_english": 0.7784
+ },
+ {
+  "pool": "german_source_only",
+  "thr": null,
+  "n_german": 12290,
+  "dropped_by_guard": 0,
+  "nn": [
+   0.8158,
+   0.8144
+  ],
+  "nn_from_german": 0.1249,
+  "acc_when_german": 0.8596,
+  "acc_when_english": 0.8095
+ },
+ {
+  "pool": "english_source_only",
+  "thr": 0.6,
+  "n_german": 3428,
+  "dropped_by_guard": 14,
+  "nn": [
+   0.7761,
+   0.7651
+  ],
+  "nn_from_german": 0.0656,
+  "acc_when_german": 0.7487,
+  "acc_when_english": 0.7781
+ },
+ {
+  "pool": "german_source_only",
+  "thr": 0.6,
+  "n_german": 12269,
+  "dropped_by_guard": 21,
+  "nn": [
+   0.8154,
+   0.8141
+  ],
+  "nn_from_german": 0.1225,
+  "acc_when_german": 0.8596,
+  "acc_when_english": 0.8093
+ }
+]

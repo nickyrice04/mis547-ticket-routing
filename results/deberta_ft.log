@@ -1,0 +1,18 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+/Users/nickyrice/Documents/Cloud Computing/ticket-routing/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 23453.27it/s]
+class weights: off
+MoritzLaurer/deberta-v3-base-zeroshot-v2.0: 10 epochs, lr 2e-05, max_len 192, 11880 steps on mps
+  epoch 0 step 100/11880 loss nan
+  epoch 0 step 200/11880 loss nan
+  epoch 0 step 300/11880 loss nan
+  epoch 0 step 400/11880 loss nan
+  epoch 0 step 500/11880 loss nan
+  epoch 0 step 600/11880 loss nan
+  epoch 0 step 700/11880 loss nan
+  epoch 0 step 800/11880 loss nan
+  epoch 0 step 900/11880 loss nan
+  epoch 0 step 1000/11880 loss nan
+/Users/nickyrice/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

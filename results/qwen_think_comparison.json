@@ -1,0 +1,109 @@
+{
+  "core only": {
+    "rows": 16147,
+    "accuracy": 0.6533,
+    "accuracy_sd": 0.0049,
+    "macro_f1": 0.6273,
+    "unfamiliar": 0.421,
+    "weak_queues": 0.463,
+    "style_median_similarity": null
+  },
+  "core + real validation": {
+    "rows": 18997,
+    "accuracy": 0.6846,
+    "accuracy_sd": 0.004,
+    "macro_f1": 0.6795,
+    "unfamiliar": 0.4241,
+    "weak_queues": 0.5444,
+    "style_median_similarity": 1.0000000000000002,
+    "gain": 0.0312,
+    "gain_ci95": [
+      0.0232,
+      0.0394
+    ]
+  },
+  "core + qwen35_08b_tickets": {
+    "rows": 17331,
+    "accuracy": 0.6499,
+    "accuracy_sd": 0.0022,
+    "macro_f1": 0.6403,
+    "unfamiliar": 0.4104,
+    "weak_queues": 0.4864,
+    "style_median_similarity": 0.13946719973711125,
+    "gain": -0.0034,
+    "gain_ci95": [
+      -0.0094,
+      0.0026
+    ]
+  },
+  "core + qwen_think_1k": {
+    "rows": 17146,
+    "accuracy": 0.6539,
+    "accuracy_sd": 0.0018,
+    "macro_f1": 0.6508,
+    "unfamiliar": 0.4099,
+    "weak_queues": 0.5006,
+    "style_median_similarity": 0.2185859859219722,
+    "gain": 0.0006,
+    "gain_ci95": [
+      -0.0053,
+      0.0063
+    ]
+  },
+  "core + qwen_think_2500": {
+    "rows": 18648,
+    "accuracy": 0.6557,
+    "accuracy_sd": 0.0015,
+    "macro_f1": 0.6535,
+    "unfamiliar": 0.4094,
+    "weak_queues": 0.5185,
+    "style_median_similarity": 0.22717860178059543,
+    "gain": 0.0024,
+    "gain_ci95": [
+      -0.0043,
+      0.0093
+    ]
+  },
+  "core + qwen_think_5k": {
+    "rows": 21147,
+    "accuracy": 0.6567,
+    "accuracy_sd": 0.0038,
+    "macro_f1": 0.6521,
+    "unfamiliar": 0.4099,
+    "weak_queues": 0.5099,
+    "style_median_similarity": 0.2143397726722578,
+    "gain": 0.0034,
+    "gain_ci95": [
+      -0.0038,
+      0.0107
+    ]
+  },
+  "core + qwen_think_10k": {
+    "rows": 23870,
+    "accuracy": 0.6604,
+    "accuracy_sd": 0.006,
+    "macro_f1": 0.6605,
+    "unfamiliar": 0.4151,
+    "weak_queues": 0.5278,
+    "style_median_similarity": 0.21410694101875274,
+    "gain": 0.0071,
+    "gain_ci95": [
+      -0.0005,
+      0.015
+    ]
+  },
+  "core + qwen_think_judged": {
+    "rows": 18548,
+    "accuracy": 0.6564,
+    "accuracy_sd": 0.0057,
+    "macro_f1": 0.6522,
+    "unfamiliar": 0.4167,
+    "weak_queues": 0.5019,
+    "style_median_similarity": 0.250313052337007,
+    "gain": 0.0031,
+    "gain_ci95": [
+      -0.0028,
+      0.0091
+    ]
+  }
+}

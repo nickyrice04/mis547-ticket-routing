@@ -1,0 +1,36 @@
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 4185.58it/s]
+  [1/12] Product Support                  vs Technical Support                 150 tickets  1.7 min
+  [2/12] Technical Support                vs Product Support                   150 tickets  3.4 min
+  [3/12] IT Support                       vs Technical Support                 150 tickets  5.0 min
+  [4/12] Customer Service                 vs Product Support                   150 tickets  6.5 min
+  [5/12] Customer Service                 vs Technical Support                 150 tickets  8.1 min
+  [6/12] Technical Support                vs Customer Service                  150 tickets  9.8 min
+  [7/12] Product Support                  vs Customer Service                  150 tickets  11.5 min
+  [8/12] IT Support                       vs Product Support                   150 tickets  13.1 min
+  [9/12] General Inquiry                  vs None                              150 tickets  14.6 min
+  [10/12] Returns and Exchanges            vs None                              150 tickets  16.2 min
+  [11/12] Human Resources                  vs None                              150 tickets  17.7 min
+  [12/12] Sales and Pre-Sales              vs None                              150 tickets  19.3 min
+{
+  "generated": 1800,
+  "kept": 1800,
+  "dropped": {
+    "near_test": 0,
+    "near_train": 0,
+    "near_other_synthetic": 0,
+    "copies_seed": 0
+  },
+  "minutes": 19.3,
+  "by_queue": {
+    "Billing and Payments": 0,
+    "Customer Service": 300,
+    "General Inquiry": 150,
+    "Human Resources": 150,
+    "IT Support": 300,
+    "Product Support": 300,
+    "Returns and Exchanges": 150,
+    "Sales and Pre-Sales": 150,
+    "Service Outages and Maintenance": 0,
+    "Technical Support": 300
+  }
+}

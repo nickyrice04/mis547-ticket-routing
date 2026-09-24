@@ -1,0 +1,36 @@
+{
+ "base": "sentence-transformers/all-mpnet-base-v2",
+ "log": [
+  {
+   "tag": "pretrained",
+   "heldout_1nn_all": 0.6712074303405573,
+   "heldout_1nn_unfamiliar": 0.35409123823316435,
+   "heldout_1nn_sim0.3-0.5": 0.49874371859296485,
+   "minutes": 0.822366718451182
+  },
+  {
+   "tag": "epoch1",
+   "heldout_1nn_all": 0.6907120743034055,
+   "heldout_1nn_unfamiliar": 0.3584359160028964,
+   "heldout_1nn_sim0.3-0.5": 0.542713567839196,
+   "minutes": 6.873678731918335,
+   "train_loss": 0.15978282374283684
+  },
+  {
+   "tag": "epoch2",
+   "heldout_1nn_all": 0.6829721362229102,
+   "heldout_1nn_unfamiliar": 0.3432295438088342,
+   "heldout_1nn_sim0.3-0.5": 0.5414572864321608,
+   "minutes": 13.660248347123463,
+   "train_loss": 0.09187415362555103
+  },
+  {
+   "tag": "epoch3",
+   "heldout_1nn_all": 0.6814241486068111,
+   "heldout_1nn_unfamiliar": 0.3381607530774801,
+   "heldout_1nn_sim0.3-0.5": 0.542713567839196,
+   "minutes": 20.107855701446532,
+   "train_loss": 0.06611568894533609
+  }
+ ]
+}

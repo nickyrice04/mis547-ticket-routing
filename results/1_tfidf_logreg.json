@@ -1,0 +1,57 @@
+{
+  "tier": "1_tfidf_logreg",
+  "model": "TF-IDF 1-2gram + LogisticRegression",
+  "params_millions": 0.61,
+  "train_seconds": 6.6,
+  "train_peak_rss_mb": 501,
+  "accuracy": 0.6158,
+  "macro_f1": 0.6252,
+  "vocab_size": 60854,
+  "oov_word_rate_mean": 0.1485,
+  "accuracy_low_oov": 0.616,
+  "accuracy_high_oov": 0.6143,
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.6158,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.3427,
+      "accuracy_on_routed": 0.8643,
+      "sent_to_human": 0.6573
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.2166,
+      "accuracy_on_routed": 0.9203,
+      "sent_to_human": 0.7834
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.1383,
+      "accuracy_on_routed": 0.9574,
+      "sent_to_human": 0.8617
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.0926,
+      "accuracy_on_routed": 0.9773,
+      "sent_to_human": 0.9074
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.0646,
+      "accuracy_on_routed": 0.9967,
+      "sent_to_human": 0.9354
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.0459,
+      "accuracy_on_routed": 1.0,
+      "sent_to_human": 0.9541
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "mode": "shuffle_train",
+ "accuracy": 0.2888,
+ "macro_f1": 0.0448,
+ "guard_eval": {
+  "dropped_tfidf": 38,
+  "dropped_e5_only": 112,
+  "dropped_total": 150,
+  "kept": 16381
+ },
+ "minutes": 3.49,
+ "pred_class_share_max": 1.0
+}

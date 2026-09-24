@@ -1,0 +1,24 @@
+{
+  "core only": {
+    "network": 0.6263,
+    "lookup": 0.7449,
+    "hybrid": 0.7547
+  },
+  "core + qwen_sibling_s500_core": {
+    "network": 0.6579,
+    "lookup": 0.7449,
+    "hybrid": 0.7547,
+    "lookup_gain": 0.0,
+    "lookup_gain_ci95": [
+      -0.0084,
+      0.0077
+    ],
+    "hybrid_gain": 0.0,
+    "hybrid_gain_ci95": [
+      -0.0088,
+      0.0084
+    ],
+    "median_similarity_after": 0.533
+  },
+  "median_similarity_core_only": 0.545
+}

@@ -1,0 +1,63 @@
+  ep 5/40 loss 0.3083 10s eval_acc 0.5757
+  ep 10/40 loss 0.0143 17s eval_acc 0.5837
+  ep 15/40 loss 0.0056 26s eval_acc 0.5861
+  ep 20/40 loss 0.0034 32s eval_acc 0.5865
+  ep 25/40 loss 0.0025 38s eval_acc 0.5870
+  ep 30/40 loss 0.0021 45s eval_acc 0.5865
+  ep 35/40 loss 0.0020 52s eval_acc 0.5861
+  ep 40/40 loss 0.0019 58s eval_acc 0.5863
+[CV] mlp_h1024_e40: mean=0.5863 folds=[0.5863] {'buckets': '0.0-0.2:33.0  0.2-0.3:36.5  0.3-0.4:34.1  0.4-0.5:53.0  0.5-0.6:66.8  0.6-0.7:83.0  0.7-0.8:96.6  0.8-1.0:99.6', 'sec': 65.0, 'cfg': {'name': 'h1024_e40', 'mlp': {'hidden': [1024], 'epochs': 40, 'p_h': 0.0}}}
+  ep 5/40 loss 0.6146 6s eval_acc 0.5519
+  ep 10/40 loss 0.0350 12s eval_acc 0.5848
+  ep 15/40 loss 0.0116 18s eval_acc 0.5867
+  ep 20/40 loss 0.0066 24s eval_acc 0.5872
+  ep 25/40 loss 0.0048 30s eval_acc 0.5885
+  ep 30/40 loss 0.0039 35s eval_acc 0.5900
+  ep 35/40 loss 0.0036 42s eval_acc 0.5898
+  ep 40/40 loss 0.0036 47s eval_acc 0.5898
+[CV] mlp_h1024_e40_ph5: mean=0.5898 folds=[0.5898] {'buckets': '0.0-0.2:33.9  0.2-0.3:36.9  0.3-0.4:33.9  0.4-0.5:53.8  0.5-0.6:67.2  0.6-0.7:84.0  0.7-0.8:96.9  0.8-1.0:99.6', 'sec': 47.8, 'cfg': {'name': 'h1024_e40_ph5', 'mlp': {'hidden': [1024], 'epochs': 40, 'p_h': 0.5}}}
+  ep 5/40 loss 0.5143 6s eval_acc 0.5460
+  ep 10/40 loss 0.0611 12s eval_acc 0.5807
+  ep 15/40 loss 0.0307 18s eval_acc 0.5883
+  ep 20/40 loss 0.0235 23s eval_acc 0.5872
+  ep 25/40 loss 0.0160 28s eval_acc 0.5900
+  ep 30/40 loss 0.0141 32s eval_acc 0.5915
+  ep 35/40 loss 0.0131 38s eval_acc 0.5924
+  ep 40/40 loss 0.0124 47s eval_acc 0.5909
+[CV] mlp_h1024_e40_pin3: mean=0.5909 folds=[0.5909] {'buckets': '0.0-0.2:36.1  0.2-0.3:36.1  0.3-0.4:35.6  0.4-0.5:51.1  0.5-0.6:68.2  0.6-0.7:86.1  0.7-0.8:96.2  0.8-1.0:99.2', 'sec': 47.1, 'cfg': {'name': 'h1024_e40_pin3', 'mlp': {'hidden': [1024], 'epochs': 40, 'p_h': 0.0, 'p_in': 0.3}}}
+  ep 5/40 loss 0.0230 5s eval_acc 0.5772
+  ep 10/40 loss 0.0019 8s eval_acc 0.5828
+  ep 15/40 loss 0.0009 11s eval_acc 0.5835
+  ep 20/40 loss 0.0005 15s eval_acc 0.5863
+  ep 25/40 loss 0.0004 18s eval_acc 0.5859
+  ep 30/40 loss 0.0003 22s eval_acc 0.5857
+  ep 35/40 loss 0.0003 25s eval_acc 0.5861
+  ep 40/40 loss 0.0003 28s eval_acc 0.5861
+[CV] mlp_h1024_e40_lr3e-3: mean=0.5861 folds=[0.5861] {'buckets': '0.0-0.2:33.9  0.2-0.3:36.1  0.3-0.4:33.5  0.4-0.5:51.1  0.5-0.6:68.5  0.6-0.7:84.3  0.7-0.8:96.9  0.8-1.0:99.6', 'sec': 28.7, 'cfg': {'name': 'h1024_e40_lr3e-3', 'mlp': {'hidden': [1024], 'epochs': 40, 'p_h': 0.0, 'lr': 0.003}}}
+  ep 5/40 loss 0.4631 6s eval_acc 0.5640
+  ep 10/40 loss 0.0124 16s eval_acc 0.5857
+  ep 15/40 loss 0.0040 40s eval_acc 0.5878
+  ep 20/40 loss 0.0023 44s eval_acc 0.5889
+  ep 25/40 loss 0.0017 48s eval_acc 0.5893
+  ep 30/40 loss 0.0014 52s eval_acc 0.5898
+  ep 35/40 loss 0.0013 56s eval_acc 0.5900
+  ep 40/40 loss 0.0013 60s eval_acc 0.5900
+[CV] mlp_h1024_e40_square: mean=0.5900 folds=[0.59] {'buckets': '0.0-0.2:35.2  0.2-0.3:36.7  0.3-0.4:34.4  0.4-0.5:55.3  0.5-0.6:67.4  0.6-0.7:83.0  0.7-0.8:95.9  0.8-1.0:99.4', 'sec': 60.6, 'cfg': {'name': 'h1024_e40_square', 'mlp': {'hidden': [1024], 'epochs': 40, 'p_h': 0.0, 'act': 'square'}}}
+  ep 5/40 loss 0.4455 6s eval_acc 0.5646
+  ep 10/40 loss 0.0122 11s eval_acc 0.5841
+  ep 15/40 loss 0.0039 16s eval_acc 0.5863
+  ep 20/40 loss 0.0022 21s eval_acc 0.5878
+  ep 25/40 loss 0.0016 25s eval_acc 0.5881
+  ep 30/40 loss 0.0014 30s eval_acc 0.5881
+  ep 35/40 loss 0.0013 35s eval_acc 0.5881
+  ep 40/40 loss 0.0013 40s eval_acc 0.5881
+[CV] mlp_h1024_e40_relu2: mean=0.5881 folds=[0.5881] {'buckets': '0.0-0.2:34.4  0.2-0.3:36.5  0.3-0.4:34.8  0.4-0.5:54.8  0.5-0.6:66.4  0.6-0.7:83.2  0.7-0.8:95.5  0.8-1.0:99.6', 'sec': 40.4, 'cfg': {'name': 'h1024_e40_relu2', 'mlp': {'hidden': [1024], 'epochs': 40, 'p_h': 0.0, 'act': 'relu2'}}}
+  ep 5/40 loss 0.0546 15s eval_acc 0.5874
+  ep 10/40 loss 0.0038 30s eval_acc 0.5850
+  ep 15/40 loss 0.0017 46s eval_acc 0.5859
+  ep 20/40 loss 0.0011 61s eval_acc 0.5865
+  ep 25/40 loss 0.0008 75s eval_acc 0.5863
+  ep 30/40 loss 0.0007 91s eval_acc 0.5865
+  ep 35/40 loss 0.0007 106s eval_acc 0.5857
+  ep 40/40 loss 0.0006 121s eval_acc 0.5857
+[CV] mlp_h4096_e40: mean=0.5857 folds=[0.5857] {'buckets': '0.0-0.2:33.0  0.2-0.3:36.5  0.3-0.4:33.2  0.4-0.5:52.5  0.5-0.6:66.4  0.6-0.7:84.6  0.7-0.8:96.7  0.8-1.0:99.4', 'sec': 122.1, 'cfg': {'name': 'h4096_e40', 'mlp': {'hidden': [4096], 'epochs': 40, 'p_h': 0.0}}}

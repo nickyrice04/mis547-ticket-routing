@@ -1,0 +1,69 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 30243.73it/s]
+  fold 0: guard {'dropped_tfidf': 58, 'dropped_e5_only': 159, 'dropped_total': 217, 'kept': 16314}  [49s]
+  fold 1: guard {'dropped_tfidf': 61, 'dropped_e5_only': 135, 'dropped_total': 196, 'kept': 16335}  [55s]
+  fold 2: guard {'dropped_tfidf': 70, 'dropped_e5_only': 180, 'dropped_total': 250, 'kept': 16281}  [62s]
+  fold 3: guard {'dropped_tfidf': 81, 'dropped_e5_only': 156, 'dropped_total': 237, 'kept': 16294}  [68s]
+  fold 4: guard {'dropped_tfidf': 59, 'dropped_e5_only': 161, 'dropped_total': 220, 'kept': 16311}  [75s]
+  evaluation guard: {'dropped_tfidf': 76, 'dropped_e5_only': 202, 'dropped_total': 278, 'kept': 16253}  [85s]
+{
+  "tier": "12b_stack_german",
+  "model": "same stacker with 16.5k translated German tickets in the retrieval pool, leak guard at 0.60",
+  "module": "x_german_final",
+  "accuracy": 0.9179,
+  "macro_f1": 0.9167,
+  "ece": 0.0123,
+  "unfamiliar_accuracy": 0.8101,
+  "familiar_accuracy": 0.9872,
+  "train_minutes": 1.4,
+  "by_similarity_to_nearest_training_ticket": [
+    {
+      "similarity": "0.0-0.2",
+      "share": 0.0263,
+      "n": 125,
+      "accuracy": 0.816
+    },
+    {
+      "similarity": "0.2-0.3",
+      "share": 0.1505,
+      "n": 715,
+      "accuracy": 0.7692
+    },
+    {
+      "similarity": "0.3-0.4",
+      "share": 0.1173,
+      "n": 557,
+      "accuracy": 0.7971
+    },
+    {
+      "similarity": "0.4-0.5",
+      "share": 0.0973,
+      "n": 462,
+      "accuracy": 0.8874
+    },
+    {
+      "similarity": "0.5-0.6",
+      "share": 0.1371,
+      "n": 651,
+      "accuracy": 0.9585
+    },
+    {
+      "similarity": "0.6-0.7",
+      "share": 0.1589,
+      "n": 755,
+      "accuracy": 0.9894
+    },
+    {
+      "similarity": "0.7-0.8",
+      "share": 0.1716,
+      "n": 815,
+      "accuracy": 0.9975
+    },
+    {
+      "similarity": "0.8-1.0",
+      "share": 0.1411,
+      "n": 670,
+      "accuracy": 1.0
+    }
+  ]
+}
+wrote /Users/nickyrice/Documents/Cloud Computing/ticket-routing/results/12b_stack_german.json

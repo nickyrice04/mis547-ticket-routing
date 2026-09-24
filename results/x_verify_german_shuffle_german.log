@@ -1,0 +1,10 @@
+mode=shuffle_german core=16147 val=2850 majority share in val=0.2888
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 16095.23it/s]
+  fold 0: guard {'dropped_tfidf': 63, 'dropped_e5_only': 111, 'dropped_total': 174, 'kept': 16357}  [93s]
+  fold 1: guard {'dropped_tfidf': 63, 'dropped_e5_only': 129, 'dropped_total': 192, 'kept': 16339}  [112s]
+  fold 2: guard {'dropped_tfidf': 58, 'dropped_e5_only': 148, 'dropped_total': 206, 'kept': 16325}  [128s]
+  fold 3: guard {'dropped_tfidf': 69, 'dropped_e5_only': 157, 'dropped_total': 226, 'kept': 16305}  [144s]
+  fold 4: guard {'dropped_tfidf': 48, 'dropped_e5_only': 127, 'dropped_total': 175, 'kept': 16356}  [161s]
+  evaluation guard: {'dropped_tfidf': 38, 'dropped_e5_only': 112, 'dropped_total': 150, 'kept': 16381}  [178s]
+{"mode": "shuffle_german", "accuracy": 0.7849, "macro_f1": 0.7915, "guard_eval": {"dropped_tfidf": 38, "dropped_e5_only": 112, "dropped_total": 150, "kept": 16381}, "minutes": 2.96, "pred_class_share_max": 0.3972}

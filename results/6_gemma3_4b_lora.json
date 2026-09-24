@@ -1,0 +1,10 @@
+{
+  "tier": "6_gemma3_4b_lora",
+  "model": "mlx-community/gemma-3-4b-it-qat-4bit + LoRA adapter (fine-tuned on our labels)",
+  "eval_tickets": 500,
+  "ms_per_ticket": 183.8,
+  "unparsed": 0,
+  "accuracy": 0.362,
+  "macro_f1": 0.1883,
+  "peak_memory_gb": 3.06
+}

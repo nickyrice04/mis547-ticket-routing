@@ -1,0 +1,49 @@
+# Long LoRA fine-tune of Gemma 3 4B, aimed at beating the 68.3% neural network.
+#
+# What changed from the 8 minute run that reached 36.2%:
+#
+#   mask_prompt   train only on the team name, not on the ticket text. The task
+#                 is picking one label, so spending loss on reproducing the
+#                 ticket wastes the entire budget.
+#   compact data  the ten line team menu is gone from every example, which more
+#                 than halves sequence length. A fine-tuned model learns the
+#                 label set from the data.
+#   full data     18,597 training tickets instead of a 6,000 sample.
+#   num_layers    16 adapted layers instead of 8.
+#   rank 32       four times the adapter capacity of the default.
+#   iters 6000    at batch 16 that is about 5 passes over the training set,
+#                 against a quarter of one pass in the first attempt.
+#
+# DistilBERT needed 12 passes before it stopped improving, so 5 may still be
+# short. Checkpoints every 1000 iterations let us watch the curve and stop when
+# it flattens instead of guessing.
+
+model: mlx-community/gemma-3-4b-it-qat-4bit
+train: true
+data: data/lora3
+adapter_path: adapters/gemma3_4b_fair
+
+fine_tune_type: lora
+optimizer: adamw
+num_layers: 16
+batch_size: 16
+iters: 4500
+max_seq_length: 320
+mask_prompt: true
+
+learning_rate: 1e-4
+lr_schedule:
+  name: cosine_decay
+  warmup: 200
+  arguments: [1e-4, 4500, 1e-5]
+
+steps_per_report: 200
+steps_per_eval: 500
+val_batches: 10
+save_every: 1000
+seed: 42
+
+lora_parameters:
+  rank: 32
+  scale: 20.0
+  dropout: 0.05

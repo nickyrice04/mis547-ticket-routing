@@ -1,0 +1,12 @@
+fold0 {'dropped_tfidf': 63, 'dropped_e5_only': 111, 'dropped_total': 174, 'kept': 16357} 5s
+fold0 done 10s
+fold1 {'dropped_tfidf': 63, 'dropped_e5_only': 129, 'dropped_total': 192, 'kept': 16339} 14s
+fold1 done 19s
+fold2 {'dropped_tfidf': 58, 'dropped_e5_only': 148, 'dropped_total': 206, 'kept': 16325} 25s
+fold2 done 30s
+fold3 {'dropped_tfidf': 69, 'dropped_e5_only': 157, 'dropped_total': 226, 'kept': 16305} 34s
+fold3 done 40s
+fold4 {'dropped_tfidf': 48, 'dropped_e5_only': 127, 'dropped_total': 175, 'kept': 16356} 46s
+fold4 done 53s
+val {'dropped_tfidf': 38, 'dropped_e5_only': 112, 'dropped_total': 150, 'kept': 16381} 62s
+val done 69s

@@ -1,0 +1,29 @@
+core 16147 val 2850 exact text overlap core/val: 0
+label agreement after permutation: 0.16684213785842572
+[x_semantic      2s] embedded with e5base
+[x_semantic      2s] embedded with bge
+[x_semantic      2s] embedded with mpnet
+[x_semantic      2s] embedded with gte
+[x_semantic    438s] classifier probabilities done
+[x_semantic    503s] features (161470, 43) -> meta model
+[x_semantic    512s] done
+[shuffle] core -> validation accuracy 0.2888 macro-F1 0.0452 majority share 0.2888 (8.5 min)
+{
+ "mode": "shuffle",
+ "val_accuracy": 0.2887719298245614,
+ "val_macro_f1": 0.04523936600355814,
+ "majority_share": 0.2887719298245614,
+ "minutes": 8.5,
+ "pred_hist": [
+  0,
+  1,
+  0,
+  0,
+  0,
+  8,
+  0,
+  0,
+  0,
+  2841
+ ]
+}

@@ -1,0 +1,38 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 11850.84it/s]
+{"tag": "pretrained", "heldout_1nn_all": 0.6712074303405573, "heldout_1nn_unfamiliar": 0.35409123823316435, "heldout_1nn_sim0.3-0.5": 0.49874371859296485, "minutes": 0.822366718451182}
+ep 0 step 25/729 loss 0.3322 elapsed 0.6m
+ep 0 step 50/729 loss 0.2728 elapsed 1.2m
+ep 0 step 75/729 loss 0.2307 elapsed 1.9m
+ep 0 step 100/729 loss 0.2102 elapsed 2.5m
+ep 0 step 125/729 loss 0.1936 elapsed 3.1m
+ep 0 step 150/729 loss 0.1827 elapsed 3.7m
+ep 0 step 175/729 loss 0.1738 elapsed 4.3m
+ep 0 step 200/729 loss 0.1672 elapsed 5.0m
+ep 0 step 225/729 loss 0.1646 elapsed 5.6m
+{"tag": "epoch1", "heldout_1nn_all": 0.6907120743034055, "heldout_1nn_unfamiliar": 0.3584359160028964, "heldout_1nn_sim0.3-0.5": 0.542713567839196, "minutes": 6.873678731918335}
+ep 1 step 250/729 loss 0.0819 elapsed 7.1m
+ep 1 step 275/729 loss 0.0900 elapsed 7.7m
+ep 1 step 300/729 loss 0.0989 elapsed 8.3m
+ep 1 step 325/729 loss 0.1061 elapsed 8.9m
+ep 1 step 350/729 loss 0.1040 elapsed 9.6m
+ep 1 step 375/729 loss 0.0995 elapsed 10.2m
+ep 1 step 400/729 loss 0.0975 elapsed 10.8m
+ep 1 step 425/729 loss 0.0947 elapsed 11.4m
+ep 1 step 450/729 loss 0.0934 elapsed 12.0m
+ep 1 step 475/729 loss 0.0938 elapsed 12.6m
+{"tag": "epoch2", "heldout_1nn_all": 0.6829721362229102, "heldout_1nn_unfamiliar": 0.3432295438088342, "heldout_1nn_sim0.3-0.5": 0.5414572864321608, "minutes": 13.660248347123463}
+ep 2 step 500/729 loss 0.0878 elapsed 14.0m
+ep 2 step 525/729 loss 0.0800 elapsed 14.6m
+ep 2 step 550/729 loss 0.0726 elapsed 15.2m
+ep 2 step 575/729 loss 0.0679 elapsed 15.8m
+ep 2 step 600/729 loss 0.0650 elapsed 16.4m
+ep 2 step 625/729 loss 0.0642 elapsed 17.0m
+ep 2 step 650/729 loss 0.0645 elapsed 17.6m
+ep 2 step 675/729 loss 0.0651 elapsed 18.2m
+ep 2 step 700/729 loss 0.0670 elapsed 18.8m
+ep 2 step 725/729 loss 0.0658 elapsed 19.3m
+{"tag": "epoch3", "heldout_1nn_all": 0.6814241486068111, "heldout_1nn_unfamiliar": 0.3381607530774801, "heldout_1nn_sim0.3-0.5": 0.542713567839196, "minutes": 20.107855701446532}
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.39it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  7.38it/s]
+saved models/x_unfamiliar_famenc train minutes 20.11045309702555

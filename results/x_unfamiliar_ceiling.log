@@ -1,0 +1,35 @@
+{
+ "top1": 0.4012202208018594,
+ "top2": 0.6125798954096455,
+ "top3": 0.7606042998256828,
+ "prior_top1": 0.2957582800697269,
+ "prior_top2": 0.476321905868681,
+ "prior_top3": 0.6308832074375363,
+ "mean_max_prob": 0.39580258884924074,
+ "mean_sum_p2": 0.26622913709235985,
+ "nll_model": 1.6164519314952337,
+ "nll_prior": 1.9492951815878157
+}
+per-class recall / precision / support on CV-unfamiliar (ensemble LR):
+  Billing and Payments             recall=0.656 precision=0.901 n=655 predicted=477
+  Customer Service                 recall=0.246 precision=0.282 n=1064 predicted=929
+  General Inquiry                  recall=0.000 precision=nan n=95 predicted=0
+  Human Resources                  recall=0.085 precision=1.000 n=118 predicted=10
+  IT Support                       recall=0.055 precision=0.310 n=866 predicted=155
+  Product Support                  recall=0.259 precision=0.309 n=1243 predicted=1041
+  Returns and Exchanges            recall=0.041 precision=0.875 n=342 predicted=16
+  Sales and Pre-Sales              recall=0.000 precision=nan n=193 predicted=0
+  Service Outages and Maintenance  recall=0.301 precision=0.719 n=272 predicted=114
+  Technical Support                recall=0.783 precision=0.385 n=2036 predicted=4142
+  conf 0.0-0.3: n= 1942 acc=0.263
+  conf 0.3-0.4: n= 2380 acc=0.354
+  conf 0.4-0.5: n= 1510 acc=0.436
+  conf 0.5-0.7: n=  653 acc=0.545
+  conf 0.7-1.0: n=  399 acc=0.990
+acc on unfamiliar excluding true-Billing tickets: 0.3743779097768502  majority there: 0.32685824369882804
+learning curve 0.1 {'n_train': 1291, 'tfidf_lr': np.float64(0.3528898201501659), 'mpnet_lr': np.float64(0.3741924218613585), 'n_eval': 5727}
+learning curve 0.2 {'n_train': 2583, 'tfidf_lr': np.float64(0.36877946568884235), 'mpnet_lr': np.float64(0.38030382399161866), 'n_eval': 5727}
+learning curve 0.4 {'n_train': 5167, 'tfidf_lr': np.float64(0.3820499388859787), 'mpnet_lr': np.float64(0.3886851754845469), 'n_eval': 5727}
+learning curve 0.7 {'n_train': 9042, 'tfidf_lr': np.float64(0.3848437227169548), 'mpnet_lr': np.float64(0.3953204120831151), 'n_eval': 5727}
+learning curve 1.0 {'n_train': 12918, 'tfidf_lr': np.float64(0.3897328444211629), 'mpnet_lr': np.float64(0.39759036144578314), 'n_eval': 5727}
+style-only GBM on unfamiliar: 0.2805055200464846 majority: 0.2957582800697269

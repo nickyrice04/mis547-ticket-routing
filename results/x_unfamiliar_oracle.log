@@ -1,0 +1,6 @@
+metadata only (type,priority,tags)       C=0.3  unf=0.4108 all=0.4109
+metadata only (type,priority,tags)       C=1.0  unf=0.4059 all=0.4101
+text only                                C=1.0  unf=0.3895 all=0.4872
+text + metadata                          C=1.0  unf=0.4172 all=0.5046
+answer text only                         C=1.0  unf=0.3771 all=0.4752
+text + metadata + answer                 C=1.0  unf=0.4175 all=0.5578

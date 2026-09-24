@@ -1,0 +1,96 @@
+queue                             misses miss rate  tickets
+Product Support                      212     39.8%     1736
+Technical Support                    202     24.5%     1555
+IT Support                           160     47.1%     1423
+Customer Service                     158     36.9%     1339
+Returns and Exchanges                 86     61.0%     1011
+General Inquiry                       27     65.9%      640
+Sales and Pre-Sales                   42     48.3%      621
+Service Outages and Maintenance       46     40.7%      597
+Billing and Payments                  60     20.7%      554
+Human Resources                       27     49.1%      524
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 4460.13it/s]
+     176/10205 tickets     5.0 min  eta  283.2 min
+     308/10205 tickets     9.9 min  eta  317.7 min
+     464/10205 tickets    14.8 min  eta  311.4 min
+     644/10205 tickets    20.3 min  eta  301.1 min
+     816/10205 tickets    25.2 min  eta  290.5 min
+     998/10205 tickets    30.2 min  eta  278.7 min
+    1178/10205 tickets    35.8 min  eta  274.5 min
+    1335/10205 tickets    40.9 min  eta  271.4 min
+    1518/10205 tickets    45.9 min  eta  262.4 min
+    1709/10205 tickets    50.9 min  eta  253.1 min
+    1858/10205 tickets    56.1 min  eta  252.0 min
+    2044/10205 tickets    61.2 min  eta  244.5 min
+    2219/10205 tickets    66.1 min  eta  238.0 min
+    2393/10205 tickets    71.1 min  eta  232.2 min
+    2551/10205 tickets    76.1 min  eta  228.3 min
+    2732/10205 tickets    81.0 min  eta  221.6 min
+    2917/10205 tickets    85.9 min  eta  214.5 min
+    3053/10205 tickets    90.9 min  eta  213.0 min
+    3200/10205 tickets    95.8 min  eta  209.8 min
+    3351/10205 tickets   100.7 min  eta  205.9 min
+    3494/10205 tickets   105.6 min  eta  202.8 min
+    3696/10205 tickets   110.5 min  eta  194.6 min
+    3859/10205 tickets   115.4 min  eta  189.8 min
+    3990/10205 tickets   120.3 min  eta  187.4 min
+    4157/10205 tickets   125.3 min  eta  182.3 min
+    4344/10205 tickets   130.2 min  eta  175.6 min
+    4514/10205 tickets   135.0 min  eta  170.2 min
+    4662/10205 tickets   140.0 min  eta  166.5 min
+    4829/10205 tickets   145.0 min  eta  161.4 min
+    4993/10205 tickets   150.0 min  eta  156.5 min
+    5130/10205 tickets   154.8 min  eta  153.2 min
+    5304/10205 tickets   159.7 min  eta  147.5 min
+    5468/10205 tickets   164.5 min  eta  142.5 min
+    5631/10205 tickets   169.4 min  eta  137.6 min
+    5794/10205 tickets   174.3 min  eta  132.7 min
+    5980/10205 tickets   179.2 min  eta  126.6 min
+    6146/10205 tickets   184.1 min  eta  121.6 min
+    6296/10205 tickets   189.3 min  eta  117.5 min
+    6460/10205 tickets   194.3 min  eta  112.6 min
+    6641/10205 tickets   199.4 min  eta  107.0 min
+    6801/10205 tickets   204.5 min  eta  102.4 min
+    6974/10205 tickets   209.5 min  eta   97.1 min
+    7130/10205 tickets   214.6 min  eta   92.5 min
+    7316/10205 tickets   219.8 min  eta   86.8 min
+    7479/10205 tickets   225.0 min  eta   82.0 min
+    7652/10205 tickets   230.1 min  eta   76.8 min
+    7819/10205 tickets   235.1 min  eta   71.7 min
+    7999/10205 tickets   240.2 min  eta   66.2 min
+    8176/10205 tickets   245.4 min  eta   60.9 min
+    8326/10205 tickets   250.5 min  eta   56.5 min
+    8511/10205 tickets   255.6 min  eta   50.9 min
+    8680/10205 tickets   260.8 min  eta   45.8 min
+    8831/10205 tickets   266.2 min  eta   41.4 min
+    8991/10205 tickets   271.6 min  eta   36.7 min
+    9152/10205 tickets   276.9 min  eta   31.9 min
+    9320/10205 tickets   282.4 min  eta   26.8 min
+    9472/10205 tickets   287.7 min  eta   22.3 min
+    9643/10205 tickets   293.2 min  eta   17.1 min
+    9813/10205 tickets   298.6 min  eta   11.9 min
+    9966/10205 tickets   304.1 min  eta    7.3 min
+   10135/10205 tickets   309.4 min  eta    2.1 min
+{
+  "generated": 10223,
+  "kept": 7723,
+  "dropped": {
+    "near_test": 261,
+    "near_train": 1209,
+    "copies_seed": 71,
+    "near_other_synthetic": 959
+  },
+  "forced_close_rate": 0.998,
+  "by_queue": {
+    "Billing and Payments": 418,
+    "Customer Service": 1058,
+    "General Inquiry": 466,
+    "Human Resources": 419,
+    "IT Support": 1136,
+    "Product Support": 1349,
+    "Returns and Exchanges": 734,
+    "Sales and Pre-Sales": 466,
+    "Service Outages and Maintenance": 401,
+    "Technical Support": 1276
+  }
+}

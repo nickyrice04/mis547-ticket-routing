@@ -1,0 +1,96 @@
+{
+  "tier": "7_lstm",
+  "model": "bidirectional LSTM over word sequences",
+  "params_millions": 4.1,
+  "train_device": "cpu",
+  "train_seconds": 768.2,
+  "epochs": 8,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 1.8082,
+      "test_accuracy": 0.3787
+    },
+    {
+      "epoch": 1,
+      "train_loss": 1.6205,
+      "test_accuracy": 0.4095
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.5233,
+      "test_accuracy": 0.4343
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.4124,
+      "test_accuracy": 0.4427
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.2881,
+      "test_accuracy": 0.4709
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.154,
+      "test_accuracy": 0.4884
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.0126,
+      "test_accuracy": 0.504
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.8655,
+      "test_accuracy": 0.524
+    }
+  ],
+  "accuracy": 0.524,
+  "macro_f1": 0.4448,
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.524,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.6021,
+      "accuracy_on_routed": 0.6521,
+      "sent_to_human": 0.3979
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.4375,
+      "accuracy_on_routed": 0.7012,
+      "sent_to_human": 0.5625
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.3101,
+      "accuracy_on_routed": 0.7712,
+      "sent_to_human": 0.6899
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.2019,
+      "accuracy_on_routed": 0.8425,
+      "sent_to_human": 0.7981
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.1255,
+      "accuracy_on_routed": 0.9178,
+      "sent_to_human": 0.8745
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.0937,
+      "accuracy_on_routed": 0.9573,
+      "sent_to_human": 0.9063
+    }
+  ]
+}

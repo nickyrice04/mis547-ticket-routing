@@ -1,0 +1,52 @@
+{
+  "tier": "8_deberta_large_zeroshot",
+  "model": "MoritzLaurer/deberta-v3-large-zeroshot-v2.0 (zero-shot, never trained on our labels)",
+  "eval_tickets": 500,
+  "ms_per_ticket": 139.4,
+  "accuracy": 0.294,
+  "macro_f1": 0.2261,
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.294,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.28,
+      "accuracy_on_routed": 0.45,
+      "sent_to_human": 0.72
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.13,
+      "accuracy_on_routed": 0.5231,
+      "sent_to_human": 0.87
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.066,
+      "accuracy_on_routed": 0.5758,
+      "sent_to_human": 0.934
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.032,
+      "accuracy_on_routed": 0.5625,
+      "sent_to_human": 0.968
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.004,
+      "accuracy_on_routed": 1.0,
+      "sent_to_human": 0.996
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.002,
+      "accuracy_on_routed": 1.0,
+      "sent_to_human": 0.998
+    }
+  ]
+}

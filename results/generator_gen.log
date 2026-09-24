@@ -1,0 +1,408 @@
+0 on disk, 11496 to write
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 5083.39it/s]
+  64/11496    0.1 min  eta  12.1 min
+  128/11496    0.1 min  eta  12.0 min
+  192/11496    0.2 min  eta  11.7 min
+  256/11496    0.3 min  eta  11.5 min
+  320/11496    0.3 min  eta  11.5 min
+  384/11496    0.4 min  eta  11.4 min
+  448/11496    0.5 min  eta  11.4 min
+  512/11496    0.5 min  eta  11.5 min
+  576/11496    0.6 min  eta  11.3 min
+  640/11496    0.7 min  eta  11.2 min
+  704/11496    0.7 min  eta  11.2 min
+  768/11496    0.8 min  eta  11.2 min
+  832/11496    0.9 min  eta  11.1 min
+  896/11496    0.9 min  eta  11.1 min
+  960/11496    1.0 min  eta  10.9 min
+  1024/11496    1.1 min  eta  10.9 min
+  1088/11496    1.1 min  eta  10.8 min
+  1152/11496    1.2 min  eta  10.8 min
+  1216/11496    1.3 min  eta  10.7 min
+  1280/11496    1.3 min  eta  10.6 min
+  1344/11496    1.4 min  eta  10.6 min
+  1408/11496    1.5 min  eta  10.5 min
+  1472/11496    1.5 min  eta  10.4 min
+  1536/11496    1.6 min  eta  10.4 min
+  1600/11496    1.7 min  eta  10.3 min
+  1664/11496    1.7 min  eta  10.3 min
+  1728/11496    1.8 min  eta  10.2 min
+  1792/11496    1.9 min  eta  10.1 min
+  1856/11496    1.9 min  eta  10.0 min
+  1920/11496    2.0 min  eta  10.0 min
+  1984/11496    2.1 min  eta   9.9 min
+  2048/11496    2.1 min  eta   9.8 min
+  2112/11496    2.2 min  eta   9.8 min
+  2176/11496    2.3 min  eta   9.7 min
+  2240/11496    2.3 min  eta   9.7 min
+  2304/11496    2.4 min  eta   9.6 min
+  2368/11496    2.5 min  eta   9.5 min
+  2432/11496    2.5 min  eta   9.4 min
+  2496/11496    2.6 min  eta   9.4 min
+  2560/11496    2.7 min  eta   9.3 min
+  2624/11496    2.7 min  eta   9.2 min
+  2688/11496    2.8 min  eta   9.2 min
+  2752/11496    2.9 min  eta   9.1 min
+  2816/11496    2.9 min  eta   9.0 min
+  2880/11496    3.0 min  eta   8.9 min
+  2944/11496    3.0 min  eta   8.9 min
+  3008/11496    3.1 min  eta   8.8 min
+  3072/11496    3.2 min  eta   8.7 min
+  3136/11496    3.2 min  eta   8.7 min
+  3200/11496    3.3 min  eta   8.6 min
+  3264/11496    3.4 min  eta   8.5 min
+  3328/11496    3.4 min  eta   8.5 min
+  3392/11496    3.5 min  eta   8.4 min
+  3456/11496    3.6 min  eta   8.3 min
+  3520/11496    3.6 min  eta   8.3 min
+  3584/11496    3.7 min  eta   8.2 min
+  3648/11496    3.8 min  eta   8.1 min
+  3712/11496    3.8 min  eta   8.1 min
+  3776/11496    3.9 min  eta   8.0 min
+  3840/11496    4.0 min  eta   7.9 min
+  3904/11496    4.1 min  eta   7.9 min
+  3968/11496    4.1 min  eta   7.8 min
+  4032/11496    4.2 min  eta   7.7 min
+  4096/11496    4.3 min  eta   7.7 min
+  4160/11496    4.3 min  eta   7.6 min
+  4224/11496    4.4 min  eta   7.6 min
+  4288/11496    4.5 min  eta   7.5 min
+  4352/11496    4.5 min  eta   7.4 min
+  4416/11496    4.6 min  eta   7.4 min
+  4480/11496    4.7 min  eta   7.3 min
+  4544/11496    4.7 min  eta   7.2 min
+  4608/11496    4.8 min  eta   7.2 min
+  4672/11496    4.9 min  eta   7.1 min
+  4736/11496    4.9 min  eta   7.0 min
+  4800/11496    5.0 min  eta   7.0 min
+  4864/11496    5.1 min  eta   6.9 min
+  4928/11496    5.1 min  eta   6.8 min
+  4992/11496    5.2 min  eta   6.8 min
+  5056/11496    5.3 min  eta   6.7 min
+  5120/11496    5.3 min  eta   6.7 min
+  5184/11496    5.4 min  eta   6.6 min
+  5248/11496    5.5 min  eta   6.5 min
+  5312/11496    5.5 min  eta   6.5 min
+  5376/11496    5.6 min  eta   6.4 min
+  5440/11496    5.7 min  eta   6.3 min
+  5504/11496    5.7 min  eta   6.3 min
+  5568/11496    5.8 min  eta   6.2 min
+  5632/11496    5.9 min  eta   6.1 min
+  5696/11496    5.9 min  eta   6.0 min
+  5760/11496    6.0 min  eta   6.0 min
+  5824/11496    6.1 min  eta   5.9 min
+  5888/11496    6.1 min  eta   5.8 min
+  5952/11496    6.2 min  eta   5.8 min
+  6016/11496    6.3 min  eta   5.7 min
+  6080/11496    6.3 min  eta   5.7 min
+  6144/11496    6.4 min  eta   5.6 min
+  6208/11496    6.5 min  eta   5.5 min
+  6272/11496    6.5 min  eta   5.5 min
+  6336/11496    6.6 min  eta   5.4 min
+  6400/11496    6.7 min  eta   5.3 min
+  6464/11496    6.7 min  eta   5.2 min
+  6528/11496    6.8 min  eta   5.2 min
+  6592/11496    6.9 min  eta   5.1 min
+  6656/11496    6.9 min  eta   5.0 min
+  6720/11496    7.0 min  eta   5.0 min
+  6784/11496    7.1 min  eta   4.9 min
+  6848/11496    7.1 min  eta   4.8 min
+  6912/11496    7.2 min  eta   4.8 min
+  6976/11496    7.3 min  eta   4.7 min
+  7040/11496    7.3 min  eta   4.6 min
+  7104/11496    7.4 min  eta   4.6 min
+  7168/11496    7.5 min  eta   4.5 min
+  7232/11496    7.5 min  eta   4.4 min
+  7296/11496    7.6 min  eta   4.4 min
+  7360/11496    7.7 min  eta   4.3 min
+  7424/11496    7.7 min  eta   4.2 min
+  7488/11496    7.8 min  eta   4.2 min
+  7552/11496    7.9 min  eta   4.1 min
+  7616/11496    7.9 min  eta   4.0 min
+  7680/11496    8.0 min  eta   4.0 min
+  7744/11496    8.1 min  eta   3.9 min
+  7808/11496    8.2 min  eta   3.9 min
+  7872/11496    8.2 min  eta   3.8 min
+  7936/11496    8.3 min  eta   3.7 min
+  8000/11496    8.4 min  eta   3.7 min
+  8064/11496    8.4 min  eta   3.6 min
+  8128/11496    8.5 min  eta   3.5 min
+  8192/11496    8.6 min  eta   3.4 min
+  8256/11496    8.6 min  eta   3.4 min
+  8320/11496    8.7 min  eta   3.3 min
+  8384/11496    8.7 min  eta   3.2 min
+  8448/11496    8.8 min  eta   3.2 min
+  8512/11496    8.9 min  eta   3.1 min
+  8576/11496    9.0 min  eta   3.0 min
+  8640/11496    9.0 min  eta   3.0 min
+  8704/11496    9.1 min  eta   2.9 min
+  8768/11496    9.1 min  eta   2.8 min
+  8832/11496    9.2 min  eta   2.8 min
+  8896/11496    9.3 min  eta   2.7 min
+  8960/11496    9.3 min  eta   2.6 min
+  9024/11496    9.4 min  eta   2.6 min
+  9088/11496    9.5 min  eta   2.5 min
+  9152/11496    9.5 min  eta   2.4 min
+  9216/11496    9.6 min  eta   2.4 min
+  9280/11496    9.7 min  eta   2.3 min
+  9344/11496    9.8 min  eta   2.2 min
+  9408/11496    9.8 min  eta   2.2 min
+  9472/11496    9.9 min  eta   2.1 min
+  9536/11496   10.0 min  eta   2.0 min
+  9600/11496   10.0 min  eta   2.0 min
+  9664/11496   10.1 min  eta   1.9 min
+  9728/11496   10.2 min  eta   1.8 min
+  9792/11496   10.3 min  eta   1.8 min
+  9856/11496   10.3 min  eta   1.7 min
+  9920/11496   10.4 min  eta   1.7 min
+  9984/11496   10.5 min  eta   1.6 min
+  10048/11496   10.5 min  eta   1.5 min
+  10112/11496   10.6 min  eta   1.5 min
+  10176/11496   10.7 min  eta   1.4 min
+  10240/11496   10.7 min  eta   1.3 min
+  10304/11496   10.8 min  eta   1.2 min
+  10368/11496   10.9 min  eta   1.2 min
+  10432/11496   10.9 min  eta   1.1 min
+  10496/11496   11.0 min  eta   1.0 min
+  10560/11496   11.1 min  eta   1.0 min
+  10624/11496   11.1 min  eta   0.9 min
+  10688/11496   11.2 min  eta   0.8 min
+  10752/11496   11.3 min  eta   0.8 min
+  10816/11496   11.3 min  eta   0.7 min
+  10880/11496   11.4 min  eta   0.6 min
+  10944/11496   11.5 min  eta   0.6 min
+  11008/11496   11.5 min  eta   0.5 min
+  11072/11496   11.6 min  eta   0.4 min
+  11136/11496   11.7 min  eta   0.4 min
+  11200/11496   11.7 min  eta   0.3 min
+  11264/11496   11.8 min  eta   0.2 min
+  11328/11496   11.9 min  eta   0.2 min
+  11392/11496   11.9 min  eta   0.1 min
+  11456/11496   12.0 min  eta   0.0 min
+  11496/11496   12.1 min  eta  -0.0 min
+{
+  "generated": 11476,
+  "kept": 10000,
+  "dropped": {
+    "near_test": 17,
+    "near_train": 3,
+    "near_other_synthetic": 5
+  },
+  "median_nearest_train_similarity_all": 0.279,
+  "by_queue": {
+    "Technical Support": 1555,
+    "Product Support": 1736,
+    "Billing and Payments": 554,
+    "Returns and Exchanges": 1011,
+    "Human Resources": 524,
+    "Sales and Pre-Sales": 621,
+    "Service Outages and Maintenance": 597,
+    "Customer Service": 1339,
+    "IT Support": 1423,
+    "General Inquiry": 640
+  }
+}
+0 on disk, 11496 to write
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 4227.70it/s]
+  64/11496    0.1 min  eta  11.9 min
+  128/11496    0.1 min  eta  12.0 min
+  192/11496    0.2 min  eta  11.7 min
+  256/11496    0.3 min  eta  11.5 min
+  320/11496    0.3 min  eta  11.5 min
+  384/11496    0.4 min  eta  11.3 min
+  448/11496    0.5 min  eta  11.3 min
+  512/11496    0.5 min  eta  11.2 min
+  576/11496    0.6 min  eta  11.2 min
+  640/11496    0.7 min  eta  11.2 min
+  704/11496    0.7 min  eta  11.1 min
+  768/11496    0.8 min  eta  11.1 min
+  832/11496    0.9 min  eta  11.0 min
+  896/11496    0.9 min  eta  10.9 min
+  960/11496    1.0 min  eta  10.9 min
+  1024/11496    1.1 min  eta  10.8 min
+  1088/11496    1.1 min  eta  10.7 min
+  1152/11496    1.2 min  eta  10.7 min
+  1216/11496    1.3 min  eta  10.6 min
+  1280/11496    1.3 min  eta  10.6 min
+  1344/11496    1.4 min  eta  10.5 min
+  1408/11496    1.5 min  eta  10.4 min
+  1472/11496    1.5 min  eta  10.3 min
+  1536/11496    1.6 min  eta  10.3 min
+  1600/11496    1.7 min  eta  10.2 min
+  1664/11496    1.7 min  eta  10.2 min
+  1728/11496    1.8 min  eta  10.1 min
+  1792/11496    1.8 min  eta  10.0 min
+  1856/11496    1.9 min  eta   9.9 min
+  1920/11496    2.0 min  eta   9.9 min
+  1984/11496    2.0 min  eta   9.8 min
+  2048/11496    2.1 min  eta   9.8 min
+  2112/11496    2.2 min  eta   9.7 min
+  2176/11496    2.3 min  eta   9.6 min
+  2240/11496    2.3 min  eta   9.6 min
+  2304/11496    2.4 min  eta   9.5 min
+  2368/11496    2.4 min  eta   9.4 min
+  2432/11496    2.5 min  eta   9.4 min
+  2496/11496    2.6 min  eta   9.3 min
+  2560/11496    2.7 min  eta   9.3 min
+  2624/11496    2.7 min  eta   9.2 min
+  2688/11496    2.8 min  eta   9.2 min
+  2752/11496    2.9 min  eta   9.1 min
+  2816/11496    2.9 min  eta   9.0 min
+  2880/11496    3.0 min  eta   9.0 min
+  2944/11496    3.1 min  eta   8.9 min
+  3008/11496    3.1 min  eta   8.8 min
+  3072/11496    3.2 min  eta   8.8 min
+  3136/11496    3.3 min  eta   8.7 min
+  3200/11496    3.3 min  eta   8.7 min
+  3264/11496    3.4 min  eta   8.6 min
+  3328/11496    3.5 min  eta   8.5 min
+  3392/11496    3.5 min  eta   8.5 min
+  3456/11496    3.6 min  eta   8.4 min
+  3520/11496    3.7 min  eta   8.3 min
+  3584/11496    3.7 min  eta   8.3 min
+  3648/11496    3.8 min  eta   8.2 min
+  3712/11496    3.9 min  eta   8.1 min
+  3776/11496    4.0 min  eta   8.1 min
+  3840/11496    4.0 min  eta   8.0 min
+  3904/11496    4.1 min  eta   7.9 min
+  3968/11496    4.2 min  eta   7.9 min
+  4032/11496    4.2 min  eta   7.8 min
+  4096/11496    4.3 min  eta   7.7 min
+  4160/11496    4.3 min  eta   7.7 min
+  4224/11496    4.4 min  eta   7.6 min
+  4288/11496    4.5 min  eta   7.5 min
+  4352/11496    4.5 min  eta   7.5 min
+  4416/11496    4.6 min  eta   7.4 min
+  4480/11496    4.7 min  eta   7.3 min
+  4544/11496    4.8 min  eta   7.3 min
+  4608/11496    4.8 min  eta   7.2 min
+  4672/11496    4.9 min  eta   7.2 min
+  4736/11496    5.0 min  eta   7.1 min
+  4800/11496    5.0 min  eta   7.0 min
+  4864/11496    5.1 min  eta   7.0 min
+  4928/11496    5.2 min  eta   6.9 min
+  4992/11496    5.2 min  eta   6.8 min
+  5056/11496    5.3 min  eta   6.8 min
+  5120/11496    5.4 min  eta   6.7 min
+  5184/11496    5.4 min  eta   6.6 min
+  5248/11496    5.5 min  eta   6.6 min
+  5312/11496    5.6 min  eta   6.5 min
+  5376/11496    5.6 min  eta   6.4 min
+  5440/11496    5.7 min  eta   6.4 min
+  5504/11496    5.8 min  eta   6.3 min
+  5568/11496    5.8 min  eta   6.2 min
+  5632/11496    5.9 min  eta   6.2 min
+  5696/11496    6.0 min  eta   6.1 min
+  5760/11496    6.0 min  eta   6.0 min
+  5824/11496    6.1 min  eta   5.9 min
+  5888/11496    6.2 min  eta   5.9 min
+  5952/11496    6.2 min  eta   5.8 min
+  6016/11496    6.3 min  eta   5.7 min
+  6080/11496    6.4 min  eta   5.7 min
+  6144/11496    6.4 min  eta   5.6 min
+  6208/11496    6.5 min  eta   5.6 min
+  6272/11496    6.6 min  eta   5.5 min
+  6336/11496    6.7 min  eta   5.4 min
+  6400/11496    6.7 min  eta   5.3 min
+  6464/11496    6.8 min  eta   5.3 min
+  6528/11496    6.9 min  eta   5.2 min
+  6592/11496    6.9 min  eta   5.1 min
+  6656/11496    7.0 min  eta   5.1 min
+  6720/11496    7.1 min  eta   5.0 min
+  6784/11496    7.1 min  eta   4.9 min
+  6848/11496    7.2 min  eta   4.9 min
+  6912/11496    7.3 min  eta   4.8 min
+  6976/11496    7.3 min  eta   4.7 min
+  7040/11496    7.4 min  eta   4.7 min
+  7104/11496    7.5 min  eta   4.6 min
+  7168/11496    7.5 min  eta   4.5 min
+  7232/11496    7.6 min  eta   4.5 min
+  7296/11496    7.7 min  eta   4.4 min
+  7360/11496    7.7 min  eta   4.3 min
+  7424/11496    7.8 min  eta   4.3 min
+  7488/11496    7.9 min  eta   4.2 min
+  7552/11496    7.9 min  eta   4.1 min
+  7616/11496    8.0 min  eta   4.1 min
+  7680/11496    8.1 min  eta   4.0 min
+  7744/11496    8.1 min  eta   3.9 min
+  7808/11496    8.2 min  eta   3.9 min
+  7872/11496    8.3 min  eta   3.8 min
+  7936/11496    8.4 min  eta   3.8 min
+  8000/11496    8.4 min  eta   3.7 min
+  8064/11496    8.5 min  eta   3.6 min
+  8128/11496    8.6 min  eta   3.5 min
+  8192/11496    8.6 min  eta   3.5 min
+  8256/11496    8.7 min  eta   3.4 min
+  8320/11496    8.8 min  eta   3.3 min
+  8384/11496    8.8 min  eta   3.3 min
+  8448/11496    8.9 min  eta   3.2 min
+  8512/11496    9.0 min  eta   3.1 min
+  8576/11496    9.0 min  eta   3.1 min
+  8640/11496    9.1 min  eta   3.0 min
+  8704/11496    9.2 min  eta   2.9 min
+  8768/11496    9.2 min  eta   2.9 min
+  8832/11496    9.3 min  eta   2.8 min
+  8896/11496    9.4 min  eta   2.7 min
+  8960/11496    9.4 min  eta   2.7 min
+  9024/11496    9.5 min  eta   2.6 min
+  9088/11496    9.6 min  eta   2.5 min
+  9152/11496    9.6 min  eta   2.5 min
+  9216/11496    9.7 min  eta   2.4 min
+  9280/11496    9.8 min  eta   2.3 min
+  9344/11496    9.8 min  eta   2.3 min
+  9408/11496    9.9 min  eta   2.2 min
+  9472/11496   10.0 min  eta   2.1 min
+  9536/11496   10.1 min  eta   2.1 min
+  9600/11496   10.1 min  eta   2.0 min
+  9664/11496   10.2 min  eta   1.9 min
+  9728/11496   10.3 min  eta   1.9 min
+  9792/11496   10.3 min  eta   1.8 min
+  9856/11496   10.4 min  eta   1.7 min
+  9920/11496   10.5 min  eta   1.7 min
+  9984/11496   10.5 min  eta   1.6 min
+  10048/11496   10.6 min  eta   1.5 min
+  10112/11496   10.7 min  eta   1.5 min
+  10176/11496   10.7 min  eta   1.4 min
+  10240/11496   10.8 min  eta   1.3 min
+  10304/11496   10.9 min  eta   1.3 min
+  10368/11496   10.9 min  eta   1.2 min
+  10432/11496   11.0 min  eta   1.1 min
+  10496/11496   11.1 min  eta   1.1 min
+  10560/11496   11.1 min  eta   1.0 min
+  10624/11496   11.2 min  eta   0.9 min
+  10688/11496   11.3 min  eta   0.9 min
+  10752/11496   11.3 min  eta   0.8 min
+  10816/11496   11.4 min  eta   0.7 min
+  10880/11496   11.5 min  eta   0.6 min
+  10944/11496   11.5 min  eta   0.6 min
+  11008/11496   11.6 min  eta   0.5 min
+  11072/11496   11.7 min  eta   0.4 min
+  11136/11496   11.7 min  eta   0.4 min
+  11200/11496   11.8 min  eta   0.3 min
+  11264/11496   11.9 min  eta   0.2 min
+  11328/11496   12.0 min  eta   0.2 min
+  11392/11496   12.0 min  eta   0.1 min
+  11456/11496   12.1 min  eta   0.0 min
+  11496/11496   12.1 min  eta  -0.0 min
+{
+  "generated": 11442,
+  "kept": 10000,
+  "dropped": {
+    "near_test": 3,
+    "near_train": 1,
+    "near_other_synthetic": 0
+  },
+  "median_nearest_train_similarity_all": 0.226,
+  "by_queue": {
+    "Technical Support": 1555,
+    "Product Support": 1736,
+    "Billing and Payments": 554,
+    "Returns and Exchanges": 1011,
+    "Human Resources": 524,
+    "Sales and Pre-Sales": 621,
+    "Service Outages and Maintenance": 597,
+    "Customer Service": 1339,
+    "IT Support": 1423,
+    "General Inquiry": 640
+  }
+}

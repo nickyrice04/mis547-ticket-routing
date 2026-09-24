@@ -1,0 +1,29 @@
+{
+ "acc_final": 0.8993,
+ "acc_nn_core": 0.7477,
+ "n_gain": 491,
+ "n_loss": 59,
+ "nearest_german_identical_metadata_all_val": 0.066,
+ "nearest_german_identical_metadata_on_gain": 0.0978,
+ "nearest_core_identical_metadata_all_val": 0.1351,
+ "nearest_german_tfidf_sim_on_gain_quantiles": [
+  0.198,
+  0.245,
+  0.306,
+  0.396,
+  0.476
+ ],
+ "nearest_core_tfidf_sim_on_gain_quantiles": [
+  0.195,
+  0.225,
+  0.267,
+  0.325,
+  0.396
+ ],
+ "gain_with_german_nn_sim>=0.5": 37,
+ "gain_with_german_nn_sim>=0.4": 118,
+ "gain_with_german_nn_sim<0.3": 229,
+ "german>=0.6_to_val_corefit_vectorizer": 52,
+ "of_those_not_dropped_by_final_tfidf_guard": 17,
+ "of_those_with_finalfit_sim>=0.5": 50
+}

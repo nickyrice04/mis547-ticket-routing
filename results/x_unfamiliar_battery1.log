@@ -1,0 +1,30 @@
+CV unfamiliar share 0.4263330649656283 n 6884
+1-NN on CV-unfamiliar: 0.33367228355607204  majority: 0.2957582800697269
+1-NN overall in CV: 0.6806217873289155
+lr_word_C1         unf=0.3895 (<0.3 0.3944, 0.3-0.4 0.3809) all=0.4872 mF1_unf=0.2339 [30s]
+lr_word_C10        unf=0.3802 (<0.3 0.3818, 0.3-0.4 0.3773) all=0.5825 mF1_unf=0.2820 [57s]
+lr_word_C10_bal    unf=0.3630 (<0.3 0.3657, 0.3-0.4 0.3584) all=0.5789 mF1_unf=0.2973 [39s]
+lr_uni_C3          unf=0.3648 (<0.3 0.3685, 0.3-0.4 0.3584) all=0.4558 mF1_unf=0.2774 [10s]
+svc_word_C0.3      unf=0.3883 (<0.3 0.3915, 0.3-0.4 0.3829) all=0.5512 mF1_unf=0.2835 [9s]
+cnb_word           unf=0.3877 (<0.3 0.3921, 0.3-0.4 0.3801) all=0.4962 mF1_unf=0.2627 [4s]
+mnb_word           unf=0.3876 (<0.3 0.3880, 0.3-0.4 0.3868) all=0.4739 mF1_unf=0.2266 [4s]
+/Users/nickyrice/Documents/Cloud Computing/ticket-routing/.venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:599: ConvergenceWarning: lbfgs failed to converge after 300 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=300).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/Users/nickyrice/Documents/Cloud Computing/ticket-routing/.venv/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:599: ConvergenceWarning: lbfgs failed to converge after 300 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=300).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+lr_char_C10        unf=0.3526 (<0.3 0.3510, 0.3-0.4 0.3552) all=0.4766 mF1_unf=0.2738 [246s]
+mlp256             unf=0.3669 (<0.3 0.3660, 0.3-0.4 0.3686) all=0.6079 mF1_unf=0.2730 [441s]

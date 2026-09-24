@@ -1,0 +1,53 @@
+train 12917 heldout 3230 heldout unfamiliar 1381 tags 86
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 14078.64it/s]
+/Users/nickyrice/Documents/Cloud Computing/ticket-routing/src/x_unfamiliar_finetune.py:61: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  tl += float(loss); nb += 1
+ep 0 step 50/2020 loss 5.7542 elapsed 1.1m
+ep 0 step 100/2020 loss 4.6674 elapsed 2.1m
+ep 0 step 150/2020 loss 4.1002 elapsed 3.2m
+ep 0 step 200/2020 loss 3.7694 elapsed 3.9m
+ep 0 step 250/2020 loss 3.5618 elapsed 4.5m
+ep 0 step 300/2020 loss 3.4119 elapsed 5.1m
+ep 0 step 350/2020 loss 3.2934 elapsed 5.6m
+ep 0 step 400/2020 loss 3.2033 elapsed 6.1m
+{"epoch": 1, "complete": true, "minutes": 6.249737886587779, "train_loss": 3.1973150697084938, "heldout_all": 0.39876160990712073, "heldout_unfamiliar": 0.3946415640839971, "n_unf": 1381}
+ep 1 step 450/2020 loss 2.5074 elapsed 6.7m
+ep 1 step 500/2020 loss 2.5103 elapsed 7.1m
+ep 1 step 550/2020 loss 2.5036 elapsed 7.6m
+ep 1 step 600/2020 loss 2.4884 elapsed 8.4m
+ep 1 step 650/2020 loss 2.4877 elapsed 8.9m
+ep 1 step 700/2020 loss 2.4788 elapsed 9.9m
+ep 1 step 750/2020 loss 2.4732 elapsed 10.9m
+ep 1 step 800/2020 loss 2.4598 elapsed 12.1m
+{"epoch": 2, "complete": true, "minutes": 12.700777967770895, "train_loss": 2.4572709373908466, "heldout_all": 0.4244582043343653, "heldout_unfamiliar": 0.40188269370021723, "n_unf": 1381}
+ep 2 step 850/2020 loss 2.3382 elapsed 13.9m
+ep 2 step 900/2020 loss 2.3275 elapsed 15.1m
+ep 2 step 950/2020 loss 2.3144 elapsed 16.1m
+ep 2 step 1000/2020 loss 2.3149 elapsed 17.1m
+ep 2 step 1050/2020 loss 2.2966 elapsed 18.1m
+ep 2 step 1100/2020 loss 2.2970 elapsed 19.2m
+ep 2 step 1150/2020 loss 2.2943 elapsed 20.2m
+ep 2 step 1200/2020 loss 2.2880 elapsed 21.2m
+{"epoch": 3, "complete": true, "minutes": 21.68338443438212, "train_loss": 2.2898143391207895, "heldout_all": 0.448297213622291, "heldout_unfamiliar": 0.3997103548153512, "n_unf": 1381}
+ep 3 step 1250/2020 loss 2.2031 elapsed 22.5m
+ep 3 step 1300/2020 loss 2.1787 elapsed 23.5m
+ep 3 step 1350/2020 loss 2.1897 elapsed 24.5m
+ep 3 step 1400/2020 loss 2.1884 elapsed 25.5m
+ep 3 step 1450/2020 loss 2.1721 elapsed 26.5m
+ep 3 step 1500/2020 loss 2.1647 elapsed 27.6m
+ep 3 step 1550/2020 loss 2.1646 elapsed 28.6m
+ep 3 step 1600/2020 loss 2.1633 elapsed 29.6m
+{"epoch": 4, "complete": true, "minutes": 30.232992935180665, "train_loss": 2.1606090576341836, "heldout_all": 0.47337461300309597, "heldout_unfamiliar": 0.4055032585083273, "n_unf": 1381}
+ep 4 step 1650/2020 loss 2.0442 elapsed 30.9m
+ep 4 step 1700/2020 loss 2.0779 elapsed 32.0m
+ep 4 step 1750/2020 loss 2.0638 elapsed 33.0m
+ep 4 step 1800/2020 loss 2.0675 elapsed 34.0m
+ep 4 step 1850/2020 loss 2.0673 elapsed 35.0m
+ep 4 step 1900/2020 loss 2.0642 elapsed 36.0m
+ep 4 step 1950/2020 loss 2.0629 elapsed 36.8m
+ep 4 step 2000/2020 loss 2.0622 elapsed 37.8m
+{"epoch": 5, "complete": true, "minutes": 38.27645428578059, "train_loss": 2.0605171113321097, "heldout_all": 0.4764705882352941, "heldout_unfamiliar": 0.39608979000724115, "n_unf": 1381}
+done 38.27658908764521 min

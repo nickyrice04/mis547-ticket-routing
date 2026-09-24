@@ -1,0 +1,212 @@
+{
+ "Billing and Payments": [
+  "billing",
+  "payment",
+  "charges",
+  "pricing",
+  "invoices",
+  "the billing",
+  "invoice",
+  "account",
+  "subscription",
+  "the payment"
+ ],
+ "Customer Service": [
+  "integration",
+  "investment",
+  "project",
+  "any information",
+  "the integration",
+  "features",
+  "cache and",
+  "data encryption",
+  "details",
+  "problem with"
+ ],
+ "General Inquiry": [
+  "investment",
+  "improved security",
+  "data",
+  "optimization model",
+  "information need",
+  "protocols",
+  "protection",
+  "optimization",
+  "enhance",
+  "tactics can"
+ ],
+ "Human Resources": [
+  "employee",
+  "onboarding",
+  "incident",
+  "training",
+  "hr",
+  "human",
+  "the new",
+  "investment optimization",
+  "new",
+  "modifications"
+ ],
+ "IT Support": [
+  "connectivity",
+  "digital tools",
+  "website",
+  "software",
+  "tools",
+  "to improve",
+  "restart",
+  "crash",
+  "connectivity problems",
+  "server and"
+ ],
+ "Product Support": [
+  "campaign",
+  "not",
+  "project",
+  "data and",
+  "smartsheet",
+  "inconsistent",
+  "have",
+  "mysql",
+  "effective",
+  "with project"
+ ],
+ "Returns and Exchanges": [
+  "return",
+  "returns",
+  "outdated",
+  "breach",
+  "investment",
+  "product",
+  "due",
+  "errors",
+  "due to",
+  "tool"
+ ],
+ "Sales and Pre-Sales": [
+  "solutions",
+  "sales",
+  "pricing",
+  "financial",
+  "information on",
+  "analytics solutions",
+  "like",
+  "enhancing",
+  "brand",
+  "enhancing brand"
+ ],
+ "Service Outages and Maintenance": [
+  "service",
+  "outage",
+  "outages",
+  "service outage",
+  "maintenance",
+  "disruption",
+  "impacting",
+  "network",
+  "servers",
+  "disruptions"
+ ],
+ "Technical Support": [
+  "dashboard",
+  "report",
+  "application",
+  "to software",
+  "system",
+  "software",
+  "crashes",
+  "restarting",
+  "issues",
+  "configurations"
+ ],
+ "keyword:invoice": {
+  "n": 79,
+  "share_in_expected_queue": 1.0,
+  "top3": [
+   [
+    "Billing and Paymen",
+    1.0
+   ],
+   [
+    "Customer Service",
+    0.0
+   ],
+   [
+    "General Inquiry",
+    0.0
+   ]
+  ]
+ },
+ "keyword:refund": {
+  "n": 8,
+  "share_in_expected_queue": 0.625,
+  "top3": [
+   [
+    "Returns and Exchan",
+    0.62
+   ],
+   [
+    "Billing and Paymen",
+    0.38
+   ],
+   [
+    "Customer Service",
+    0.0
+   ]
+  ]
+ },
+ "keyword:outage": {
+  "n": 198,
+  "share_in_expected_queue": 0.41414141414141414,
+  "top3": [
+   [
+    "Service Outages an",
+    0.41
+   ],
+   [
+    "Technical Support",
+    0.31
+   ],
+   [
+    "IT Support",
+    0.13
+   ]
+  ]
+ },
+ "keyword:pricing": {
+  "n": 87,
+  "share_in_expected_queue": 0.1724137931034483,
+  "top3": [
+   [
+    "Billing and Paymen",
+    0.57
+   ],
+   [
+    "Customer Service",
+    0.21
+   ],
+   [
+    "Sales and Pre-Sale",
+    0.17
+   ]
+  ]
+ },
+ "keyword:employee": {
+  "n": 16,
+  "share_in_expected_queue": 0.625,
+  "top3": [
+   [
+    "Human Resources",
+    0.62
+   ],
+   [
+    "Product Support",
+    0.12
+   ],
+   [
+    "IT Support",
+    0.06
+   ]
+  ]
+ }
+}

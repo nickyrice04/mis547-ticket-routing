@@ -1,0 +1,6 @@
+mlp: OOF acc 0.6194  878s
+/Users/nickyrice/Documents/Cloud Computing/ticket-routing/.venv/lib/python3.12/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (80) reached and the optimization hasn't converged yet.
+  warnings.warn(
+/Users/nickyrice/Documents/Cloud Computing/ticket-routing/.venv/lib/python3.12/site-packages/sklearn/neural_network/_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (80) reached and the optimization hasn't converged yet.
+  warnings.warn(
+mlp_dense8: OOF acc 0.5615  540s

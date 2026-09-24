@@ -1,0 +1,13 @@
+{
+  "generated": 16116,
+  "kept": 15675,
+  "dropped": {
+    "copies_source": 367,
+    "drifted": 73,
+    "duplicate": 1
+  },
+  "median_similarity_to_source": 0.641,
+  "model": "mlx-community/Qwen3.5-0.8B-bf16",
+  "adapter": "adapters/qwen35_sibling_s500",
+  "temperature": 0.9
+}

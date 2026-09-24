@@ -1,0 +1,9 @@
+Fetching 38 files:   0%|          | 0/38 [00:00<?, ?it/s]Fetching 38 files: 100%|██████████| 38/38 [00:00<00:00, 6953.30it/s]
+  A epoch 1 validation accuracy 46.00%
+phase A done in 0 min, best epoch 1, temperature 0.85
+Fetching 38 files:   0%|          | 0/38 [00:00<?, ?it/s]Fetching 38 files: 100%|██████████| 38/38 [00:00<00:00, 9542.78it/s]
+  B epoch 1/1 step 100/1188 loss 1.748   1.6 min, eta  17.7 min
+  B epoch 1/1 step 200/1188 loss 1.694   3.3 min, eta  16.1 min
+  B epoch 1/1 step 300/1188 loss 1.696   4.9 min, eta  14.5 min
+  B epoch 1/1 step 400/1188 loss 1.694   6.5 min, eta  12.7 min
+  B epoch 1/1 step 500/1188 loss 1.675   8.1 min, eta  11.1 min

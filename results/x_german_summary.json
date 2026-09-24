@@ -1,0 +1,555 @@
+{
+ "track": "german",
+ "protocol": "train on core (16,147), evaluate on validation (2,850). Test set never opened. All design choices made by cross-validation inside core; validation used for confirmation and the mandated guard-sensitivity report.",
+ "final_module": "src/x_german_final.py",
+ "best_method": "5-channel retrieval (TF-IDF and multilingual-e5, English pool + machine-translated German pool) + gradient-boosted (ticket, queue) stacker trained on out-of-fold rows inside the training set; leak guard TF-IDF>=0.60 or e5>=0.988 against evaluation texts",
+ "headline_validation": {
+  "stacker_core+german_default_guard": {
+   "accuracy": 0.8993,
+   "macro_f1": 0.8982
+  },
+  "stacker_english_only_(same_method_without_German)": {
+   "accuracy": 0.7842,
+   "macro_f1": 0.7901
+  },
+  "1nn_core_only": {
+   "accuracy": 0.7449,
+   "macro_f1": 0.7324
+  },
+  "network_core_only": {
+   "accuracy": 0.6421,
+   "macro_f1": 0.6283
+  },
+  "simple_hybrid_core_only": {
+   "accuracy": 0.7568,
+   "macro_f1": 0.7608
+  },
+  "1nn_core+german_default_guard": {
+   "accuracy": 0.8386,
+   "macro_f1": 0.836
+  },
+  "network_core+german": {
+   "accuracy": 0.673,
+   "macro_f1": 0.655
+  },
+  "simple_hybrid_core+german": {
+   "accuracy": 0.827,
+   "macro_f1": 0.8348
+  }
+ },
+ "leak_guard_default": {
+  "dropped_tfidf": 38,
+  "dropped_e5_only": 112,
+  "dropped_total": 150,
+  "kept": 16381
+ },
+ "guard_sensitivity_stacker_validation": [
+  {
+   "config": "stacker_default_guard",
+   "german_dropped": 150,
+   "accuracy": 0.8993,
+   "macro_f1": 0.8982,
+   "seconds": 140
+  },
+  {
+   "config": "stacker_english_only",
+   "use_german": false,
+   "german_dropped": null,
+   "accuracy": 0.7842,
+   "macro_f1": 0.7901,
+   "seconds": 155
+  },
+  {
+   "config": "stacker_no_guard",
+   "tfidf_guard": null,
+   "e5_guard": null,
+   "german_dropped": 0,
+   "accuracy": 0.9035,
+   "macro_f1": 0.9048,
+   "seconds": 140
+  },
+  {
+   "config": "stacker_tfidf0.7",
+   "tfidf_guard": 0.7,
+   "e5_guard": null,
+   "german_dropped": 8,
+   "accuracy": 0.9032,
+   "macro_f1": 0.9052,
+   "seconds": 143
+  },
+  {
+   "config": "stacker_tfidf0.6",
+   "tfidf_guard": 0.6,
+   "e5_guard": null,
+   "german_dropped": 38,
+   "accuracy": 0.9032,
+   "macro_f1": 0.9068,
+   "seconds": 145
+  },
+  {
+   "config": "stacker_tfidf0.5",
+   "tfidf_guard": 0.5,
+   "e5_guard": null,
+   "german_dropped": 200,
+   "accuracy": 0.8965,
+   "macro_f1": 0.8978,
+   "seconds": 127
+  },
+  {
+   "config": "stacker_tfidf0.5_e5_0.98",
+   "tfidf_guard": 0.5,
+   "e5_guard": 0.98,
+   "german_dropped": 669,
+   "accuracy": 0.8712,
+   "macro_f1": 0.8745,
+   "seconds": 123
+  },
+  {
+   "config": "stacker_tfidf0.4_e5_0.97",
+   "tfidf_guard": 0.4,
+   "e5_guard": 0.97,
+   "german_dropped": 1909,
+   "accuracy": 0.8277,
+   "macro_f1": 0.8355,
+   "seconds": 113
+  }
+ ],
+ "guard_sensitivity_1nn_tfidf_guard_only_validation": [
+  {
+   "pool": "all",
+   "thr": null,
+   "n_german": 16531,
+   "dropped_by_guard": 0,
+   "nn": [
+    0.8449,
+    0.8427
+   ],
+   "nn_from_german": 0.1825,
+   "acc_when_german": 0.8481,
+   "acc_when_english": 0.8442
+  },
+  {
+   "pool": "all",
+   "thr": 0.7,
+   "n_german": 16523,
+   "dropped_by_guard": 8,
+   "nn": [
+    0.8446,
+    0.8425
+   ],
+   "nn_from_german": 0.1821,
+   "acc_when_german": 0.8459,
+   "acc_when_english": 0.8443
+  },
+  {
+   "pool": "all",
+   "thr": 0.6,
+   "n_german": 16493,
+   "dropped_by_guard": 38,
+   "nn": [
+    0.8439,
+    0.8421
+   ],
+   "nn_from_german": 0.1786,
+   "acc_when_german": 0.8428,
+   "acc_when_english": 0.8441
+  },
+  {
+   "pool": "all",
+   "thr": 0.5,
+   "n_german": 16331,
+   "dropped_by_guard": 200,
+   "nn": [
+    0.834,
+    0.8332
+   ],
+   "nn_from_german": 0.166,
+   "acc_when_german": 0.8203,
+   "acc_when_english": 0.8368
+  },
+  {
+   "pool": "all",
+   "thr": 0.4,
+   "n_german": 15913,
+   "dropped_by_guard": 618,
+   "nn": [
+    0.8137,
+    0.8117
+   ],
+   "nn_from_german": 0.1323,
+   "acc_when_german": 0.7931,
+   "acc_when_english": 0.8168
+  },
+  {
+   "pool": "all",
+   "thr": 0.3,
+   "n_german": 14780,
+   "dropped_by_guard": 1751,
+   "nn": [
+    0.773,
+    0.7638
+   ],
+   "nn_from_german": 0.0698,
+   "acc_when_german": 0.7085,
+   "acc_when_english": 0.7778
+  }
+ ],
+ "guard_sensitivity_1nn_tfidf0.6_plus_e5_guard_validation": [
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": null,
+   "dropped": 38,
+   "nn": [
+    0.8439,
+    0.8421
+   ],
+   "nn_from_german": 0.1786,
+   "acc_when_german": 0.8428
+  },
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": 0.995,
+   "dropped": 39,
+   "nn": [
+    0.8439,
+    0.8421
+   ],
+   "nn_from_german": 0.1786,
+   "acc_when_german": 0.8428
+  },
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": 0.99,
+   "dropped": 91,
+   "nn": [
+    0.8414,
+    0.8399
+   ],
+   "nn_from_german": 0.1751,
+   "acc_when_german": 0.8337
+  },
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": 0.988,
+   "dropped": 150,
+   "nn": [
+    0.8389,
+    0.8371
+   ],
+   "nn_from_german": 0.1723,
+   "acc_when_german": 0.831
+  },
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": 0.985,
+   "dropped": 280,
+   "nn": [
+    0.8302,
+    0.8286
+   ],
+   "nn_from_german": 0.1625,
+   "acc_when_german": 0.8164
+  },
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": 0.98,
+   "dropped": 600,
+   "nn": [
+    0.8151,
+    0.8093
+   ],
+   "nn_from_german": 0.1432,
+   "acc_when_german": 0.777
+  },
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": 0.975,
+   "dropped": 1050,
+   "nn": [
+    0.7947,
+    0.7881
+   ],
+   "nn_from_german": 0.1186,
+   "acc_when_german": 0.7308
+  },
+  {
+   "tfidf_guard": 0.6,
+   "e5_guard": 0.97,
+   "dropped": 1760,
+   "nn": [
+    0.7775,
+    0.7744
+   ],
+   "nn_from_german": 0.0958,
+   "acc_when_german": 0.641
+  }
+ ],
+ "source_language_split_1nn_validation": [
+  {
+   "pool": "english_source_only",
+   "thr": null,
+   "n_german": 3442,
+   "dropped_by_guard": 0,
+   "nn": [
+    0.7772,
+    0.7657
+   ],
+   "nn_from_german": 0.0674,
+   "acc_when_german": 0.7604,
+   "acc_when_english": 0.7784
+  },
+  {
+   "pool": "german_source_only",
+   "thr": null,
+   "n_german": 12290,
+   "dropped_by_guard": 0,
+   "nn": [
+    0.8158,
+    0.8144
+   ],
+   "nn_from_german": 0.1249,
+   "acc_when_german": 0.8596,
+   "acc_when_english": 0.8095
+  },
+  {
+   "pool": "english_source_only",
+   "thr": 0.6,
+   "n_german": 3428,
+   "dropped_by_guard": 14,
+   "nn": [
+    0.7761,
+    0.7651
+   ],
+   "nn_from_german": 0.0656,
+   "acc_when_german": 0.7487,
+   "acc_when_english": 0.7781
+  },
+  {
+   "pool": "german_source_only",
+   "thr": 0.6,
+   "n_german": 12269,
+   "dropped_by_guard": 21,
+   "nn": [
+    0.8154,
+    0.8141
+   ],
+   "nn_from_german": 0.1225,
+   "acc_when_german": 0.8596,
+   "acc_when_english": 0.8093
+  }
+ ],
+ "drop_german_near_copies_of_training_tickets_0.85": {
+  "dropped": 4,
+  "nn_accuracy": 0.8382
+ },
+ "sanity_control_german_labels_shuffled_1nn_validation": {
+  "accuracy": 0.727,
+  "note": "gain disappears (below the 74.5% English-only 1-NN) when German labels are shuffled"
+ },
+ "confidence_table_validation": [
+  {
+   "min_confidence": 0.0,
+   "coverage": 1.0,
+   "accuracy_on_routed": 0.8993
+  },
+  {
+   "min_confidence": 0.5,
+   "coverage": 0.9088,
+   "accuracy_on_routed": 0.9521
+  },
+  {
+   "min_confidence": 0.7,
+   "coverage": 0.8502,
+   "accuracy_on_routed": 0.9806
+  },
+  {
+   "min_confidence": 0.9,
+   "coverage": 0.774,
+   "accuracy_on_routed": 0.9955
+  },
+  {
+   "min_confidence": 0.95,
+   "coverage": 0.7204,
+   "accuracy_on_routed": 0.9981
+  }
+ ],
+ "bucket_table_validation": [
+  {
+   "bucket": "0.0-0.2",
+   "share": 0.0323,
+   "n": 92,
+   "nn_core": 0.3152,
+   "net_core": 0.3152,
+   "hybrid_core": 0.3152,
+   "nn_core+german": 0.7065,
+   "net_core+german": 0.4457,
+   "hybrid_core+german": 0.5543,
+   "stacker_english_only": 0.3478,
+   "stacker_default_guard": 0.7174
+  },
+  {
+   "bucket": "0.2-0.3",
+   "share": 0.1867,
+   "n": 532,
+   "nn_core": 0.3045,
+   "net_core": 0.3684,
+   "hybrid_core": 0.3684,
+   "nn_core+german": 0.6109,
+   "net_core+german": 0.4511,
+   "hybrid_core+german": 0.5771,
+   "stacker_english_only": 0.4361,
+   "stacker_default_guard": 0.7726
+  },
+  {
+   "bucket": "0.3-0.4",
+   "share": 0.1351,
+   "n": 385,
+   "nn_core": 0.4961,
+   "net_core": 0.3558,
+   "hybrid_core": 0.4961,
+   "nn_core+german": 0.639,
+   "net_core+german": 0.4442,
+   "hybrid_core+german": 0.6364,
+   "stacker_english_only": 0.5532,
+   "stacker_default_guard": 0.787
+  },
+  {
+   "bucket": "0.4-0.5",
+   "share": 0.1,
+   "n": 285,
+   "nn_core": 0.7579,
+   "net_core": 0.5263,
+   "hybrid_core": 0.7579,
+   "nn_core+german": 0.7965,
+   "net_core+german": 0.5544,
+   "hybrid_core+german": 0.7965,
+   "stacker_english_only": 0.7965,
+   "stacker_default_guard": 0.8702
+  },
+  {
+   "bucket": "0.5-0.6",
+   "share": 0.1207,
+   "n": 344,
+   "nn_core": 0.9448,
+   "net_core": 0.6977,
+   "hybrid_core": 0.9448,
+   "nn_core+german": 0.9506,
+   "net_core+german": 0.6919,
+   "hybrid_core+german": 0.9506,
+   "stacker_english_only": 0.9535,
+   "stacker_default_guard": 0.9622
+  },
+  {
+   "bucket": "0.6-0.7",
+   "share": 0.1453,
+   "n": 414,
+   "nn_core": 0.9758,
+   "net_core": 0.8043,
+   "hybrid_core": 0.9758,
+   "nn_core+german": 0.9758,
+   "net_core+german": 0.8116,
+   "hybrid_core+german": 0.9758,
+   "stacker_english_only": 0.9831,
+   "stacker_default_guard": 0.9855
+  },
+  {
+   "bucket": "0.7-0.8",
+   "share": 0.1561,
+   "n": 445,
+   "nn_core": 0.9955,
+   "net_core": 0.9101,
+   "hybrid_core": 0.9955,
+   "nn_core+german": 0.9955,
+   "net_core+german": 0.8921,
+   "hybrid_core+german": 0.9955,
+   "stacker_english_only": 0.9955,
+   "stacker_default_guard": 0.9955
+  },
+  {
+   "bucket": "0.8-1.0",
+   "share": 0.1239,
+   "n": 353,
+   "nn_core": 1.0,
+   "net_core": 0.9632,
+   "hybrid_core": 1.0,
+   "nn_core+german": 1.0,
+   "net_core+german": 0.9547,
+   "hybrid_core+german": 1.0,
+   "stacker_english_only": 1.0,
+   "stacker_default_guard": 1.0
+  }
+ ],
+ "bucket_axis": "cosine of the validation ticket to its nearest CORE ticket, baseline TF-IDF fitted on core",
+ "core_cv_ablations_(stacker, 3-fold CV over out-of-fold core rows, pools are 80% of core)": {
+  "tfidf_en only": 71.03,
+  "tfidf_en + e5_en (English only)": 72.69,
+  "tfidf en+de": 83.81,
+  "e5 en+translated": 85.9,
+  "tfidf en+de + e5 en+translated": 87.6,
+  "all five channels (final)": 87.68,
+  "all five + MLP probabilities": 87.71,
+  "four channels + e5 logistic regression probabilities": 87.71,
+  "four channels + char n-gram channels": 87.73,
+  "mean-centred e5 channels instead": 87.75,
+  "no translation: tfidf_en + e5_en + e5_orig(German text, cross-lingual)": 78.81,
+  "no translation, centered cross-lingual e5: tfidf_en + e5_en + e5c_orig": 84.84,
+  "translation only via tfidf: tfidf_en + tfidf_de": 83.81,
+  "all five, seed 1": 87.63
+ },
+ "german_pool_size_curve_core_cv": [
+  {
+   "german_fraction": 0.25,
+   "german_tickets": 4132,
+   "stacker_core_cv_accuracy": 0.7748,
+   "merged_tfidf_1nn_core_oof_accuracy": 0.7214
+  },
+  {
+   "german_fraction": 0.5,
+   "german_tickets": 8265,
+   "stacker_core_cv_accuracy": 0.8171,
+   "merged_tfidf_1nn_core_oof_accuracy": 0.7549
+  },
+  {
+   "german_fraction": 0.75,
+   "german_tickets": 12398,
+   "stacker_core_cv_accuracy": 0.8504,
+   "merged_tfidf_1nn_core_oof_accuracy": 0.78
+  },
+  {
+   "german_fraction": 1.0,
+   "german_tickets": 16531,
+   "stacker_core_cv_accuracy": 0.8768,
+   "merged_tfidf_1nn_core_oof_accuracy": 0.8013
+  }
+ ],
+ "data_facts": {
+  "german_rows_in_ten_queues_after_dedup": 16531,
+  "of_which_written_in_english_despite_language_de": 3442,
+  "mixed": 799,
+  "german_rows_in_other_label_scheme_(unrelated consumer-domain dataset, unusable)": 13178,
+  "translated_tickets_identical_to_a_core_or_validation_text": 0,
+  "median_tfidf_cosine_translated_german_to_nearest_core": 0.29,
+  "median_tfidf_cosine_core_to_nearest_other_core": 0.543,
+  "label_agreement_with_nearest_core_at_tfidf_0.3-0.4": {
+   "translated_german": 0.799,
+   "english_core": 0.455
+  },
+  "e5_calibration": "English core pairs with TF-IDF cosine 0.58-0.62 have median e5 cosine 0.988; translated-German/core pairs at e5 0.98-0.99 have median TF-IDF cosine 0.365 (English pairs 0.559), i.e. translation deflates TF-IDF cosine by about 0.2"
+ },
+ "compute": {
+  "gpu_minutes_total": 17,
+  "translation_gpu_minutes": 11.4,
+  "final_module_core_to_val_minutes": 2.2,
+  "nmt_model": "Helsinki-NLP/opus-mt-de-en (74M parameters, fp16 on mps, beam 2)",
+  "embedder": "intfloat/multilingual-e5-base (fixed, not tuned)"
+ },
+ "configs_scored_on_validation": 46,
+ "configs_note": "3 baselines, 22 1-NN guard/source sweeps before and after the English pass-through fix, 8 e5-guard 1-NN sweeps, 4 simple German-pool methods, 8 stacker runs (1 final config + English-only ablation + 6 guard levels), 1 shuffled-label control. No hyperparameter or design choice was selected by validation score.",
+ "extra_data_files": [
+  "data/x_german/german_translated.jsonl",
+  "data/x_german/e5_german_translated.npy",
+  "data/x_german/e5_german_original.npy",
+  "data/x_german/german_raw.jsonl (input of the translation step)",
+  "data/x_german/sentence_cache.jsonl (NMT cache)"
+ ]
+}

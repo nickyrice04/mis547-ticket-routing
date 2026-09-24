@@ -1,0 +1,89 @@
+{
+  "tier": "2_distilbert",
+  "model": "distilbert-base-uncased",
+  "params_millions": 67.0,
+  "train_device": "mps",
+  "train_seconds": 795.9,
+  "epochs": 5,
+  "lr": 3e-05,
+  "max_len": 192,
+  "history": [
+    {
+      "epoch": 0,
+      "train_loss": 2.0566,
+      "test_accuracy": 0.2905,
+      "test_macro_f1": 0.2685
+    },
+    {
+      "epoch": 1,
+      "train_loss": 1.7341,
+      "test_accuracy": 0.3025,
+      "test_macro_f1": 0.3045
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.4313,
+      "test_accuracy": 0.3547,
+      "test_macro_f1": 0.3551
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.1454,
+      "test_accuracy": 0.3859,
+      "test_macro_f1": 0.3976
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.0076,
+      "test_accuracy": 0.3924,
+      "test_macro_f1": 0.411
+    }
+  ],
+  "accuracy": 0.3924,
+  "macro_f1": 0.411,
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.3924,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.2699,
+      "accuracy_on_routed": 0.6061,
+      "sent_to_human": 0.7301
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.2006,
+      "accuracy_on_routed": 0.7062,
+      "sent_to_human": 0.7994
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.1543,
+      "accuracy_on_routed": 0.8117,
+      "sent_to_human": 0.8457
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.1318,
+      "accuracy_on_routed": 0.8722,
+      "sent_to_human": 0.8682
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.1082,
+      "accuracy_on_routed": 0.9377,
+      "sent_to_human": 0.8918
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.0895,
+      "accuracy_on_routed": 0.9624,
+      "sent_to_human": 0.9105
+    }
+  ],
+  "model_dir": "models/2_distilbert"
+}

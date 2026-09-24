@@ -1,0 +1,10 @@
+=== 3b: RoBERTa base, 12 epochs 19:11 ===
+  EPOCH 0: loss 1.8300 acc 0.4114 macro-f1 0.2522
+  EPOCH 1: loss 1.5887 acc 0.4373 macro-f1 0.3247
+  EPOCH 2: loss 1.4396 acc 0.4754 macro-f1 0.3964
+  EPOCH 3: loss 1.2372 acc 0.5253 macro-f1 0.4477
+  EPOCH 4: loss 1.0019 acc 0.5545 macro-f1 0.4936
+  EPOCH 5: loss 0.7808 acc 0.6069 macro-f1 0.5342
+  EPOCH 6: loss 0.5745 acc 0.6432 macro-f1 0.5809
+  EPOCH 7: loss 0.4319 acc 0.6579 macro-f1 0.5967
+  EPOCH 8: loss 0.3123 acc 0.6632 macro-f1 0.6137

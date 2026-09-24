@@ -1,0 +1,75 @@
+{'config': 'stacker_default_guard', 'german_dropped': 150, 'accuracy': 0.8993, 'macro_f1': 0.8982, 'seconds': 140}
+{'config': 'stacker_english_only', 'use_german': False, 'german_dropped': None, 'accuracy': 0.7842, 'macro_f1': 0.7901, 'seconds': 155}
+{'config': 'stacker_no_guard', 'tfidf_guard': None, 'e5_guard': None, 'german_dropped': 0, 'accuracy': 0.9035, 'macro_f1': 0.9048, 'seconds': 140}
+{'config': 'stacker_tfidf0.7', 'tfidf_guard': 0.7, 'e5_guard': None, 'german_dropped': 8, 'accuracy': 0.9032, 'macro_f1': 0.9052, 'seconds': 143}
+{'config': 'stacker_tfidf0.6', 'tfidf_guard': 0.6, 'e5_guard': None, 'german_dropped': 38, 'accuracy': 0.9032, 'macro_f1': 0.9068, 'seconds': 145}
+{'config': 'stacker_tfidf0.5', 'tfidf_guard': 0.5, 'e5_guard': None, 'german_dropped': 200, 'accuracy': 0.8965, 'macro_f1': 0.8978, 'seconds': 127}
+{'config': 'stacker_tfidf0.5_e5_0.98', 'tfidf_guard': 0.5, 'e5_guard': 0.98, 'german_dropped': 669, 'accuracy': 0.8712, 'macro_f1': 0.8745, 'seconds': 123}
+{'config': 'stacker_tfidf0.4_e5_0.97', 'tfidf_guard': 0.4, 'e5_guard': 0.97, 'german_dropped': 1909, 'accuracy': 0.8277, 'macro_f1': 0.8355, 'seconds': 113}
+{
+ "nn_core": {
+  "accuracy": 0.7449,
+  "macro_f1": 0.7324
+ },
+ "net_core": {
+  "accuracy": 0.6421,
+  "macro_f1": 0.6283
+ },
+ "hybrid_core": {
+  "accuracy": 0.7568,
+  "macro_f1": 0.7608
+ },
+ "nn_core+german": {
+  "accuracy": 0.8386,
+  "macro_f1": 0.836
+ },
+ "net_core+german": {
+  "accuracy": 0.673,
+  "macro_f1": 0.655
+ },
+ "hybrid_core+german": {
+  "accuracy": 0.827,
+  "macro_f1": 0.8348
+ },
+ "stacker_default_guard": {
+  "accuracy": 0.8993,
+  "macro_f1": 0.8982
+ },
+ "stacker_english_only": {
+  "accuracy": 0.7842,
+  "macro_f1": 0.7901
+ },
+ "stacker_no_guard": {
+  "accuracy": 0.9035,
+  "macro_f1": 0.9048
+ },
+ "stacker_tfidf0.7": {
+  "accuracy": 0.9032,
+  "macro_f1": 0.9052
+ },
+ "stacker_tfidf0.6": {
+  "accuracy": 0.9032,
+  "macro_f1": 0.9068
+ },
+ "stacker_tfidf0.5": {
+  "accuracy": 0.8965,
+  "macro_f1": 0.8978
+ },
+ "stacker_tfidf0.5_e5_0.98": {
+  "accuracy": 0.8712,
+  "macro_f1": 0.8745
+ },
+ "stacker_tfidf0.4_e5_0.97": {
+  "accuracy": 0.8277,
+  "macro_f1": 0.8355
+ }
+}
+    bucket       share           n     nn_core    net_core  hybrid_cor  nn_core+ge  net_core+g  stacker_en  stacker_de
+   0.0-0.2        3.2%          92       31.5%       31.5%       55.4%       70.7%       44.6%       34.8%       71.7%
+   0.2-0.3       18.7%         532       30.4%       36.8%       57.7%       61.1%       45.1%       43.6%       77.3%
+   0.3-0.4       13.5%         385       49.6%       35.6%       63.6%       63.9%       44.4%       55.3%       78.7%
+   0.4-0.5       10.0%         285       75.8%       52.6%       79.7%       79.7%       55.4%       79.7%       87.0%
+   0.5-0.6       12.1%         344       94.5%       69.8%       95.1%       95.1%       69.2%       95.3%       96.2%
+   0.6-0.7       14.5%         414       97.6%       80.4%       97.6%       97.6%       81.2%       98.3%       98.6%
+   0.7-0.8       15.6%         445       99.6%       91.0%       99.6%       99.6%       89.2%       99.6%       99.6%
+   0.8-1.0       12.4%         353      100.0%       96.3%      100.0%      100.0%       95.5%      100.0%      100.0%

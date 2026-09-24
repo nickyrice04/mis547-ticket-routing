@@ -1,0 +1,56 @@
+{
+  "tier": "4_qwen_0_5b",
+  "model": "Qwen/Qwen2.5-0.5B + LoRA",
+  "params_millions": 494.0,
+  "trainable_millions": 2.17,
+  "train_device": "mps",
+  "train_seconds": 1189.3,
+  "epochs": 2,
+  "accuracy": 0.4278,
+  "macro_f1": 0.3066,
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.4278,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.2627,
+      "accuracy_on_routed": 0.7067,
+      "sent_to_human": 0.7373
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.1537,
+      "accuracy_on_routed": 0.8315,
+      "sent_to_human": 0.8463
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.0979,
+      "accuracy_on_routed": 0.9441,
+      "sent_to_human": 0.9021
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.0808,
+      "accuracy_on_routed": 0.9922,
+      "sent_to_human": 0.9192
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.0733,
+      "accuracy_on_routed": 0.9971,
+      "sent_to_human": 0.9267
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.068,
+      "accuracy_on_routed": 0.9969,
+      "sent_to_human": 0.932
+    }
+  ],
+  "model_dir": "models/4_qwen_0_5b"
+}

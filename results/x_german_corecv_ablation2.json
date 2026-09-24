@@ -1,0 +1,6 @@
+{
+ "no translation: tfidf_en + e5_en + e5_orig(German text, cross-lingual)": 78.81,
+ "no translation, centered cross-lingual e5: tfidf_en + e5_en + e5c_orig": 84.84,
+ "translation only via tfidf: tfidf_en + tfidf_de": 83.81,
+ "all five, seed 1": 87.63
+}

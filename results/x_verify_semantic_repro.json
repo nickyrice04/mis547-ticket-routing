@@ -1,0 +1,88 @@
+{
+ "mode": "repro",
+ "val_accuracy": 0.7835087719298246,
+ "val_macro_f1": 0.7999437637189579,
+ "majority_share": 0.2887719298245614,
+ "minutes": 12.8,
+ "pred_hist": [
+  266,
+  429,
+  29,
+  45,
+  271,
+  483,
+  88,
+  64,
+  95,
+  1080
+ ],
+ "track_probs_acc": 0.7835087719298246,
+ "argmax_agreement_with_track_probs": 1.0,
+ "max_abs_prob_diff": 0.0,
+ "embedding_cache_vs_track": {
+  "1c04439f0abed1cebf0d.npy": {
+   "shape": [
+    16147,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9999998211860657
+  },
+  "202eee9f9ff74ba491fc.npy": {
+   "shape": [
+    2850,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9999998211860657
+  },
+  "2314df43bd4969b96789.npy": {
+   "shape": [
+    2850,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9999998807907104
+  },
+  "29d6845c06a7c881b7ab.npy": {
+   "shape": [
+    16147,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9990697503089905
+  },
+  "3c453ebe76f0c3cb7f53.npy": {
+   "shape": [
+    16147,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9999998211860657
+  },
+  "85787c4700687304ca53.npy": {
+   "shape": [
+    2850,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9999998211860657
+  },
+  "870265e12e4056646f3b.npy": {
+   "shape": [
+    2850,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9990794062614441
+  },
+  "ee291d588bfe4125a614.npy": {
+   "shape": [
+    16147,
+    768
+   ],
+   "max_abs_diff": 0.0,
+   "min_row_cos": 0.9999998211860657
+  }
+ }
+}

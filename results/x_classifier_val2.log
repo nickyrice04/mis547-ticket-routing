@@ -1,0 +1,8 @@
+  view U: 4,377 features (4s)
+  view B: 55,060 features (12s)
+  view C: 32,792 features (29s)
+  power 4: leave-one-out accuracy inside training set 0.7509 (116s)
+  power 6: leave-one-out accuracy inside training set 0.7672 (287s)
+  power 8: leave-one-out accuracy inside training set 0.7674 (495s)
+  chosen power=8, temperature=100.00
+[VAL] krr_avg3_loo: acc=0.7674 f1=0.7754  | 0.0-0.2:38.0  0.2-0.3:39.9  0.3-0.4:50.4  0.4-0.5:77.2  0.5-0.6:95.1  0.6-0.7:97.3  0.7-0.8:99.6  0.8-1.0:100.0

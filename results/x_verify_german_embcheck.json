@@ -1,0 +1,10 @@
+{
+ "n": 300,
+ "translated_cos_min": 0.9999998807907104,
+ "translated_cos_mean": 1.0,
+ "original_cos_min": 0.9999998807907104,
+ "original_cos_mean": 1.0,
+ "translated_below_0.999": 0,
+ "original_below_0.999": 0,
+ "norms_ok": true
+}

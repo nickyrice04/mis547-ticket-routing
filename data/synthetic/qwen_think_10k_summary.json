@@ -1,0 +1,23 @@
+{
+  "generated": 10223,
+  "kept": 7723,
+  "dropped": {
+    "near_test": 261,
+    "near_train": 1209,
+    "copies_seed": 71,
+    "near_other_synthetic": 959
+  },
+  "forced_close_rate": 0.998,
+  "by_queue": {
+    "Billing and Payments": 418,
+    "Customer Service": 1058,
+    "General Inquiry": 466,
+    "Human Resources": 419,
+    "IT Support": 1136,
+    "Product Support": 1349,
+    "Returns and Exchanges": 734,
+    "Sales and Pre-Sales": 466,
+    "Service Outages and Maintenance": 401,
+    "Technical Support": 1276
+  }
+}

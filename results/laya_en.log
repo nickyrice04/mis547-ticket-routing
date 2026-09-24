@@ -1,0 +1,55 @@
+Fetching 38 files:   0%|          | 0/38 [00:00<?, ?it/s]Fetching 38 files: 100%|██████████| 38/38 [00:00<00:00, 6021.06it/s]
+  A epoch 1/4 step 100/4040 loss 1.740   1.6 min, eta  64.5 min
+  A epoch 1/4 step 200/4040 loss 1.730   3.2 min, eta  62.1 min
+  A epoch 1/4 step 300/4040 loss 1.698   4.8 min, eta  60.3 min
+  A epoch 1/4 step 400/4040 loss 1.687   6.4 min, eta  58.4 min
+  A epoch 1/4 step 500/4040 loss 1.697   8.0 min, eta  56.6 min
+  A epoch 1/4 step 600/4040 loss 1.688   9.6 min, eta  54.9 min
+  A epoch 1/4 step 700/4040 loss 1.667  11.1 min, eta  53.0 min
+  A epoch 1/4 step 800/4040 loss 1.678  12.7 min, eta  51.5 min
+  A epoch 1/4 step 900/4040 loss 1.625  14.4 min, eta  50.2 min
+  A epoch 1/4 step 1000/4040 loss 1.636  16.0 min, eta  48.6 min
+  A epoch 1 validation accuracy 44.53%
+  A epoch 2/4 step 1100/4040 loss 1.482  18.1 min, eta  48.4 min
+  A epoch 2/4 step 1200/4040 loss 1.452  19.7 min, eta  46.5 min
+  A epoch 2/4 step 1300/4040 loss 1.414  21.3 min, eta  44.9 min
+  A epoch 2/4 step 1400/4040 loss 1.351  22.9 min, eta  43.1 min
+  A epoch 2/4 step 1500/4040 loss 1.366  24.5 min, eta  41.4 min
+  A epoch 2/4 step 1600/4040 loss 1.365  26.0 min, eta  39.7 min
+  A epoch 2/4 step 1700/4040 loss 1.310  27.6 min, eta  38.1 min
+  A epoch 2/4 step 1800/4040 loss 1.310  29.2 min, eta  36.4 min
+  A epoch 2/4 step 1900/4040 loss 1.274  30.8 min, eta  34.7 min
+  A epoch 2/4 step 2000/4040 loss 1.269  32.4 min, eta  33.0 min
+  A epoch 2 validation accuracy 51.58%
+  A epoch 3/4 step 2100/4040 loss 0.829  34.5 min, eta  31.9 min
+  A epoch 3/4 step 2200/4040 loss 0.835  36.1 min, eta  30.2 min
+  A epoch 3/4 step 2300/4040 loss 0.829  37.6 min, eta  28.5 min
+  A epoch 3/4 step 2400/4040 loss 0.772  39.2 min, eta  26.8 min
+  A epoch 3/4 step 2500/4040 loss 0.808  40.8 min, eta  25.2 min
+  A epoch 3/4 step 2600/4040 loss 0.816  42.4 min, eta  23.5 min
+  A epoch 3/4 step 2700/4040 loss 0.783  44.0 min, eta  21.8 min
+  A epoch 3/4 step 2800/4040 loss 0.719  45.6 min, eta  20.2 min
+  A epoch 3/4 step 2900/4040 loss 0.735  47.2 min, eta  18.6 min
+  A epoch 3/4 step 3000/4040 loss 0.731  48.7 min, eta  16.9 min
+  A epoch 3 validation accuracy 56.91%
+  A epoch 4/4 step 3100/4040 loss 0.454  50.8 min, eta  15.4 min
+  A epoch 4/4 step 3200/4040 loss 0.452  52.4 min, eta  13.7 min
+  A epoch 4/4 step 3300/4040 loss 0.487  53.9 min, eta  12.1 min
+  A epoch 4/4 step 3400/4040 loss 0.466  55.4 min, eta  10.4 min
+  A epoch 4/4 step 3500/4040 loss 0.487  57.0 min, eta   8.8 min
+  A epoch 4/4 step 3600/4040 loss 0.459  58.6 min, eta   7.2 min
+  A epoch 4/4 step 3700/4040 loss 0.452  60.2 min, eta   5.5 min
+  A epoch 4/4 step 3800/4040 loss 0.450  61.8 min, eta   3.9 min
+  A epoch 4/4 step 3900/4040 loss 0.494  63.4 min, eta   2.3 min
+  A epoch 4/4 step 4000/4040 loss 0.448  65.0 min, eta   0.7 min
+  A epoch 4 validation accuracy 57.75%
+phase A done in 66 min, best epoch 4, temperature 1.75
+Fetching 38 files:   0%|          | 0/38 [00:00<?, ?it/s]Fetching 38 files: 100%|██████████| 38/38 [00:00<00:00, 5495.98it/s]
+  B epoch 1/4 step 100/4752 loss 1.718   1.6 min, eta  75.2 min
+  B epoch 1/4 step 200/4752 loss 1.681   3.2 min, eta  73.9 min
+  B epoch 1/4 step 300/4752 loss 1.719   4.9 min, eta  72.3 min
+  B epoch 1/4 step 400/4752 loss 1.735   6.4 min, eta  70.0 min
+  B epoch 1/4 step 500/4752 loss 1.699   8.0 min, eta  68.2 min
+  B epoch 1/4 step 600/4752 loss 1.656   9.6 min, eta  66.5 min
+  B epoch 1/4 step 700/4752 loss 1.614  11.2 min, eta  64.6 min
+  B epoch 1/4 step 800/4752 loss 1.659  12.7 min, eta  63.0 min

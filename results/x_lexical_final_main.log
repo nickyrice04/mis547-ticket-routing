@@ -1,0 +1,7 @@
+  cross-fit fold 0: pool 12917 (extra kept 0/0), 86s
+  cross-fit fold 1: pool 12917 (extra kept 0/0), 171s
+  cross-fit fold 2: pool 12918 (extra kept 0/0), 250s
+  cross-fit fold 3: pool 12918 (extra kept 0/0), 334s
+  cross-fit fold 4: pool 12918 (extra kept 0/0), 416s
+out-of-fold meta accuracy inside train 0.7239, temperature 0.991
+core -> validation  accuracy 0.7804  macro-F1 0.7957  (9.1 min, extra=none)

@@ -1,0 +1,22 @@
+Loading configuration file lora_long.yaml
+Loading pretrained model
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 4005.38it/s]
+Loading datasets
+Training
+Trainable parameters: 0.616% (28.049M/4551.516M)
+Starting training..., iters: 6000
+Calculating loss...:   0%|          | 0/10 [00:00<?, ?it/s]Calculating loss...:  10%|█         | 1/10 [00:00<00:06,  1.38it/s]Calculating loss...:  20%|██        | 2/10 [00:01<00:03,  2.08it/s]Calculating loss...:  30%|███       | 3/10 [00:01<00:02,  2.50it/s]Calculating loss...:  40%|████      | 4/10 [00:01<00:02,  2.75it/s]Calculating loss...:  50%|█████     | 5/10 [00:02<00:01,  2.65it/s]Calculating loss...:  60%|██████    | 6/10 [00:02<00:01,  2.83it/s]Calculating loss...:  70%|███████   | 7/10 [00:02<00:01,  2.95it/s]Calculating loss...:  80%|████████  | 8/10 [00:03<00:00,  2.79it/s]Calculating loss...:  90%|█████████ | 9/10 [00:03<00:00,  2.69it/s]Calculating loss...: 100%|██████████| 10/10 [00:03<00:00,  2.84it/s]Calculating loss...: 100%|██████████| 10/10 [00:03<00:00,  2.65it/s]
+Iter 1: Val loss 25.967, Val took 3.784s
+Iter 200: Train loss 1.155, Learning Rate 9.950e-05, It/sec 0.777, Tokens/sec 66.662, Trained Tokens 17157, Peak mem 17.669 GB
+Iter 400: Train loss 0.336, Learning Rate 9.976e-05, It/sec 0.803, Tokens/sec 68.997, Trained Tokens 34339, Peak mem 17.669 GB
+Calculating loss...:   0%|          | 0/10 [00:00<?, ?it/s]Calculating loss...:  10%|█         | 1/10 [00:00<00:02,  3.08it/s]Calculating loss...:  20%|██        | 2/10 [00:00<00:02,  3.05it/s]Calculating loss...:  30%|███       | 3/10 [00:01<00:02,  2.67it/s]Calculating loss...:  40%|████      | 4/10 [00:01<00:02,  2.51it/s]Calculating loss...:  50%|█████     | 5/10 [00:01<00:01,  2.68it/s]Calculating loss...:  60%|██████    | 6/10 [00:02<00:01,  2.81it/s]Calculating loss...:  70%|███████   | 7/10 [00:02<00:01,  2.64it/s]Calculating loss...:  80%|████████  | 8/10 [00:03<00:00,  2.53it/s]Calculating loss...:  90%|█████████ | 9/10 [00:03<00:00,  2.68it/s]Calculating loss...: 100%|██████████| 10/10 [00:03<00:00,  2.78it/s]Calculating loss...: 100%|██████████| 10/10 [00:03<00:00,  2.72it/s]
+Iter 500: Val loss 0.350, Val took 3.685s
+Iter 600: Train loss 0.323, Learning Rate 9.903e-05, It/sec 0.814, Tokens/sec 69.880, Trained Tokens 51502, Peak mem 17.669 GB
+Iter 800: Train loss 0.317, Learning Rate 9.781e-05, It/sec 0.818, Tokens/sec 70.063, Trained Tokens 68622, Peak mem 17.669 GB
+Calculating loss...:   0%|          | 0/10 [00:00<?, ?it/s]Calculating loss...:  10%|█         | 1/10 [00:00<00:02,  3.12it/s]Calculating loss...:  20%|██        | 2/10 [00:00<00:03,  2.59it/s]Calculating loss...:  30%|███       | 3/10 [00:01<00:02,  2.71it/s]Calculating loss...:  40%|████      | 4/10 [00:01<00:02,  2.83it/s]Calculating loss...:  50%|█████     | 5/10 [00:01<00:01,  2.64it/s]Calculating loss...:  60%|██████    | 6/10 [00:02<00:01,  2.77it/s]Calculating loss...:  70%|███████   | 7/10 [00:02<00:01,  2.86it/s]Calculating loss...:  80%|████████  | 8/10 [00:02<00:00,  2.67it/s]Calculating loss...:  90%|█████████ | 9/10 [00:03<00:00,  2.78it/s]Calculating loss...: 100%|██████████| 10/10 [00:03<00:00,  2.87it/s]Calculating loss...: 100%|██████████| 10/10 [00:03<00:00,  2.79it/s]
+Iter 1000: Val loss 0.283, Val took 3.589s
+Iter 1000: Train loss 0.312, Learning Rate 9.613e-05, It/sec 0.808, Tokens/sec 69.203, Trained Tokens 85755, Peak mem 17.669 GB
+Iter 1000: Saved adapter weights to adapters/gemma3_4b_long/adapters.safetensors and adapters/gemma3_4b_long/0001000_adapters.safetensors.
+Iter 1200: Train loss 0.300, Learning Rate 9.399e-05, It/sec 0.742, Tokens/sec 63.678, Trained Tokens 102912, Peak mem 17.781 GB
+/Users/nickyrice/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

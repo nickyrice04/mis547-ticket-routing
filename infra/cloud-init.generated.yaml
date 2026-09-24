@@ -1,0 +1,33 @@
+#cloud-config
+# Generated from cloud-init.yaml. Nicky's real public key is filled in below.
+# Teammates get added after they send their public keys (see infra/README.md).
+users:
+  - name: nicky
+    groups: [sudo]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEOYh/LN7VtjUsU10J/o9MGPpvHwlTJvotYMEK3IGREM nicholasrice@arizona.edu
+
+package_update: true
+packages: [git, build-essential, htop, tmux, ca-certificates, curl, python3-pip, python3-venv]
+
+runcmd:
+  - install -m 0755 -d /etc/apt/keyrings
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  - chmod a+r /etc/apt/keyrings/docker.asc
+  - echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu noble stable" > /etc/apt/sources.list.d/docker.list
+  - apt-get update
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  - systemctl enable --now docker
+  - usermod -aG docker nicky
+  - fallocate -l 4G /swapfile
+  - chmod 600 /swapfile
+  - mkswap /swapfile
+  - swapon /swapfile
+  - echo '/swapfile none swap sw 0 0' >> /etc/fstab
+  - mkdir -p /srv/ticket-routing
+  - chgrp -R sudo /srv/ticket-routing
+  - chmod -R 2775 /srv/ticket-routing
+  - curl -LsSf https://astral.sh/uv/install.sh | UV_INSTALL_DIR=/usr/local/bin sh
+  - echo ready > /srv/ticket-routing/READY

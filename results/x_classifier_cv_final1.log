@@ -1,0 +1,9 @@
+  view U: 4,209 features (7s)
+  view B: 49,268 features (19s)
+  view C: 31,584 features (52s)
+  power 4: leave-one-out accuracy inside training set 0.7093 (185s)
+  power 6: leave-one-out accuracy inside training set 0.7211 (263s)
+  power 8: leave-one-out accuracy inside training set 0.7189 (305s)
+  chosen power=6, temperature=29.57
+fold 0: acc=0.7322 logloss=0.9920 326s
+[CV] final_krr_default: mean=0.7322 folds=[0.7322] {'buckets': '0.0-0.2:45.7  0.2-0.3:41.8  0.3-0.4:46.0  0.4-0.5:72.0  0.5-0.6:92.7  0.6-0.7:98.6  0.7-0.8:99.8  0.8-1.0:99.7', 'cfg': {}, 'cv': '6fold_seed1', 'folds': [0]}

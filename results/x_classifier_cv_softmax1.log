@@ -1,0 +1,25 @@
+  ep 5/20 loss 0.3580 5s eval_acc 0.6023
+  ep 10/20 loss 0.1263 9s eval_acc 0.6190
+  ep 15/20 loss 0.0852 13s eval_acc 0.6227
+  ep 20/20 loss 0.0788 18s eval_acc 0.6229
+[CV] softmax_p_lr0.01_e20: mean=0.6229 folds=[0.6229] {'buckets': '0.0-0.2:35.6  0.2-0.3:37.3  0.3-0.4:38.2  0.4-0.5:58.6  0.5-0.6:77.0  0.6-0.7:90.9  0.7-0.8:98.8  0.8-1.0:99.4', 'sec': 21.4, 'cfg': {'name': 'p_lr0.01_e20', 'w': [0, 1, 0], 'fit': {'lr': 0.01, 'epochs': 20}}, 'note': 'fold0 only'}
+  ep 5/20 loss 0.0840 4s eval_acc 0.6238
+  ep 10/20 loss 0.0266 9s eval_acc 0.6279
+  ep 15/20 loss 0.0179 13s eval_acc 0.6286
+  ep 20/20 loss 0.0166 17s eval_acc 0.6290
+[CV] softmax_p_lr0.03_e20: mean=0.6290 folds=[0.629] {'buckets': '0.0-0.2:34.4  0.2-0.3:37.0  0.3-0.4:38.3  0.4-0.5:60.7  0.5-0.6:79.5  0.6-0.7:92.4  0.7-0.8:99.4  0.8-1.0:100.0', 'sec': 17.4, 'cfg': {'name': 'p_lr0.03_e20', 'w': [0, 1, 0], 'fit': {'lr': 0.03, 'epochs': 20}}, 'note': 'fold0 only'}
+  ep 5/20 loss 0.7065 5s eval_acc 0.6106
+  ep 10/20 loss 0.5557 10s eval_acc 0.6309
+  ep 15/20 loss 0.5328 14s eval_acc 0.6357
+  ep 20/20 loss 0.5294 19s eval_acc 0.6353
+[CV] softmax_p_lr0.01_e20_ls0.1: mean=0.6353 folds=[0.6353] {'buckets': '0.0-0.2:35.2  0.2-0.3:37.3  0.3-0.4:38.9  0.4-0.5:62.2  0.5-0.6:83.0  0.6-0.7:92.4  0.7-0.8:99.4  0.8-1.0:99.4', 'sec': 19.2, 'cfg': {'name': 'p_lr0.01_e20_ls0.1', 'w': [0, 1, 0], 'fit': {'lr': 0.01, 'epochs': 20, 'ls': 0.1}}, 'note': 'fold0 only'}
+  ep 5/20 loss 0.4390 5s eval_acc 0.5960
+  ep 10/20 loss 0.1662 10s eval_acc 0.6162
+  ep 15/20 loss 0.1147 16s eval_acc 0.6194
+  ep 20/20 loss 0.1069 21s eval_acc 0.6195
+[CV] softmax_p_lr0.01_e20_pin0.3: mean=0.6195 folds=[0.6195] {'buckets': '0.0-0.2:34.8  0.2-0.3:37.5  0.3-0.4:37.9  0.4-0.5:57.8  0.5-0.6:76.1  0.6-0.7:90.3  0.7-0.8:98.3  0.8-1.0:99.4', 'sec': 21.2, 'cfg': {'name': 'p_lr0.01_e20_pin0.3', 'w': [0, 1, 0], 'fit': {'lr': 0.01, 'epochs': 20, 'p_in': 0.3}}, 'note': 'fold0 only'}
+  ep 5/20 loss 1.0074 4s eval_acc 0.5202
+  ep 10/20 loss 0.5310 9s eval_acc 0.5763
+  ep 15/20 loss 0.4030 13s eval_acc 0.5900
+  ep 20/20 loss 0.3813 18s eval_acc 0.5913
+[CV] softmax_p_lr0.003_e20: mean=0.5913 folds=[0.5913] {'buckets': '0.0-0.2:33.9  0.2-0.3:38.1  0.3-0.4:36.9  0.4-0.5:54.8  0.5-0.6:68.2  0.6-0.7:83.2  0.7-0.8:92.5  0.8-1.0:96.7', 'sec': 18.0, 'cfg': {'name': 'p_lr0.003_e20', 'w': [0, 1, 0], 'fit': {'lr': 0.003, 'epochs': 20}}, 'note': 'fold0 only'}

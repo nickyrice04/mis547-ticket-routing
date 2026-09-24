@@ -1,0 +1,73 @@
+#cloud-config
+# Provisioning for the shared team droplet.
+#
+# Paste this into the "User data" box when creating the droplet, or pass it with
+#   doctl compute droplet create --user-data-file infra/cloud-init.yaml ...
+#
+# It creates one login per teammate so nobody shares a private key, installs
+# Docker and uv, and makes /srv/ticket-routing group writable so all three of us
+# can work in the same checkout.
+#
+# Before using it, replace each ssh-authorized-keys line with that person's real
+# public key (the contents of their ~/.ssh/digitalocean_key.pub). Public keys are
+# safe to paste here. Private keys never leave a laptop.
+
+users:
+  - name: nicky
+    groups: [sudo, docker]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh-authorized-keys:
+      - ssh-ed25519 REPLACE_WITH_NICKY_PUBLIC_KEY
+  - name: anshul
+    groups: [sudo, docker]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh-authorized-keys:
+      - ssh-ed25519 REPLACE_WITH_ANSHUL_PUBLIC_KEY
+  - name: alejandro
+    groups: [sudo, docker]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh-authorized-keys:
+      - ssh-ed25519 REPLACE_WITH_ALEJANDRO_PUBLIC_KEY
+
+package_update: true
+package_upgrade: true
+packages:
+  - git
+  - build-essential
+  - htop
+  - tmux
+  - ca-certificates
+  - curl
+
+write_files:
+  # A swap file so a memory spike kills performance instead of the process.
+  # This is what turns "out of memory, process died" into "slow but alive".
+  - path: /etc/sysctl.d/99-swap.conf
+    content: |
+      vm.swappiness=10
+
+runcmd:
+  # Docker, from Docker's own repository
+  - install -m 0755 -d /etc/apt/keyrings
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  - chmod a+r /etc/apt/keyrings/docker.asc
+  - echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu noble stable" > /etc/apt/sources.list.d/docker.list
+  - apt-get update
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  - systemctl enable --now docker
+  # 2 GB of swap, so a model that just barely does not fit still loads
+  - fallocate -l 2G /swapfile
+  - chmod 600 /swapfile
+  - mkswap /swapfile
+  - swapon /swapfile
+  - echo '/swapfile none swap sw 0 0' >> /etc/fstab
+  # Shared working directory owned by the sudo group
+  - mkdir -p /srv/ticket-routing
+  - chgrp -R sudo /srv/ticket-routing
+  - chmod -R 2775 /srv/ticket-routing
+  # uv for every user, installed system wide
+  - curl -LsSf https://astral.sh/uv/install.sh | UV_INSTALL_DIR=/usr/local/bin sh
+  - echo "droplet ready" > /srv/ticket-routing/READY

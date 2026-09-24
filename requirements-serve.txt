@@ -1,0 +1,13 @@
+# Serving dependencies only. Training pulls in a much larger set, which is why
+# the serving image stays small enough to deploy to a $24/month droplet.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+scikit-learn==1.9.1
+joblib==1.6.0
+numpy==2.5.3
+
+# Uncomment for the transformer tiers. This is the line that takes the image
+# from roughly 250 MB to roughly 1 GB, which matters for deploy time.
+# torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+# transformers==4.47.1

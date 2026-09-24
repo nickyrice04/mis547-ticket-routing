@@ -1,0 +1,13 @@
+{
+  "tier": "5_qwen3_0_6b_zeroshot",
+  "model": "mlx-community/Qwen3-0.6B-4bit (zero-shot, no fine-tuning)",
+  "eval_tickets": 200,
+  "batch_size": 10,
+  "load_seconds": 0.4,
+  "total_seconds": 4.9,
+  "ms_per_ticket": 24.4,
+  "unparsed": 200,
+  "accuracy": 0.0,
+  "accuracy_on_parsed": 0.0,
+  "macro_f1": 0.0
+}

@@ -1,0 +1,20 @@
+=== 2b: DistilBERT, no class weights, lr 5e-5 17:20 ===
+class weights: off
+  EPOCH 0: loss 1.7685 acc 0.4095 macro-f1 0.2891
+  EPOCH 1: loss 1.5091 acc 0.4606 macro-f1 0.3885
+  EPOCH 2: loss 1.2395 acc 0.5175 macro-f1 0.4435
+  EPOCH 3: loss 0.9212 acc 0.5581 macro-f1 0.4846
+  EPOCH 4: loss 0.7325 acc 0.5632 macro-f1 0.4943
+wrote /Users/nickyrice/Documents/Cloud Computing/ticket-routing/results/2b_distilbert_noweights.json
+=== 3: RoBERTa base 17:33 ===
+class weights: off
+  EPOCH 0: loss 1.7830 acc 0.4200 macro-f1 0.2638
+  EPOCH 1: loss 1.5577 acc 0.4442 macro-f1 0.3372
+  EPOCH 2: loss 1.3931 acc 0.4672 macro-f1 0.4049
+  EPOCH 3: loss 1.1998 acc 0.5116 macro-f1 0.4452
+  EPOCH 4: loss 1.0757 acc 0.5234 macro-f1 0.4497
+wrote /Users/nickyrice/Documents/Cloud Computing/ticket-routing/results/3_roberta_base.json
+=== 4: Qwen2.5-0.5B + LoRA 18:01 ===
+base params 494.0M | trainable 2.17M
+wrote /Users/nickyrice/Documents/Cloud Computing/ticket-routing/results/4_qwen_0_5b.json
+=== LADDER COMPLETE 18:32 ===

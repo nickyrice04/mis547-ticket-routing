@@ -1,0 +1,67 @@
+{
+  "core only": {
+    "rows": 16147,
+    "accuracy": 0.6533,
+    "accuracy_sd": 0.0049,
+    "macro_f1": 0.6273,
+    "unfamiliar": 0.421,
+    "weak_queues": 0.463,
+    "style_median_similarity": null
+  },
+  "core + real validation": {
+    "rows": 18997,
+    "accuracy": 0.6846,
+    "accuracy_sd": 0.004,
+    "macro_f1": 0.6795,
+    "unfamiliar": 0.4241,
+    "weak_queues": 0.5444,
+    "style_median_similarity": 1.0000000000000002,
+    "gain": 0.0312,
+    "gain_ci95": [
+      0.0232,
+      0.0394
+    ]
+  },
+  "core + synthetic_tickets": {
+    "rows": 17947,
+    "accuracy": 0.6538,
+    "accuracy_sd": 0.0055,
+    "macro_f1": 0.6385,
+    "unfamiliar": 0.4172,
+    "weak_queues": 0.4778,
+    "style_median_similarity": 0.15478403204230382,
+    "gain": 0.0004,
+    "gain_ci95": [
+      -0.0053,
+      0.006
+    ]
+  },
+  "core + gemma_matched_tickets": {
+    "rows": 17331,
+    "accuracy": 0.657,
+    "accuracy_sd": 0.0003,
+    "macro_f1": 0.6529,
+    "unfamiliar": 0.4199,
+    "weak_queues": 0.5062,
+    "style_median_similarity": 0.15440004058937642,
+    "gain": 0.0036,
+    "gain_ci95": [
+      -0.002,
+      0.0093
+    ]
+  },
+  "core + qwen35_08b_tickets": {
+    "rows": 17331,
+    "accuracy": 0.6499,
+    "accuracy_sd": 0.0022,
+    "macro_f1": 0.6403,
+    "unfamiliar": 0.4104,
+    "weak_queues": 0.4864,
+    "style_median_similarity": 0.13946719973711125,
+    "gain": -0.0034,
+    "gain_ci95": [
+      -0.0091,
+      0.0028
+    ]
+  }
+}

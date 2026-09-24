@@ -1,0 +1,37 @@
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 4210.30it/s]
+  [1/12] Product Support                  vs Technical Support                 102 tickets  0.7 min
+  [2/12] Technical Support                vs Product Support                   116 tickets  1.4 min
+  [3/12] IT Support                       vs Technical Support                 108 tickets  2.2 min
+  [4/12] Customer Service                 vs Product Support                    78 tickets  2.9 min
+  [5/12] Customer Service                 vs Technical Support                  91 tickets  3.5 min
+  [6/12] Technical Support                vs Customer Service                   97 tickets  4.2 min
+  [7/12] Product Support                  vs Customer Service                  111 tickets  4.9 min
+  [8/12] IT Support                       vs Product Support                   112 tickets  5.6 min
+  [9/12] General Inquiry                  vs None                               70 tickets  6.2 min
+  [10/12] Returns and Exchanges            vs None                              106 tickets  6.9 min
+  [11/12] Human Resources                  vs None                              102 tickets  7.5 min
+  [12/12] Sales and Pre-Sales              vs None                               97 tickets  8.2 min
+{
+  "generated": 1190,
+  "kept": 1184,
+  "dropped": {
+    "near_test": 0,
+    "near_train": 5,
+    "near_other_synthetic": 1,
+    "copies_seed": 0
+  },
+  "minutes": 8.2,
+  "by_queue": {
+    "Billing and Payments": 0,
+    "Customer Service": 169,
+    "General Inquiry": 70,
+    "Human Resources": 100,
+    "IT Support": 217,
+    "Product Support": 213,
+    "Returns and Exchanges": 106,
+    "Sales and Pre-Sales": 97,
+    "Service Outages and Maintenance": 0,
+    "Technical Support": 212
+  },
+  "model": "mlx-community/Qwen3.5-0.8B-MLX-8bit"
+}

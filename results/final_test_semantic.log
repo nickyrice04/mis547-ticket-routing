@@ -1,0 +1,77 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 24558.40it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 23203.87it/s]
+[x_semantic     44s] embedded with e5base
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 26494.83it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 26772.73it/s]
+[x_semantic     81s] embedded with bge
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 26385.11it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 26270.51it/s]
+[x_semantic    123s] embedded with mpnet
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 25081.63it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 25470.45it/s]
+[x_semantic    136s] embedded with gte
+[x_semantic    256s] classifier probabilities done
+[x_semantic    285s] features (189970, 43) -> meta model
+[x_semantic    288s] done
+{
+  "tier": "12_stack_semantic",
+  "model": "TF-IDF + 4 sentence embedders, nearest-neighbour features, gradient-boosted stacker",
+  "module": "x_semantic_final",
+  "accuracy": 0.8307,
+  "macro_f1": 0.8322,
+  "ece": 0.0149,
+  "unfamiliar_accuracy": 0.5885,
+  "familiar_accuracy": 0.9865,
+  "train_minutes": 4.8,
+  "by_similarity_to_nearest_training_ticket": [
+    {
+      "similarity": "0.0-0.2",
+      "share": 0.0263,
+      "n": 125,
+      "accuracy": 0.448
+    },
+    {
+      "similarity": "0.2-0.3",
+      "share": 0.1505,
+      "n": 715,
+      "accuracy": 0.4476
+    },
+    {
+      "similarity": "0.3-0.4",
+      "share": 0.1173,
+      "n": 557,
+      "accuracy": 0.5925
+    },
+    {
+      "similarity": "0.4-0.5",
+      "share": 0.0973,
+      "n": 462,
+      "accuracy": 0.8398
+    },
+    {
+      "similarity": "0.5-0.6",
+      "share": 0.1371,
+      "n": 651,
+      "accuracy": 0.9585
+    },
+    {
+      "similarity": "0.6-0.7",
+      "share": 0.1589,
+      "n": 755,
+      "accuracy": 0.9868
+    },
+    {
+      "similarity": "0.7-0.8",
+      "share": 0.1716,
+      "n": 815,
+      "accuracy": 0.9975
+    },
+    {
+      "similarity": "0.8-1.0",
+      "share": 0.1411,
+      "n": 670,
+      "accuracy": 1.0
+    }
+  ]
+}
+wrote /Users/nickyrice/Documents/Cloud Computing/ticket-routing/results/12_stack_semantic.json

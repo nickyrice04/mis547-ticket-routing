@@ -1,0 +1,123 @@
+{
+ "guard": {
+  "dropped_tfidf": 38,
+  "dropped_e5_only": 112,
+  "dropped_total": 150,
+  "kept": 16381
+ },
+ "german_translated": {
+  "identical_metadata_all": 0.0677,
+  "same_queue_all": 0.68,
+  "sim_quantiles": [
+   0.9396,
+   0.9658,
+   0.9819,
+   0.9871
+  ],
+  "0.98-1.01": {
+   "n": 395,
+   "identical_metadata": 0.1291,
+   "same_queue": 0.9797
+  },
+  "0.97-0.98": {
+   "n": 743,
+   "identical_metadata": 0.1063,
+   "same_queue": 0.8452
+  },
+  "0.96-0.97": {
+   "n": 659,
+   "identical_metadata": 0.0561,
+   "same_queue": 0.6722
+  },
+  "0.95-0.96": {
+   "n": 480,
+   "identical_metadata": 0.0375,
+   "same_queue": 0.5188
+  },
+  "0.0-0.95": {
+   "n": 573,
+   "identical_metadata": 0.014,
+   "same_queue": 0.4031
+  }
+ },
+ "german_original": {
+  "identical_metadata_all": 0.0421,
+  "same_queue_all": 0.487,
+  "sim_quantiles": [
+   0.9301,
+   0.9523,
+   0.9744,
+   0.9864
+  ],
+  "0.98-1.01": {
+   "n": 144,
+   "identical_metadata": 0.1667,
+   "same_queue": 0.9792
+  },
+  "0.97-0.98": {
+   "n": 301,
+   "identical_metadata": 0.1362,
+   "same_queue": 0.7276
+  },
+  "0.96-0.97": {
+   "n": 497,
+   "identical_metadata": 0.0201,
+   "same_queue": 0.4527
+  },
+  "0.95-0.96": {
+   "n": 668,
+   "identical_metadata": 0.0195,
+   "same_queue": 0.3997
+  },
+  "0.0-0.95": {
+   "n": 1240,
+   "identical_metadata": 0.0258,
+   "same_queue": 0.4323
+  }
+ },
+ "core_english": {
+  "identical_metadata_all": 0.1446,
+  "same_queue_all": 0.7512,
+  "sim_quantiles": [
+   0.9469,
+   0.9831,
+   0.9961,
+   0.9992
+  ],
+  "0.98-1.01": {
+   "n": 1562,
+   "identical_metadata": 0.2266,
+   "same_queue": 0.9814
+  },
+  "0.97-0.98": {
+   "n": 403,
+   "identical_metadata": 0.0993,
+   "same_queue": 0.6973
+  },
+  "0.96-0.97": {
+   "n": 290,
+   "identical_metadata": 0.0414,
+   "same_queue": 0.4621
+  },
+  "0.95-0.96": {
+   "n": 253,
+   "identical_metadata": 0.0158,
+   "same_queue": 0.3439
+  },
+  "0.0-0.95": {
+   "n": 342,
+   "identical_metadata": 0.0058,
+   "same_queue": 0.3099
+  }
+ },
+ "gain_vs_e5_nn_core": {
+  "n": 484,
+  "best_german_e5_quantiles": [
+   0.9541,
+   0.972,
+   0.9841
+  ],
+  "share_with_german_e5>=0.98": 0.2211,
+  "share_with_german_e5>=0.97": 0.5847
+ }
+}

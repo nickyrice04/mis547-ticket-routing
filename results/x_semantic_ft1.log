@@ -1,0 +1,29 @@
+ft tickets 12917, anchors with sibling-positive and hard negative: 6522
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5970.18it/s]
+The `tokenize` method is deprecated, please use `preprocess` instead.
+ep 0 step 20/405 loss 0.5035 80s
+ep 0 step 40/405 loss 0.1359 159s
+ep 0 step 60/405 loss 0.0643 271s
+ep 0 step 80/405 loss 0.0323 366s
+ep 0 step 100/405 loss 0.0334 445s
+ep 0 step 120/405 loss 0.0375 524s
+== epoch 0 mean loss 0.1233 elapsed 9.7 min
+ep 1 step 140/405 loss 0.0235 604s
+ep 1 step 160/405 loss 0.0234 684s
+ep 1 step 180/405 loss 0.0274 752s
+ep 1 step 200/405 loss 0.0320 833s
+ep 1 step 220/405 loss 0.0199 910s
+ep 1 step 240/405 loss 0.0162 987s
+ep 1 step 260/405 loss 0.0174 1069s
+== epoch 1 mean loss 0.0225 elapsed 18.5 min
+ep 2 step 280/405 loss 0.0091 1151s
+ep 2 step 300/405 loss 0.0127 1229s
+ep 2 step 320/405 loss 0.0139 1305s
+ep 2 step 340/405 loss 0.0135 1382s
+ep 2 step 360/405 loss 0.0135 1460s
+ep 2 step 380/405 loss 0.0119 1538s
+ep 2 step 400/405 loss 0.0152 1617s
+== epoch 2 mean loss 0.0144 elapsed 27.3 min
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.43it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.43it/s]
+saved models/x_semantic_ft1_bge total 27.3 min

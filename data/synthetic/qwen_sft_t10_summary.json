@@ -1,0 +1,22 @@
+{
+  "generated": 11442,
+  "kept": 10000,
+  "dropped": {
+    "near_test": 3,
+    "near_train": 1,
+    "near_other_synthetic": 0
+  },
+  "median_nearest_train_similarity_all": 0.226,
+  "by_queue": {
+    "Technical Support": 1555,
+    "Product Support": 1736,
+    "Billing and Payments": 554,
+    "Returns and Exchanges": 1011,
+    "Human Resources": 524,
+    "Sales and Pre-Sales": 621,
+    "Service Outages and Maintenance": 597,
+    "Customer Service": 1339,
+    "IT Support": 1423,
+    "General Inquiry": 640
+  }
+}

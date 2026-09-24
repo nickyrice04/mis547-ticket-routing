@@ -1,0 +1,25 @@
+{
+  "tier": "2c_distilbert_12ep",
+  "kind": "hf",
+  "disk_mb": 268.6,
+  "rss_after_load_mb": 644.2,
+  "rss_model_only_mb": 204.1,
+  "latency": {
+    "1_thread": {
+      "p50_ms": 17.2,
+      "p95_ms": 18.4,
+      "mean_ms": 17.1
+    },
+    "2_thread": {
+      "p50_ms": 17.1,
+      "p95_ms": 19.3,
+      "mean_ms": 16.9
+    },
+    "4_thread": {
+      "p50_ms": 17.7,
+      "p95_ms": 18.8,
+      "mean_ms": 17.5
+    }
+  },
+  "machine": "Apple M5 Max"
+}

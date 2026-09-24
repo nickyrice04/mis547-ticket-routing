@@ -1,0 +1,34 @@
+{
+  "A. core only": {
+    "rows": 16147,
+    "accuracy": 0.6533,
+    "accuracy_sd": 0.0049,
+    "macro_f1": 0.6273,
+    "unfamiliar": 0.421,
+    "weak_queues": 0.463
+  },
+  "B. core + synthetic": {
+    "rows": 17947,
+    "accuracy": 0.6538,
+    "accuracy_sd": 0.0055,
+    "macro_f1": 0.6385,
+    "unfamiliar": 0.4172,
+    "weak_queues": 0.4778
+  },
+  "C. core + real validation": {
+    "rows": 18997,
+    "accuracy": 0.6846,
+    "accuracy_sd": 0.004,
+    "macro_f1": 0.6795,
+    "unfamiliar": 0.4241,
+    "weak_queues": 0.5444
+  },
+  "D. core + validation + synthetic": {
+    "rows": 20797,
+    "accuracy": 0.6802,
+    "accuracy_sd": 0.0028,
+    "macro_f1": 0.6696,
+    "unfamiliar": 0.4255,
+    "weak_queues": 0.5235
+  }
+}

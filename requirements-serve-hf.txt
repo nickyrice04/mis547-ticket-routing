@@ -1,0 +1,12 @@
+# Serving dependencies for the transformer tiers.
+#
+# The CPU-only build of PyTorch is the important part. The default wheel pulls
+# in CUDA libraries that add well over a gigabyte and are useless on a droplet
+# with no GPU.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+numpy==2.5.3
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.0+cpu
+transformers==5.17.0

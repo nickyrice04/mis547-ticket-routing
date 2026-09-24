@@ -1,0 +1,42 @@
+{
+  "embedding_model": "intfloat/multilingual-e5-base",
+  "german_available": 16532,
+  "german_dropped_as_leaks": 2514,
+  "rows": [
+    {
+      "german_added": 0,
+      "train_size": 18997,
+      "accuracy": 0.4402,
+      "macro_f1": 0.3587,
+      "unfamiliar_accuracy": 0.4077
+    },
+    {
+      "german_added": 3504,
+      "train_size": 22501,
+      "accuracy": 0.4488,
+      "macro_f1": 0.3635,
+      "unfamiliar_accuracy": 0.4164
+    },
+    {
+      "german_added": 7009,
+      "train_size": 26006,
+      "accuracy": 0.4234,
+      "macro_f1": 0.3074,
+      "unfamiliar_accuracy": 0.4094
+    },
+    {
+      "german_added": 10513,
+      "train_size": 29510,
+      "accuracy": 0.4307,
+      "macro_f1": 0.3278,
+      "unfamiliar_accuracy": 0.4083
+    },
+    {
+      "german_added": 14018,
+      "train_size": 33015,
+      "accuracy": 0.5402,
+      "macro_f1": 0.4953,
+      "unfamiliar_accuracy": 0.4363
+    }
+  ]
+}

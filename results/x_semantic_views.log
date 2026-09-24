@@ -1,0 +1,14 @@
+view lex: LOO 1-NN acc 0.7432
+view char: LOO 1-NN acc 0.7458
+view subj: LOO 1-NN acc 0.5220
+view body: LOO 1-NN acc 0.6339
+view e5base: LOO 1-NN acc 0.7513
+view bge: LOO 1-NN acc 0.7409
+view mpnet: LOO 1-NN acc 0.7330
+view gte: LOO 1-NN acc 0.7396
+view bgelarge: LOO 1-NN acc 0.7430
+view e5large: LOO 1-NN acc 0.7508
+view gtemodern: LOO 1-NN acc 0.7518
+view minilm: LOO 1-NN acc 0.7397
+view fused4: LOO 1-NN acc 0.7562
+view fused8: LOO 1-NN acc 0.7552

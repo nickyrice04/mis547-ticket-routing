@@ -1,0 +1,12 @@
+Loading configuration file lora_fair.yaml
+Loading pretrained model
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 4068.19it/s]
+Loading datasets
+Training
+Trainable parameters: 0.616% (28.049M/4551.516M)
+Starting training..., iters: 4500
+Calculating loss...:   0%|          | 0/10 [00:00<?, ?it/s]Calculating loss...:  10%|█         | 1/10 [00:00<00:03,  2.34it/s]Calculating loss...:  20%|██        | 2/10 [00:00<00:03,  2.13it/s]Calculating loss...:  30%|███       | 3/10 [00:01<00:03,  2.09it/s]Calculating loss...:  40%|████      | 4/10 [00:01<00:02,  2.06it/s]Calculating loss...:  50%|█████     | 5/10 [00:02<00:02,  1.90it/s]Calculating loss...:  60%|██████    | 6/10 [00:03<00:02,  1.94it/s]Calculating loss...:  70%|███████   | 7/10 [00:03<00:01,  1.96it/s]Calculating loss...:  80%|████████  | 8/10 [00:04<00:01,  1.97it/s]Calculating loss...:  90%|█████████ | 9/10 [00:04<00:00,  1.87it/s]Calculating loss...: 100%|██████████| 10/10 [00:05<00:00,  1.91it/s]Calculating loss...: 100%|██████████| 10/10 [00:05<00:00,  1.96it/s]
+Iter 1: Val loss 27.840, Val took 5.111s
+Iter 200: Train loss 1.197, Learning Rate 9.950e-05, It/sec 0.580, Tokens/sec 49.757, Trained Tokens 17157, Peak mem 24.961 GB
+/Users/nickyrice/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

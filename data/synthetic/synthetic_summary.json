@@ -1,0 +1,23 @@
+{
+  "generated": 1800,
+  "kept": 1800,
+  "dropped": {
+    "near_test": 0,
+    "near_train": 0,
+    "near_other_synthetic": 0,
+    "copies_seed": 0
+  },
+  "minutes": 19.3,
+  "by_queue": {
+    "Billing and Payments": 0,
+    "Customer Service": 300,
+    "General Inquiry": 150,
+    "Human Resources": 150,
+    "IT Support": 300,
+    "Product Support": 300,
+    "Returns and Exchanges": 150,
+    "Sales and Pre-Sales": 150,
+    "Service Outages and Maintenance": 0,
+    "Technical Support": 300
+  }
+}

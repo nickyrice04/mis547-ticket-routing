@@ -1,0 +1,41 @@
+0 on disk, 16141 to write
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 3306.77it/s]
+  64/16141    0.2 min  eta  43.1 min
+  704/16141    1.4 min  eta  31.6 min
+  1344/16141    3.7 min  eta  40.8 min
+  1984/16141    4.8 min  eta  34.2 min
+  2624/16141    7.4 min  eta  38.2 min
+  3264/16141    9.1 min  eta  35.9 min
+  3904/16141   10.7 min  eta  33.5 min
+  4544/16141   12.3 min  eta  31.5 min
+  5184/16141   14.1 min  eta  29.8 min
+  5824/16141   15.3 min  eta  27.0 min
+  6464/16141   17.4 min  eta  26.0 min
+  7104/16141   19.3 min  eta  24.5 min
+  7744/16141   20.9 min  eta  22.7 min
+  8384/16141   23.4 min  eta  21.6 min
+  9024/16141   26.0 min  eta  20.5 min
+  9664/16141   26.9 min  eta  18.1 min
+  10304/16141   28.4 min  eta  16.1 min
+  10944/16141   29.3 min  eta  13.9 min
+  11584/16141   30.9 min  eta  12.2 min
+  12224/16141   31.8 min  eta  10.2 min
+  12864/16141   33.3 min  eta   8.5 min
+  13504/16141   34.3 min  eta   6.7 min
+  14144/16141   35.8 min  eta   5.1 min
+  14784/16141   36.7 min  eta   3.4 min
+  15424/16141   38.2 min  eta   1.8 min
+  16064/16141   39.3 min  eta   0.2 min
+{
+  "generated": 16116,
+  "kept": 15675,
+  "dropped": {
+    "copies_source": 367,
+    "drifted": 73,
+    "duplicate": 1
+  },
+  "median_similarity_to_source": 0.641,
+  "model": "mlx-community/Qwen3.5-0.8B-bf16",
+  "adapter": "adapters/qwen35_sibling_s500",
+  "temperature": 0.9
+}

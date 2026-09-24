@@ -1,0 +1,20 @@
+  nca step 0 loss 0.9379 gamma 23.8 theta[min,max]=[-0.05,0.05] 1s
+  nca step 25 loss 0.6868 gamma 22.7 theta[min,max]=[-1.04,1.23] 6s
+  nca step 50 loss 0.6606 gamma 24.0 theta[min,max]=[-1.57,2.14] 11s
+  nca step 75 loss 0.6466 gamma 24.3 theta[min,max]=[-1.93,2.38] 15s
+  nca step 100 loss 0.6495 gamma 25.1 theta[min,max]=[-2.20,2.57] 21s
+  nca step 125 loss 0.6540 gamma 25.3 theta[min,max]=[-2.65,2.99] 25s
+  nca step 149 loss 0.6338 gamma 24.9 theta[min,max]=[-2.75,3.44] 30s
+fold 0: 1nn=0.6794 krr=0.6991 gamma=24.9
+  lowest-weight terms: ['robotic', 'pc', 'cleaners', 'vacuum', 'viruses', 'optimizes', 'helping', 'supporting', 'elevating', 'symptoms', 'unlawful', 'scheduling', 'wish', 'validating', 'rapid', 'committed', 'faulty', 'enquire', 'launches', 'led', 'rerunning', 'expandable', 'clinical', 'established', 'saving']
+  highest-weight terms: ['encompasses', 'standardized', 'don', 'image', 'excluded', 'oauth', 'departmental', 'meaningful', 'gravity', 'activate', 'alarming', 'newly', '000', '100', 'rows', 'proofreading', 'distributions', 'crafting', 'nsteps', 'tripod', 'widely', 'credit', 'dashboarding', 'listen', 'distortion']
+  nca step 0 loss 0.8597 gamma 23.8 theta[min,max]=[-0.05,0.05] 0s
+  nca step 25 loss 0.7007 gamma 22.7 theta[min,max]=[-1.03,1.22] 5s
+  nca step 50 loss 0.6453 gamma 24.3 theta[min,max]=[-1.70,2.08] 10s
+  nca step 75 loss 0.6340 gamma 24.3 theta[min,max]=[-2.02,2.51] 14s
+  nca step 100 loss 0.6437 gamma 24.5 theta[min,max]=[-2.17,3.31] 19s
+  nca step 125 loss 0.6480 gamma 24.9 theta[min,max]=[-2.32,3.90] 23s
+  nca step 149 loss 0.6311 gamma 25.2 theta[min,max]=[-2.40,4.15] 27s
+fold 1: 1nn=0.6700 krr=0.6957 gamma=25.2
+[CV] nca_u_s150_1nn: mean=0.6747 folds=[0.6794, 0.67] {'buckets': '0.0-0.2:30.4  0.2-0.3:29.6  0.3-0.4:37.8  0.4-0.5:67.9  0.5-0.6:89.4  0.6-0.7:96.0  0.7-0.8:98.6  0.8-1.0:99.5', 'cfg': {'name': 'u_s150', 'fit': {'steps': 150}}, 'cv': '6fold_seed1'}
+[CV] nca_u_s150_krr: mean=0.6974 folds=[0.6991, 0.6957] {'buckets': '0.0-0.2:40.9  0.2-0.3:36.6  0.3-0.4:44.3  0.4-0.5:65.9  0.5-0.6:86.4  0.6-0.7:95.6  0.7-0.8:98.2  0.8-1.0:99.5', 'cfg': {'name': 'u_s150', 'fit': {'steps': 150}}, 'cv': '6fold_seed1'}

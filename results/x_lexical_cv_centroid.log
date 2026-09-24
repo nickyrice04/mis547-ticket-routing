@@ -1,0 +1,17 @@
+strict (cached pairs)                              acc 0.7248
+  fold 0 families 9458 largest 8
+  fold 1 families 9509 largest 5
+  fold 2 families 9471 largest 5
+  fold 3 families 9482 largest 5
+  fold 4 families 9497 largest 8
++ family centroid block (link >= 0.5)              acc 0.7267
+  fold 0 families 10699 largest 5
+  fold 1 families 10681 largest 5
+  fold 2 families 10702 largest 5
+  fold 3 families 10726 largest 5
+  fold 4 families 10704 largest 5
++ family centroid block (link >= 0.65)             acc 0.7249
+leaves31 lr.03 n600                                acc 0.7253
+leaves7 lr.05 n400                                 acc 0.7230
+default, 3 seeds                                   acc 0.7255
+leaves15 lr.02 n800 mcs100                         acc 0.7258

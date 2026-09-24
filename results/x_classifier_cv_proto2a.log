@@ -1,0 +1,9 @@
+fold 0: K=6001 ridge-init acc=0.6103 (190s)
+Traceback (most recent call last):
+  File "/Users/nickyrice/Documents/Cloud Computing/ticket-routing/src/x_classifier_cv_proto2.py", line 124, in <module>
+    Pn, Wn, bn = finetune(A, yc[tr], P, W, cfg["power"], epochs=cfg["ft_epochs"], lr=cfg.get("lr", 1e-3), temp=cfg.get("temp", 20.0),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nickyrice/Documents/Cloud Computing/ticket-routing/src/x_classifier_cv_proto2.py", line 76, in finetune
+    Pt = torch.tensor(P.toarray(), device=dev, requires_grad=tune_protos)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Cannot convert a MPS Tensor to float64 dtype as the MPS framework doesn't support float64. Please use float32 instead.

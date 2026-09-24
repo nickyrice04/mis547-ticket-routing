@@ -1,0 +1,84 @@
+{
+ "provenance": {
+  "n": 16531,
+  "not_de": 0,
+  "queue_mismatch": 0,
+  "label_mismatch": 0,
+  "raw_text_mismatch": 0,
+  "unique_rows": 16531,
+  "languages_in_parquet": {
+   "de": 33504,
+   "en": 28261
+  },
+  "versions_of_german_rows": {
+   "51": 318,
+   "52": 3773,
+   "400": 8158,
+   "None": 4282
+  }
+ },
+ "exact_overlap": {
+  "translated_in_core": 0,
+  "translated_in_val": 0,
+  "original_in_core": 0,
+  "original_in_val": 0
+ },
+ "german_nearest_val_tfidf_corefit": {
+  ">=0.9": 0,
+  ">=0.8": 1,
+  ">=0.7": 12,
+  ">=0.6": 52,
+  ">=0.5": 262,
+  ">=0.4": 814
+ },
+ "german_nearest_core_tfidf_corefit": {
+  ">=0.9": 0,
+  ">=0.8": 20,
+  ">=0.7": 91,
+  ">=0.6": 314,
+  ">=0.5": 1154,
+  ">=0.4": 3448
+ },
+ "german_nearest_val_tfidf_finalfit": {
+  ">=0.9": 0,
+  ">=0.8": 2,
+  ">=0.7": 8,
+  ">=0.6": 38,
+  ">=0.5": 200,
+  ">=0.4": 618
+ },
+ "german_vs_nearest_val_label_agreement": {
+  "0.6-1.01": {
+   "n": 52,
+   "same_queue": 0.9615
+  },
+  "0.5-0.6": {
+   "n": 210,
+   "same_queue": 0.9429
+  },
+  "0.4-0.5": {
+   "n": 552,
+   "same_queue": 0.8333
+  },
+  "0.3-0.4": {
+   "n": 1552,
+   "same_queue": 0.6347
+  },
+  "0.2-0.3": {
+   "n": 5631,
+   "same_queue": 0.3637
+  }
+ },
+ "english_source": {
+  "share>=0.9": 2838,
+  "0.1<share<0.9": 1558,
+  "share<=0.1": 12135
+ },
+ "metadata": {
+  "val_mapped": 2850,
+  "core_mapped": 16147,
+  "german_answer_identical_to_a_val_answer": 0,
+  "nearest_german_full_metadata_identical": 0.0498,
+  "nearest_core_full_metadata_identical": 0.1063
+ }
+}

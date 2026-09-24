@@ -1,0 +1,147 @@
+{
+  "tier": "12b_stack_german",
+  "model": "same stacker with 16.5k translated German tickets in the retrieval pool, leak guard at 0.60",
+  "module": "x_german_final",
+  "accuracy": 0.9179,
+  "macro_f1": 0.9167,
+  "ece": 0.0123,
+  "unfamiliar_accuracy": 0.8101,
+  "familiar_accuracy": 0.9872,
+  "train_minutes": 1.4,
+  "by_similarity_to_nearest_training_ticket": [
+    {
+      "similarity": "0.0-0.2",
+      "share": 0.0263,
+      "n": 125,
+      "accuracy": 0.816
+    },
+    {
+      "similarity": "0.2-0.3",
+      "share": 0.1505,
+      "n": 715,
+      "accuracy": 0.7692
+    },
+    {
+      "similarity": "0.3-0.4",
+      "share": 0.1173,
+      "n": 557,
+      "accuracy": 0.7971
+    },
+    {
+      "similarity": "0.4-0.5",
+      "share": 0.0973,
+      "n": 462,
+      "accuracy": 0.8874
+    },
+    {
+      "similarity": "0.5-0.6",
+      "share": 0.1371,
+      "n": 651,
+      "accuracy": 0.9585
+    },
+    {
+      "similarity": "0.6-0.7",
+      "share": 0.1589,
+      "n": 755,
+      "accuracy": 0.9894
+    },
+    {
+      "similarity": "0.7-0.8",
+      "share": 0.1716,
+      "n": 815,
+      "accuracy": 0.9975
+    },
+    {
+      "similarity": "0.8-1.0",
+      "share": 0.1411,
+      "n": 670,
+      "accuracy": 1.0
+    }
+  ],
+  "per_queue": {
+    "Billing and Payments": {
+      "n": 484,
+      "recall": 0.9587
+    },
+    "Customer Service": {
+      "n": 714,
+      "recall": 0.9006
+    },
+    "General Inquiry": {
+      "n": 68,
+      "recall": 0.8676
+    },
+    "Human Resources": {
+      "n": 92,
+      "recall": 0.8913
+    },
+    "IT Support": {
+      "n": 567,
+      "recall": 0.8942
+    },
+    "Product Support": {
+      "n": 886,
+      "recall": 0.8995
+    },
+    "Returns and Exchanges": {
+      "n": 235,
+      "recall": 0.8936
+    },
+    "Sales and Pre-Sales": {
+      "n": 145,
+      "recall": 0.9034
+    },
+    "Service Outages and Maintenance": {
+      "n": 187,
+      "recall": 0.9091
+    },
+    "Technical Support": {
+      "n": 1372,
+      "recall": 0.9453
+    }
+  },
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.9179,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.9253,
+      "accuracy_on_routed": 0.962,
+      "sent_to_human": 0.0747
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.9004,
+      "accuracy_on_routed": 0.9729,
+      "sent_to_human": 0.0996
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.8747,
+      "accuracy_on_routed": 0.9834,
+      "sent_to_human": 0.1253
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.8474,
+      "accuracy_on_routed": 0.9903,
+      "sent_to_human": 0.1526
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.8057,
+      "accuracy_on_routed": 0.9958,
+      "sent_to_human": 0.1943
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.7611,
+      "accuracy_on_routed": 0.9975,
+      "sent_to_human": 0.2389
+    }
+  ]
+}

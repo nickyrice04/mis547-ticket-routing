@@ -1,0 +1,15 @@
+{
+  "tier": "1b_mlp_256",
+  "kind": "sklearn",
+  "disk_mb": 376.6,
+  "rss_after_load_mb": 590.8,
+  "rss_model_only_mb": 550.5,
+  "latency": {
+    "1_thread": {
+      "p50_ms": 0.2,
+      "p95_ms": 0.2,
+      "mean_ms": 0.2
+    }
+  },
+  "machine": "Apple M5 Max"
+}

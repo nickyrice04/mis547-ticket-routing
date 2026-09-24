@@ -1,0 +1,283 @@
+{
+  "validation_accuracy": 0.6421,
+  "validation_size": 2850,
+  "mistakes": 1020,
+  "pairs": [
+    {
+      "true": "Product Support",
+      "predicted": "Technical Support",
+      "count": 117,
+      "keywords": [
+        "backend",
+        "ask",
+        "ncould",
+        "validate",
+        "deeper",
+        "loading",
+        "lag",
+        "enable",
+        "happened",
+        "instability",
+        "respected",
+        "input"
+      ],
+      "seeds": [
+        "inquiry on latest features in project management software . i would like to know about the new features included in the latest version of the project management software. could you give me a list of these updates and explain how they can enhance project efficiency? additionally, could you share any materials or resources related to these updates?",
+        "streamline integration of google keep notes . it would be beneficial to incorporate google keep notes into our project management software for better collaboration and task monitoring. this feature would enable team members to easily access and share notes, thereby boosting productivity.",
+        "integrating data analytics with hubspot . customer support team, i am seeking guidance on integrating data analytics tools with hubspot crm to enhance our investment strategies. our team currently uses hubspot for managing customer relationships and sales, and we want to leverage data analytics to make more informed investment decisions. i believe that integrating data analytics tools with hubspot will allow us to gain deeper insights into customer behaviors, preferences, and needs. could you please assist?",
+        ". dear customer support, i am contacting you to report a sudden failure of our saas service on all my devices following a recent software update, which we believe might have caused some instability. my team tried restarting the servers and clearing the cache to resolve the issue, but these steps did not work. additionally, we have contacted our development team for more help. despite these actions, the platform is still not functioning. this situation is causing us significant inconvenience, and we would be very grateful if you could look into it and offer a solution or guide us on how to proc",
+        "error in investment prediction . experienced discrepancies in investment prediction analytics owing to input data errors and obsolete algorithms.",
+        "data backup not successful during nighttime . the data backup experienced an unexpected failure during the night. potential reasons might be outdated software or configuration errors. efforts made included restarting the server and reviewing the logs and settings.",
+        "concerns with investment optimization tool . customer support, encountering issues with the investment optimization tool as detailed in this report. the tool is not analyzing data accurately, leading to incorrect insights and potential financial risks. this issue might be due to conflicts with the dashcam firewall settings. steps taken include restarting the software and reinstalling it, but the problem still persists. despite these efforts, the issue remains unresolved. i would greatly appreciate your assistance in looking into this matter and providing a timely solution if possible. please i",
+        "problem during digital campaigns launch . the digital campaigns failed to launch and there seems to be a suspected compatibility issue with node.js. although i have updated node.js and checked hdmi connections, the problem still exists.",
+        "improve data analytics investment strategies . customer support, i am requesting an enhancement to the data analytics tools used for investment optimization to improve decision-making efficiency. currently, the tools have limited capability to deliver real-time data and predictive insights, which hampers our ability to make well-informed investment choices. i believe that upgrading these tools would significantly benefit our overall investment strategy performance. i would appreciate it if you could consider this matter and explore options for enhancing the data analytics tools. such improveme",
+        "performance issues with project dashboards . dear support team, recently, our users have been experiencing lag while accessing the project dashboards. this may be due to increased user traffic. we have tried optimizing backend queries and checking server performance, but the issue still persists. the lag is causing delays and disruptions to our workflow. we would appreciate it if you could look into this matter urgently and provide a solution to resolve the issue. please let us know if there is any additional information you need to investigate further. thank you.",
+        "server response time problems . customer support reports experiencing slow server response times during peak hours. the team has examined the issue and identified possible server load balancing inefficiencies. restarting the servers and monitoring performance metrics have yielded only limited improvements. the problem continues to exist, and we require assistance to resolve it. we would appreciate guidance and support to help us optimize server performance and provide a better user experience. please advise us on the next steps.",
+        ". the healthcare provider's systems have flagged unauthorized access attempts. although we have updated passwords and reinforced firewalls, the issues continue. we urgently require immediate support to secure the medical data effectively and resolve this issue promptly to prevent further breaches."
+      ]
+    },
+    {
+      "true": "Technical Support",
+      "predicted": "Product Support",
+      "count": 93,
+      "keywords": [
+        "expectations",
+        "corruption",
+        "recover",
+        "enable",
+        "worried",
+        "eagerly",
+        "success",
+        "enhancement",
+        "expected",
+        "task",
+        "results",
+        "await"
+      ],
+      "seeds": [
+        "upgrading workstation for enhanced data analysis . hello customer support, i am reaching out to request an upgrade of my workstation hardware to facilitate faster data analysis and more precise investment insights. my current equipment is outdated and is slowing down my workflow. i would appreciate an upgrade that includes a faster processor, additional memory, and a high-performance graphics card. this will enable me to efficiently manage large data sets and make well-informed investment choices. i believe this upgrade is crucial for staying competitive in the market. i look forward to your r",
+        "request for support with digital campaigns . greetings customer support, i am contacting you to address an issue with our digital campaigns, which have ceased to function as intended. it is possible that the recent platform updates might have caused this incompatibility. we have already attempted to restart the services and review the configurations, but the problem still exists. we would greatly appreciate any help in resolving this issue. kindly inform us if you need further details from our side. we are eagerly awaiting your response. thank you for your time and support.",
+        "project syncing issues across various tools . hello support team, i am encountering difficulties with project synchronization. the data is not being updated consistently across my tools, which might be related to an api integration problem. despite restarting the services and reviewing the logs, the issue remains unresolved. could you please assist me in addressing this problem at your earliest convenience?",
+        "support needed for unauthorized access incident . an unauthorized access incident has happened in our hospital systems, which might be linked to a phishing attack. despite updating passwords and conducting security audits, the issue continues. assistance is required to address this.",
+        "issue with recent system update causing software incompatibility . we regret the inconvenience caused by the software incompatibility issues following the recent system update. we understand that reinstalling and updating the software may resolve the issue. to troubleshoot the problem, could you please provide details of any error messages you are seeing, specifically related to the software experiencing compatibility issues? additionally, it would be helpful to know the version of the software and operating system you are using. if needed, we can schedule a call at your convenience to discuss",
+        "support for troubleshooting marketing campaign issues . marketing campaigns are not yielding the expected results, which is causing a stall in brand growth. we have adjusted the audience demographics and re-evaluated the ad creatives, but the performance still falls short of expectations. we need your assistance to identify the root cause and optimize the strategy for better outcomes.",
+        "support for investment model . the investment optimization model is yielding inconsistent results.",
+        "details on integrating smart home hub with project management tools . could you provide the necessary system requirements for integrating the smart home hub with project management tools? this is crucial for ensuring that both systems can work together seamlessly.",
+        "digital strategy consultation services . dear customer support, i am reaching out to inquire about your digital strategy services and how they can help enhance brand development. could you please provide detailed information about the process involved in implementing your digital strategies? i would also appreciate it if you could share case studies or success stories of brands that have benefited from your services. additionally, i am interested in knowing the team's expertise and the tools utilized to deliver these services. kindly let me know your availability for a call to discuss this fur",
+        "sap erp investment enhancement tools . which analytics tools are compatible with sap erp?",
+        ". a financial firm encountered problems with data synchronization in their investment analytics system, likely due to network instability. efforts to resolve the issue, such as restarting the router and optimizing device placements, have not been successful.",
+        "failed data encryption . hello customer support, i am encountering difficulties with data encryption. the encryption process unexpectedly failed, and i suspect it might be related to outdated software updates. despite restarting the server and reviewing the settings, the problem continues. kindly help me address this. if there are any further actions i should take or additional details you need, please inform me. thank you for your assistance."
+      ]
+    },
+    {
+      "true": "IT Support",
+      "predicted": "Technical Support",
+      "count": 86,
+      "keywords": [
+        "integrated",
+        "clear",
+        "exact",
+        "reboots",
+        "occurred",
+        "resulting",
+        "tasks",
+        "advise",
+        "concerned",
+        "monitoring",
+        "understanding",
+        "implement"
+      ],
+      "seeds": [
+        "concerning incidents of unauthorized access to patient medical data . customer support, i am reporting a serious issue with the hospital's system that involves unauthorized access attempts to patient medical data. despite updating the software and reviewing user access logs, we have been unable to fully resolve the issue. these attempts may be due to outdated security protocols and insufficient firewall rules. i am concerned about the potential for a breach of sensitive patient information and would appreciate your assistance in resolving this matter. could you please provide guidance?",
+        "request for improvement of project management tool . dear customer support, i am reaching out to request improvements to the project management tool to enhance its user interface and workflow efficiency for better collaboration. despite the tool being in use for a while, there are several areas that can be improved. the user interface is not very intuitive, which can take a considerable amount of time for new users to understand. additionally, the workflow can be optimized by automating repetitive tasks and offering more customization options. lastly, the collaboration features can be improved",
+        "secure patient information . could you furnish the necessary documentation that secures patient information?",
+        "medical scanner malfunction issue . the scanner stopped working properly because of old firmware, and i attempted to fix it by restarting it and ensuring all connections were correct.",
+        "issues with brand expansion . despite enhancing ad text and boosting the budget, engagement levels remain low.",
+        "support for digital strategy implementation . request for the implementation of improved digital strategies through zapier integration to enhance game controller functionalities. this would greatly improve the user experience by providing flexibility, terms, and automation for customization. we believe it would be a valuable addition to the product and would appreciate if you could consider our request.",
+        "assistance needed for upgrading data analytics tools . i am requesting support for enhancing data analytics tools to improve investment optimization. the current tools are insufficient for providing the necessary insights to make informed decisions. i believe that with enhanced analytics, we can better optimize our investments and improve overall performance. i would greatly appreciate it if you could look into this matter and provide a solution at your earliest convenience. thank you for your time and assistance.",
+        "product malfunctions . customer support, i am reaching out to highlight several issues with our products that are substantially affecting our operations at the marketing agency. our team specializes in enhancing brand growth through digital strategies, but these problems are obstructing our progress. the issues began following recent software updates, which i suspect may have caused compatibility conflicts. i have attempted basic troubleshooting methods such as restarting devices and reinstalling software, but unfortunately, these actions did not resolve the problems. i would greatly appreciat",
+        "urgent: healthcare provider data access issue . customer support reports a serious problem affecting data access for a healthcare provider. the hospital's system, which runs multiple software applications, is encountering difficulties that may be due to misconfiguration or a security breach. the team has tried to resolve the problem through system reboots, password resets, and malware scans, but none of these measures have been successful. we are worried about the possible consequences for patient care and data security. your assistance in resolving this matter would be greatly appreciated.",
+        "secure medical data transmission . greeting from customer support, you have contacted us to inquire about secure medical data transmission between the jenkins and maple systems, enhanced with robust encryption methods. could you kindly provide more details on your requirements to implement this? we are eager to share the advantages and any possible challenges associated with this process. also, we would be grateful if you could give us some insights into how this has been successfully applied before. we are looking forward to your response and to learn more about this topic. thank you for your",
+        "urgent: critical data access issue with healthcare provider . customer support reports a serious problem involving access to healthcare provider data. the hospital's system, which includes multiple software applications, is encountering various issues, potentially due to misconfiguration or a security breach. the team has attempted to address the problem through system reboots, password resets, and malware scans, but unfortunately, these efforts have not resolved the issue. we are worried about the possible effects on patient care and data security. your assistance in resolving this matter wou",
+        "login problem noted . i am facing a login problem where the authentication process fails. this might be a result of a possible database connectivity problem after the last update. i have already restarted the server and checked the network settings, yet the issue still exists. kindly help me resolve this as quickly as possible."
+      ]
+    },
+    {
+      "true": "Customer Service",
+      "predicted": "Product Support",
+      "count": 67,
+      "keywords": [
+        "check",
+        "receive",
+        "timelines",
+        "elasticsearch",
+        "database",
+        "workflows",
+        "associated",
+        "eagerly",
+        "among",
+        "communication",
+        "application",
+        "improvements"
+      ],
+      "seeds": [
+        "query on customizable dashboard feature . hello customer support, i am contacting you to gather information on the new customizable dashboard feature aimed at improving project visibility and user experience. this feature could significantly boost our team's productivity and workflow. please could you provide detailed instructions on how to set it up? also, could you share any tutorials or guides available to assist with implementation? moreover, i would like to know if there are any limitations or restrictions on customizing the dashboard. looking forward to your prompt response. this enhance",
+        "missing investment information . support request",
+        "hospital data breach incident . reported suspected data security breach",
+        "irregular investment performance analysis using tools . encountering irregular investment performance results using the analytics tools. this could be due to outdated algorithms or data integration issues. i have tried recalibrating the models and refreshing data inputs, but the discrepancies still persist. assistance is needed to resolve this issue.",
+        "security protocols for medical information in healthcare settings . it is advised to establish solid access controls and data encryption to safeguard patient information in the hospital's it infrastructure.",
+        "data analytics system problem . customer support, i am highlighting an urgent issue with the data analytics platform used for investment optimization. the system is malfunctioning, leading to inaccurate insights that affect our decision-making. despite attempts to restart the software, the issue persists, indicating potential software bugs that require immediate attention. the unreliable data impacts current investments and diminishes confidence in the system's reliability. this is a critical matter.",
+        "guidance on data analytics for investment optimization . customer support is seeking assistance with integrating data analytics to enhance investment strategies through the financial services platform. could you offer detailed guidance on this topic? any informational resources to help initiate this process would be highly appreciated. specifically, they are eager to understand how data analytics can be used to inform investment choices and improve portfolio performance. additionally, they want to know which tools and features within the platform can support these efforts. thank you for your t",
+        "request for data analytics tool recommendations . i am contacting you to seek advice on the best data analytics tools for improving my investment strategies. i am particularly interested in tools that can effectively work with scrivener and oracle database 19c. could you provide me with some guidance on this? it would be very helpful to receive any recommendations or useful resources you might have.",
+        "decreased speed on saas platform . customer support,<br>we are encountering sporadic slowdowns in our scalable saas project management system. the problem might be linked to delays in elasticsearch indexing.<br>our team has attempted troubleshooting by restarting elasticsearch nodes and clearing caches, but unfortunately, the issue remains unresolved.<br>we would be grateful for your assistance in resolving this matter.<br>please inform us if any additional information is required for your investigation.<br>thank you.",
+        "support for data analytics tools in investment portfolio optimization . respected customer support, \\n\\ni am writing to seek assistance regarding data analytics tools that can enhance the optimization of investment portfolios for individual investors. as an individual investor, i am seeking tools that will enable me to make educated investment decisions. i am particularly interested in tools that can offer real-time data and insights to optimize my investment portfolio. i am keen on tracking my investments, analyzing market trends, and receiving recommendations for the purchase and sale of sec",
+        "assistance required for chromebook kvm setup . dear customer support team,\\n\\ni am seeking guidance on how to incorporate chromebook kvm switches into the secure network infrastructure of a financial organization. the primary objective is to enhance device management while ensuring complete adherence to regulatory compliance standards across risk-sensitive workflows. i want to confirm that the integration upholds the highest security standards, reduces potential security gaps, and facilitates smooth operation for the team. could you please provide comprehensive instructions and best practices ",
+        "collaboration tools for team management software . i am reaching out to inquire about the collaboration features included in your team project management saas. specifically, i am interested in understanding how your system handles task assignment, tracking progress, and facilitating communication among team members. could you provide details on any tools that enhance teamwork and productivity? i am seeking a comprehensive solution to efficiently manage my team's projects."
+      ]
+    },
+    {
+      "true": "Customer Service",
+      "predicted": "Technical Support",
+      "count": 59,
+      "keywords": [
+        "verifying",
+        "eagerly",
+        "failure",
+        "included",
+        "device",
+        "reported",
+        "submitting",
+        "crashes",
+        "servers",
+        "recently",
+        "pro",
+        "peak"
+      ],
+      "seeds": [
+        "improve security protocols for medical data . drafting a request to enhance security protocols to safeguard medical data within the hospital's infrastructure is essential. it is crucial to protect sensitive patient information and prevent potential data breaches. i believe that implementing robust security measures, such as encryption and access controls, will help ensure the confidentiality and integrity of the medical data.",
+        "support for enhancing data analytics integration . i am contacting you to seek advice on improving the integration of data analytics across various platforms. this could greatly enhance our investment analysis and decision-making processes. could you offer some guidance on how to accomplish this?",
+        "support incident: unauthorized access attempt . an unauthorized access attempt on medical data has been detected, which might be due to misconfigured firewall settings. initial troubleshooting steps included a review of system logs and firewall configurations, but the issue still persists and requires assistance. please provide guidance on how to proceed with the investigation and resolution.",
+        ". attention needed for a data breach identified in the hospital's system.",
+        "incident of data theft . the hospital recently experienced an incident compromising the security of medical data.",
+        "data security concerns in hospital infrastructure . hospital infrastructure is facing possible data security risks due to outdated protective measures. despite applying recent patches and conducting system scans, the problem remains unresolved. immediate support is required to address this issue.",
+        "security protocols for healthcare elasticsearch . could you suggest security measures for elasticsearch setups in healthcare settings?",
+        "assistance required for clickup sql server integration . i am attempting to integrate clickup with my sql server on a microsoft surface pro 8. could you provide me with the necessary system requirements for this integration? specifically, i am interested in the minimum and recommended hardware specifications for the device, along with any required software. this information will assist me in ensuring that my device meets the requirements for a smooth integration.",
+        "security incursion in healthcare system . customer support is preparing a report regarding a possible security intrusion within the healthcare system. the healthcare provider recently encountered unauthorized access to medical records, likely due to outdated security protocols. attempts to reset passwords and perform system audits have been made to identify the root cause. nonetheless, immediate assistance is needed to maintain the integrity and security of the system. please advise on how to proceed with the investigation and implement essential measures to prevent similar incidents in the fu",
+        "report on data security incident involving breach of medical records . our hospital experienced a data security breach that compromised medical records due to outdated protocols and insufficient training. we have taken steps to update firewalls and conduct incident response training.",
+        "query regarding pluralsight saas project management platform . dear customer support team, we are inquiring about the pluralsight saas project management platform. we would greatly appreciate it if you could share any relevant documentation or guides that outline the steps involved in the integration process. additionally, could you please inform us about the specific requirements and prerequisites that need to be met for integrating the pluralsight platform? we look forward to your assistance and are eagerly awaiting your response. thank you for your time and we look forward to hearing back f",
+        "support for enhancing investment strategies via data analytics . inquiring about optimizing investment strategies using data analytics services. would greatly appreciate guidance on leveraging tools to make informed decisions. could you provide resources or support to help me get started?"
+      ]
+    },
+    {
+      "true": "Technical Support",
+      "predicted": "Customer Service",
+      "count": 54,
+      "keywords": [
+        "trends",
+        "along",
+        "driven",
+        "tutorials",
+        "make",
+        "market",
+        "approach",
+        "options",
+        "started",
+        "tactics",
+        "confirmed",
+        "learning"
+      ],
+      "seeds": [
+        "security alert for healthcare provider system . please address the issue",
+        "concerning protection of health information . there have been incidents of unauthorized attempts to access health information. suspicious ip addresses have been blocked, and firewall configurations have been updated.",
+        "immediate assistance required for saas platform issue . dear customer support team,\\n\\ni am submitting a report regarding a recent operational problem with our cloud-based saas platform that has impacted our services. since the issue commenced, we have encountered sporadic outages and notable declines in performance, which hinder our ability to serve clients effectively. the problem began roughly two days ago and has persisted despite initial troubleshooting attempts.\\n\\nwe verified our network connections and confirmed that the issue is confined to our local environment. the platform's respon",
+        "technical concern . the social media analytics tool has malfunctioned, disrupting essential campaign analysis. this might be related to a recent software update. attempts to resolve the issue by restarting and clearing cache have been unsuccessful.",
+        ". could you provide comprehensive integration options for a mailchimp project management saas solution? this would significantly improve our workflow productivity. we are interested in automating tasks and syncing data between the two platforms. please share any available documentation or guides for the integration process.",
+        "enhancing scalability in project management saas platform . requesting detailed documentation procedures for optimizing the scalability of the project management saas platform to enhance its performance.",
+        "support required for github and ifttt integration . experiencing difficulties in connecting github with ifttt to automate marketing campaign processes. can you offer comprehensive guidance on this? i would appreciate detailed, step-by-step instructions along with pertinent resources. this would aid in optimizing the workflow and enhancing efficiency. thank you for your help.",
+        "problem with saas platform . customer support reports a problem with a scalable saas platform used for writing reports. the platform is experiencing sporadic outages, which are impacting project management features. initial investigations indicate that the issue might be related to indexing errors in elasticsearch 7.13. attempts to restart the elasticsearch service and clear caches have been unsuccessful. the outages are significantly disrupting operations, and immediate assistance is required to resolve the problem. please provide guidance on troubleshooting and fixing elasticsearch.",
+        "digital campaign launch failure . dear customer support,\\n\\ni am reaching out to inform you about a recent issue with our digital campaigns. these campaigns have suddenly failed to launch, which we believe could be due to integration problems. we have already attempted to restart our aws services and reviewed our typo3 configurations, but the problem still remains unresolved.\\n\\nwe have confirmed that the campaigns were set up correctly and have been meticulously checking the configurations to ensure everything is in order. despite our efforts, the campaigns are still not launching. we are dee",
+        "enhancing investment tactics through data analysis in quickbooks online . is it possible to receive insights on optimizing investment strategies using data analytics within quickbooks online? appreciate your prompt assistance with this matter.",
+        "medical data security and compliance inquiry . i am writing to request detailed information about the security measures and compliance standards in place for protecting medical data within hospital services. could you please provide details on the protocols and safeguards implemented to ensure the confidentiality, integrity, and availability of sensitive medical information? additionally, i would appreciate information on the specific compliance standards followed, such as hipaa. this information will help me better understand the services and make informed decisions.",
+        "options for digital marketing strategy . hello customer support, i am writing to seek information on the digital marketing strategies that can be employed to boost my online presence. i am interested in learning about the diverse methods and tools available to enhance my website's visibility and engagement. could you also provide some insight into how the effectiveness of these strategies can be measured and improved? i would greatly appreciate any assistance you can offer. i look forward to your response. thank you for your time and support."
+      ]
+    },
+    {
+      "true": "Product Support",
+      "predicted": "Customer Service",
+      "count": 53,
+      "keywords": [
+        "managing",
+        "kind",
+        "customization",
+        "revise",
+        "trends",
+        "benefits",
+        "queries",
+        "optimizing",
+        "approach",
+        "advise",
+        "peak",
+        "providing"
+      ],
+      "seeds": [
+        "inquiry on tools for enhancing data analytics in investments . is it possible to gain valuable insights using data analytics tools to improve investment strategies? we would greatly appreciate your assistance. thank you!",
+        "digital expansion plan . revise the digital approach to boost brand development with the marketing firm.",
+        "request for security breach support . a security breach has been detected in the medical data management system, which may have occurred due to outdated software vulnerabilities. to address this, we need to update the system, change passwords, and increase monitoring. we require your team's expertise in identifying the root cause and providing recommendations to prevent similar incidents in the future. please let us know the next steps to resolve the issue.",
+        "concerning incident of data leakage . a healthcare organization has encountered a possible data leakage event that impacts confidential medical information. the incident may have arisen from outdated security measures. the organization has initiated an update process and performed initial assessments to identify security weaknesses. we are seeking your assistance to investigate and resolve the issue.",
+        "protection of medical data security . dear customer support, i am reaching out to inquire about the security measures in place for safeguarding medical data within the hospital system. could you please provide documentation on the practices used to secure medical data? i would appreciate guidance on how to ensure the confidentiality, integrity, and availability of sensitive patient information. specifically, i am interested in learning about access controls, encryption techniques, and incident response plans. kindly inform me of any resources or guidelines available that can help me better und",
+        "addressing reducing customer engagement . we have observed a decline in engagement across our platforms. despite efforts to refresh content and analyze data, there has been a slight improvement. please provide specific details on the metrics that have decreased and the time frame of the decline. a scheduled call to discuss this further would be helpful.",
+        "secure medical data management systems . improve security measures for medical data",
+        "health data encryption problem . hello customer support, i am contacting you to address an issue i am facing with the encryption of my health data on my imac. the encryption has failed and i am worried about the security of my personal medical data. upon investigating, i believe the problem may be due to my older norton antivirus software. despite updating the software and restarting my imac, the issue has not been resolved. i would be very grateful if you could give me some instructions on how to fix it. if you require any more information or further steps to diagnose the problem, please let ",
+        "secure data integration . customer support, i am reaching out to inquire about the integration of mongodb 4.4 within hospital systems to ensure the protection of medical data. could you provide guidance on how to guarantee secure storage and transmission of data? it is essential to comply with hipaa regulations to safeguard sensitive patient information. please offer recommendations regarding encryption, access controls, and data backup procedures. i would appreciate your assistance in maintaining the security and integrity of medical data. thank you for your time and expertise.",
+        "request for detailed documentation on smartsheet saas project management software . is it possible to obtain comprehensive documentation on integrating smartsheet saas project management software? this would be extremely helpful in understanding its features and functionalities. we look forward to your response and greatly appreciate your assistance.",
+        "ui glitch . a minor ui glitch has appeared, possibly related to a recent update. products affected; after clearing the cache and refreshing browsers, the issue persists. the glitch has a cosmetic impact but may affect the user experience. we appreciate your help in looking into this matter and providing a solution or workaround.",
+        "assistance with project management saas features and customization . i am seeking details on the various features and customization options available within the project management saas platform. could you provide comprehensive information on the tools and functionalities that the platform offers? this would greatly assist me in tailoring the platform to meet our specific project management needs. your information will help me better understand the platform and its suitability for our requirements."
+      ]
+    },
+    {
+      "true": "IT Support",
+      "predicted": "Product Support",
+      "count": 43,
+      "keywords": [
+        "successfully",
+        "inadequate",
+        "drive",
+        "right",
+        "financial",
+        "failures",
+        "quickbooks",
+        "action",
+        "awareness",
+        "discuss",
+        "through",
+        "critical"
+      ],
+      "seeds": [
+        "acknowledgment of data breach at healthcare facility . a data breach has been detected at our healthcare facility, potentially compromising sensitive medical data. the cause is suspected to be outdated systems and inadequate security measures. we have initiated antivirus scans and conducted a security audit to identify and address vulnerabilities. immediate action is required to protect sensitive information and prevent further breaches.",
+        "request for enhanced account security . i am writing to request enhanced user authentication security, specifically multi-factor authentication, to improve the safety of my account and help protect it from unauthorized access.",
+        "enhancement suggestion . inquiring about potential enhancements to customer support tools for digital marketing. currently, the tools are causing inefficiencies in meeting our brand growth strategies. we need a more streamlined system to assist in tracking performance and making data-driven decisions. specifically, we are interested in improvements to social media management, email marketing, and analytics. we believe the right tools can significantly enhance our brand's online presence and reach a wider audience. we would appreciate it if you could provide more information about the current s",
+        "details required for mysql integration to enhance scalability . seeking information on integrating mysql into a project management saas to boost scalability. kindly provide specifics on the integration process and any required documentation. your guidance on how to successfully merge these systems would be greatly appreciated. additionally, please share any specific requirements or limitations we should be aware of. please inform us of the information needed to assist your request.",
+        "boost security through multi-factor authentication . to customer support: in an effort to enhance security and compliance, i recommend the adoption of multi-factor authentication across all software tools. this measure would add an extra safeguard against unauthorized access, helping to mitigate the risks of data breaches and cyber attacks. by mandating multiple forms of verification, such as passwords, biometric data, or one-time codes, we can ensure that only approved individuals gain access to critical information. this is particularly pertinent for businesses that handle sensitive customer",
+        "problems with product performance . customer support team, i am reaching out to highlight several malfunctions affecting our products, which are substantially disrupting operations at our marketing agency. our expertise in driving brand growth through digital strategies is being hampered by these issues. the problems began after recent software updates, which i believe may have caused compatibility conflicts. i have attempted basic troubleshooting methods such as restarting devices and reinstalling software, but unfortunately, these steps did not resolve the issues. i would greatly appreciate ",
+        ". customer support, we have received your inquiry regarding digital strategies for brand growth. we would be glad to provide information on the techniques and tools that can be used to increase brand awareness and engagement. we appreciate your interest and would be happy to offer insights and guidance. looking forward to your response and appreciate your time. we are eager to hear from you soon, and your help is greatly appreciated.",
+        "problems with login following recent update . tried clearing cache and restarting browser but issues persist",
+        "concerns regarding hospital data security . seeking help",
+        "issue with medical data transfer via usb failed . i am contacting you to address a problem i encountered while transferring medical data using a usb stick. the transfer process unfortunately did not complete. i believe this might be related to outdated drivers, but i've also checked the usb connection and restarted my system, yet the issue remains unresolved. i am hopeful that you can offer some assistance to fix this problem promptly. could you provide any recommendations or if there are any further details you would need from me? thank you for your attention to this matter.",
+        "problem with project dashboards . users are unable to access the updated dashboards, and clearing the cache does not resolve the issue.",
+        "daily reports of smart babyphone synchronization issues . customer support is currently facing recurring synchronization problems with the smart babyphone mercurial, which are affecting data analytics performance. it is suspected that a recent update may have introduced conflicts. attempts to resolve the issue by restarting services and clearing caches have been unsuccessful. we would appreciate your prompt assistance in resolving this matter. please advise on additional troubleshooting steps. we are concerned that ongoing synchronization failures might lead to data loss or delays, potentially"
+      ]
+    }
+  ],
+  "per_queue_accuracy": {
+    "Billing and Payments": 0.793,
+    "Customer Service": 0.631,
+    "General Inquiry": 0.341,
+    "Human Resources": 0.509,
+    "IT Support": 0.529,
+    "Product Support": 0.602,
+    "Returns and Exchanges": 0.39,
+    "Sales and Pre-Sales": 0.517,
+    "Service Outages and Maintenance": 0.593,
+    "Technical Support": 0.755
+  }
+}

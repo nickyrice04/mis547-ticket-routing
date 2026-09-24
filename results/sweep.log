@@ -1,0 +1,24 @@
+  hidden=(256,)       alpha=0.0001  acc 0.6891  2.0 min
+  hidden=(256,)       alpha=0.01    acc 0.6585  1.1 min
+  hidden=(512,)       alpha=0.0001  acc 0.6893  3.0 min
+  hidden=(512,)       alpha=0.01    acc 0.6613  2.5 min
+  hidden=(1024,)      alpha=0.0001  acc 0.6859  4.9 min
+  hidden=(1024,)      alpha=0.01    acc 0.6648  4.4 min
+  hidden=(512, 256)   alpha=0.0001  acc 0.6808  2.3 min
+  hidden=(512, 256)   alpha=0.01    acc 0.6688  2.4 min
+{
+  "configurations": 8,
+  "serial_minutes_one_machine": 22.6,
+  "slowest_single_config_minutes": 4.9,
+  "parallel_minutes_one_droplet_each": 4.9,
+  "speedup": 4.6,
+  "best": {
+    "hidden": [
+      512
+    ],
+    "alpha": 0.0001,
+    "accuracy": 0.6893,
+    "macro_f1": 0.6877,
+    "seconds": 180.3
+  }
+}

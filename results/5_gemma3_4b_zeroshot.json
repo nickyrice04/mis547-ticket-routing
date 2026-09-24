@@ -1,0 +1,13 @@
+{
+  "tier": "5_gemma3_4b_zeroshot",
+  "model": "mlx-community/gemma-3-4b-it-qat-4bit (zero-shot, no fine-tuning)",
+  "eval_tickets": 500,
+  "batch_size": 10,
+  "load_seconds": 1.3,
+  "total_seconds": 33.9,
+  "ms_per_ticket": 67.9,
+  "unparsed": 0,
+  "accuracy": 0.206,
+  "accuracy_on_parsed": 0.206,
+  "macro_f1": 0.1737
+}

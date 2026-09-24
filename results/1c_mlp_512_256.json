@@ -1,0 +1,53 @@
+{
+  "tier": "1c_mlp_512_256",
+  "model": "TF-IDF + MLP, hidden layers 512 and 256",
+  "params_millions": 31.29,
+  "train_seconds": 145.9,
+  "train_peak_rss_mb": 2947,
+  "accuracy": 0.6838,
+  "macro_f1": 0.6759,
+  "thresholds": [
+    {
+      "threshold": 0.0,
+      "coverage": 1.0,
+      "accuracy_on_routed": 0.6838,
+      "sent_to_human": 0.0
+    },
+    {
+      "threshold": 0.5,
+      "coverage": 0.9339,
+      "accuracy_on_routed": 0.7115,
+      "sent_to_human": 0.0661
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.8722,
+      "accuracy_on_routed": 0.7357,
+      "sent_to_human": 0.1278
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.8078,
+      "accuracy_on_routed": 0.7652,
+      "sent_to_human": 0.1922
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.7318,
+      "accuracy_on_routed": 0.7986,
+      "sent_to_human": 0.2682
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.6322,
+      "accuracy_on_routed": 0.8412,
+      "sent_to_human": 0.3678
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.5554,
+      "accuracy_on_routed": 0.8662,
+      "sent_to_human": 0.4446
+    }
+  ]
+}

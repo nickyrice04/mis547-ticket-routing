@@ -1,0 +1,24 @@
+{
+  "generated": 1190,
+  "kept": 1184,
+  "dropped": {
+    "near_test": 0,
+    "near_train": 5,
+    "near_other_synthetic": 1,
+    "copies_seed": 0
+  },
+  "minutes": 8.2,
+  "by_queue": {
+    "Billing and Payments": 0,
+    "Customer Service": 169,
+    "General Inquiry": 70,
+    "Human Resources": 100,
+    "IT Support": 217,
+    "Product Support": 213,
+    "Returns and Exchanges": 106,
+    "Sales and Pre-Sales": 97,
+    "Service Outages and Maintenance": 0,
+    "Technical Support": 212
+  },
+  "model": "mlx-community/Qwen3.5-0.8B-MLX-8bit"
+}
