@@ -9,6 +9,17 @@ below exists in the DigitalOcean account (project **MIS547**, region **tor1**, t
 The diagram source is [architecture.mmd](architecture.mmd) (Mermaid), rendered to
 `architecture.png` and `architecture.svg` for the report.
 
+Live endpoint: **https://146-190-188-160.sslip.io** (API keys are given out separately).
+
+## GPU capacity is not guaranteed
+
+When the training droplet was first requested on 2026-09-29, both the RTX 4000 Ada and the
+RTX 6000 Ada were sold out, even while DigitalOcean's size list still offered them in tor1.
+`infra/scripts/wait-for-gpu.sh` retries creation every two minutes, cheapest size first,
+and got an RTX 4000 Ada a few minutes later. A production plan has to allow for this: keep
+the last good model serving (the pipeline only promotes through the gate), and retry or fall
+back to another size or region for training.
+
 ## What happens to one ticket
 
 1. A client sends `POST /v1/route` with the ticket's subject and body over HTTPS to
@@ -56,9 +67,9 @@ every five minutes and rolls to the new image, with a health check and automatic
 | Component | What it is | Why it is needed | Sizing and justification |
 | --- | --- | --- | --- |
 | VPC `team3-ticket-routing-vpc` | Private network 10.140.0.0/24 in tor1 | Keeps database and droplet traffic off the public internet | Free. tor1 because it is the only region with the RTX 4000 Ada GPU, and every component must share the GPU's region to share its private network |
-| Inference droplet | Ubuntu 24.04, 2 vCPU, 4 GB, Docker Compose (API, Caddy, Prometheus) | Always-on online inference, answers while a ticket is submitted | $24/month. The router holds about 2.3 GB resident (two pretrained models plus 185 MB of pools). 2 vCPU give about 35 ms for an English ticket and 0.5 to 1.5 s for a German one on CPU. A GPU here would sit idle, since serving is one ticket at a time |
+| Inference droplet | Ubuntu 24.04, 2 shared vCPU, 4 GB, Docker Compose (API, Caddy, Prometheus) | Always-on online inference, answers while a ticket is submitted | $24/month. The router holds 2.0 GB resident (two pretrained models plus 185 MB of pools). Measured on the live droplet: about 1.3 s per English ticket (0.9 to 3.8 s) and 4.7 s per German one (3.5 to 5.3 s), see Latency below. A GPU here would sit idle, since serving is one ticket at a time |
 | Reserved IP | Fixed public IPv4 attached to the inference droplet | The URL in the report survives a rebuilt droplet, which is also the disaster recovery path | Free while attached |
-| GPU training droplet | 1x NVIDIA RTX 4000 Ada 20 GB, 8 vCPU, 32 GB, DigitalOcean AI/ML image | Burst compute for translation, embedding and fitting | $0.76/hour, only while a refresh runs. Translating 16,500 tickets is the heavy step (about 11 GPU minutes on the laptop). A CPU droplet would take hours, and a company still exploring models would run many such jobs |
+| GPU training droplet | 1x NVIDIA RTX 4000 Ada 20 GB, 8 vCPU, 32 GB, DigitalOcean AI/ML image | Burst compute for translation, embedding and fitting | $0.76/hour, only while a refresh runs. The measured full retrain took 8 minutes, about $0.12. Translating 76,327 German sentences took 3.5 minutes on this GPU against about 11 on the laptop. A company still exploring models would run many such jobs |
 | Managed PostgreSQL 16 | 1 vCPU, 1 GB, 10 GB disk, private network only | Audit log of every decision, human corrections, training runs. Structured records with one text field, which fits a relational database | $15/month. A year of traffic at 1,000 tickets a day is about 365,000 rows of roughly 2 KB, under 1 GB. Managed, so backups, patching and failover of the engine are DigitalOcean's job |
 | Spaces bucket | S3-compatible object storage, private, versioned | Dataset and every model version, the source of truth the API loads from | $5/month for 250 GB. Each model version is 185 MB, so years of weekly versions fit |
 | Cloud firewalls | Tag-based, one for inference, one for training | Only HTTPS in, SSH only from team addresses, egress limited to web, DNS, time and the database | Free |
@@ -71,17 +82,43 @@ API key out of another platform. DigitalOcean Functions would fit the same job.
 
 ## Where the heavy compute and bandwidth are
 
+Measured on the RTX 4000 Ada training droplet on 2026-09-29 (evidence/gpu-training-run.log):
+
 | Stage | Compute | Memory | Network | Frequency |
 | --- | --- | --- | --- | --- |
-| Translation of the German pool | GPU, about 11 minutes | 3 GB VRAM | 10 MB text in and out | Once per new batch of non-English tickets |
-| Embedding the pools | GPU, about 1 minute | 2 GB VRAM | none | Each training run |
-| Fitting the stacker | CPU, 2 to 3 minutes | 8 GB RAM | none | Each training run |
+| Translation of the German pool | GPU, 212 s (76,327 sentences) | 2.5 GB VRAM | 10 MB text in and out | Once per new batch of non-English tickets |
+| Embedding the pools | GPU, 84 s | 2 GB VRAM | 2.2 GB of pretrained models on first run | Each training run |
+| Validation of the evaluated recipe | GPU and CPU, 90 s | 8 GB RAM | none | Each training run |
+| Fitting the production model | GPU and CPU, 82 s | 8 GB RAM | none | Each training run |
+| Publishing | none | none | 185 MB to Spaces, same region | Each training run |
 | Model download to the API | none | 185 MB | 185 MB from Spaces, same region | Each promoted version |
-| Online inference | CPU, 35 ms (English), 0.5 to 1.5 s (German) | 2.3 GB | about 2 KB per request | Every ticket |
+| Online inference | CPU, about 1.3 s (English), 4.7 s (German) on the shared 2 vCPU droplet | 2.0 GB | about 2 KB per request | Every ticket |
 | Image pull | none | none | about 1.5 GB compressed from GHCR | Each code release |
 
 Serving is light and constant. Training is heavy and rare. That split is the reason for
 renting a GPU only for the burst and running inference on a small CPU droplet.
+
+## Latency, measured on the live droplet
+
+Server-side time per ticket on 2026-09-29, from the `stage_ms` field of the audit log:
+
+| Stage | English ticket | German ticket |
+| --- | --- | --- |
+| Translation | none | 2.7 to 4.6 s |
+| Sentence embedding (e5) | 0.35 to 2.95 s | 0.35 to 0.9 s |
+| Retrieval and stacker | 0.29 to 1.2 s | 0.36 to 0.65 s |
+| Total | 0.9 to 3.8 s, median about 1.3 s | 3.5 to 5.3 s, median about 4.7 s |
+
+Two causes, both measured. The droplet's vCPUs are shared, and `top` showed 20% CPU steal on
+an idle machine, which is why the same ticket's embedding varies eightfold. And retrieval rebuilt
+two large matrices on every request. That second one was a bug, fixed so the matrices are built
+once per process. The results are bit-identical and retrieval is four times faster on the laptop.
+
+For tickets arriving by email or web form, a few seconds is invisible to the customer, because
+routing happens after submission. If the bank wanted a sub-second target, the fix is a dedicated
+CPU plan: a CPU-Optimized droplet (`c-2`, 2 dedicated vCPU, 4 GB, $42 a month, one Terraform
+variable) removes the steal. That is the trade the report can put to stakeholders, $18 a month
+more for predictable latency.
 
 ## What changed from the midterm diagram
 

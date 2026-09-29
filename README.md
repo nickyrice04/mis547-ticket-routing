@@ -6,7 +6,7 @@ arrive in English and German, and nothing leaves the company's private network.
 
 | | |
 | --- | --- |
-| Endpoint | `https://<reserved-ip-with-dashes>.sslip.io` (the exact URL and the grader's API key are in the report) |
+| Endpoint | **https://146-190-188-160.sslip.io** (the grader's API key is in the report, never in git) |
 | Try it | [examples/tickets.json](examples/tickets.json) and `scripts/try_endpoint.sh` |
 | Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), diagram in [docs/architecture.png](docs/architecture.png) |
 | Security | [docs/SECURITY.md](docs/SECURITY.md), STRIDE threat model and scan evidence |
@@ -34,8 +34,12 @@ curl -s -X POST "$ROUTER_URL/v1/route" \
 {"ticket_id": "4a2b6cc8-...", "queue": "Billing and Payments", "confidence": 0.9596, "auto_routed": true,
  "threshold": 0.7, "top_queues": [{"queue": "Billing and Payments", "probability": 0.9596}, ...],
  "familiarity": 0.305, "language": "en", "translated": false, "model_version": "v20260929-014804",
- "audit_logged": true, "latency_ms": 33.8, "request_id": "..."}
+ "audit_logged": true, "latency_ms": 1161.0, "request_id": "..."}
 ```
+
+On the live droplet an English ticket takes about 1.3 seconds and a German one about 4.7,
+most of it the sentence embedding and translation on shared CPUs. See the latency section of
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 German works the same way, `{"subject": "Rückerstattung für doppelte Abbuchung", "body": "..."}`
 is translated inside the service and routed to Billing and Payments. Errors come back as JSON

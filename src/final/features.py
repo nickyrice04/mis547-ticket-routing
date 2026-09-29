@@ -135,7 +135,7 @@ def per_class(sims, labs, floor=0.0):
     return out
 
 
-def channels(A, y_tr, E_tr, B, E_ev, G, g: German, keep):
+def channels(A, y_tr, E_tr, B, E_ev, G, g: German, keep, AT=None, GT=None):
     """Five retrieval channels -> features [n_eval, 10 queues, 10].
 
     The last axis is five channels times (best similarity, neighbour count), in this order:
@@ -149,18 +149,26 @@ def channels(A, y_tr, E_tr, B, E_ev, G, g: German, keep):
     A, B, G are TF-IDF matrices of the training, evaluation and (all) German texts from one
     vectorizer that was fitted on training + German texts only. `keep` is the leak-guard mask.
 
+    AT and GT are A and G transposed, precomputed by a server (final/model.py). When the mask
+    keeps every German ticket, which is always the case in production, the pools are used as
+    they are instead of being copied row by row. Same numbers, far less work per request.
+
     The e5 channels use a floor of 0.8 rather than 0 because e5 cosines sit around 0.8
     even for unrelated tickets. A queue absent from the top 20 therefore gets a value just
     below any real neighbour instead of a zero on a different scale.
     """
     y_tr = np.asarray(y_tr)
-    gy = g.labels[keep]
-    D = G[np.where(keep)[0]]
+    everything = bool(np.all(keep))
+    if everything:                       # production: no copies, and the transpose comes precomputed
+        gy, D, DT, e5t, e5o = g.labels, G, GT, g.e5_trans, g.e5_orig
+    else:                                # evaluation with the leak guard dropping tickets
+        gy, D, DT = g.labels[keep], G[np.where(keep)[0]], None
+        e5t, e5o = g.e5_trans[keep], g.e5_orig[keep]
     k = TOPK
     feats = []
-    s, i = topk_sims(B, A, k); feats.append(per_class(s, y_tr[i]))                 # tfidf -> English
-    s, i = topk_sims(B, D, k); feats.append(per_class(s, gy[i]))                   # tfidf -> German (translated)
+    s, i = topk_sims(B, A, k, PT=AT); feats.append(per_class(s, y_tr[i]))          # tfidf -> English
+    s, i = topk_sims(B, D, k, PT=DT); feats.append(per_class(s, gy[i]))            # tfidf -> German (translated)
     s, i = dense_topk(E_ev, E_tr, k); feats.append(per_class(s, y_tr[i], 0.8))     # e5 -> English
-    s, i = dense_topk(E_ev, g.e5_trans[keep], k); feats.append(per_class(s, gy[i], 0.8))   # e5 -> German translated
-    s, i = dense_topk(E_ev, g.e5_orig[keep], k); feats.append(per_class(s, gy[i], 0.8))    # e5 -> German original
+    s, i = dense_topk(E_ev, e5t, k); feats.append(per_class(s, gy[i], 0.8))        # e5 -> German translated
+    s, i = dense_topk(E_ev, e5o, k); feats.append(per_class(s, gy[i], 0.8))        # e5 -> German original
     return np.concatenate(feats, axis=2)

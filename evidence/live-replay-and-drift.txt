@@ -1,0 +1,56 @@
+replayed 250 held-out tickets in 653 s, accuracy 0.904, 130 corrections sent
+{
+  "window_days": 1,
+  "predictions": 275,
+  "feedback": 131,
+  "status": "warn",
+  "reasons": [
+    "unfamiliar tickets up 6.2 points"
+  ],
+  "signals": {
+    "queue_mix_psi": 0.0576,
+    "unfamiliar_share_change": 0.0617,
+    "mean_confidence_change": 0.0122,
+    "live_accuracy": 0.916
+  },
+  "live": {
+    "queue_mix": {
+      "Billing and Payments": 0.16,
+      "Customer Service": 0.15636363636363637,
+      "General Inquiry": 0.007272727272727273,
+      "Human Resources": 0.02181818181818182,
+      "IT Support": 0.12363636363636364,
+      "Product Support": 0.16363636363636364,
+      "Returns and Exchanges": 0.05454545454545454,
+      "Sales and Pre-Sales": 0.025454545454545455,
+      "Service Outages and Maintenance": 0.04,
+      "Technical Support": 0.24727272727272728
+    },
+    "unfamiliar_share": 0.2182,
+    "mean_confidence": 0.9075,
+    "auto_route_rate": 0.8655,
+    "languages": {
+      "en": 269,
+      "de": 6
+    }
+  },
+  "reference": {
+    "rows": 2850,
+    "queue_mix": {
+      "Billing and Payments": 0.09719298245614034,
+      "Customer Service": 0.15263157894736842,
+      "General Inquiry": 0.015087719298245613,
+      "Human Resources": 0.017894736842105262,
+      "IT Support": 0.11157894736842106,
+      "Product Support": 0.18385964912280703,
+      "Returns and Exchanges": 0.04596491228070176,
+      "Sales and Pre-Sales": 0.028070175438596492,
+      "Service Outages and Maintenance": 0.03754385964912281,
+      "Technical Support": 0.3101754385964912
+    },
+    "unfamiliar_share": 0.15649122807017543,
+    "mean_confidence": 0.8953334608139274,
+    "auto_route_rate": 0.8505263157894737,
+    "threshold": 0.7
+  }
+}

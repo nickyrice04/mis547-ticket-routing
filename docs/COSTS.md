@@ -19,17 +19,27 @@ must be checked against each vendor's pricing page, and cited, before they go in
 
 ### Training bursts
 
+The measured full retrain on the RTX 4000 Ada took 8 minutes, plus about half a minute to
+build the Python environment and a few minutes of droplet boot. Call it 15 minutes billed.
+
 | Scenario | GPU hours per month | GPU cost |
 | --- | --- | --- |
-| Weekly refresh, about 45 minutes each (environment, translation, embedding, validation, fit) | 3 | $2.28 |
-| Monthly refresh | 0.75 | $0.57 |
+| One measured retrain, droplet created and destroyed around it | 0.25 | $0.19 |
+| Weekly refresh | 1 | $0.76 |
+| Monthly refresh | 0.25 | $0.19 |
 | An exploration month like this project's, 40 hours of experiments | 40 | $30.40 |
 | The GPU droplet forgotten and left running | 730 | **$554.80** |
 
 The last row is why the GPU droplet sits behind `training_enabled` in Terraform and
 defaults to off. A GPU droplet bills while it exists, even powered off.
 
-**Forecast for the proof of concept, weekly retraining: about $46 a month.**
+**Forecast for the proof of concept, weekly retraining: about $45 a month.**
+
+## Optional, predictable latency
+
+The shared-CPU inference droplet measured 20% CPU steal and 1 to 4 seconds per English ticket.
+A CPU-Optimized droplet (`c-2`, 2 dedicated vCPU, 4 GB) costs $42 instead of $24, **+$18 a month**,
+and is a one-line Terraform change (`inference_size = "c-2"`).
 
 ## Production with high availability
 

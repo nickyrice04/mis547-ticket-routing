@@ -25,7 +25,8 @@ urlq() { python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv
 
 API_IP=$(out api_ip)
 INF=$(out inference_ip)
-TRAIN=$(terraform output -raw training_ip 2>/dev/null || true)
+# TRAIN_IP overrides the output, for a droplet whose address Terraform has not recorded yet.
+TRAIN="${TRAIN_IP:-$(terraform output -raw training_ip 2>/dev/null || true)}"
 [ "$TRAIN" = "null" ] && TRAIN=""
 REGION=$(out region)
 BUCKET=$(out bucket)

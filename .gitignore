@@ -37,3 +37,6 @@ evidence/*.sarif.tmp
 
 # saved Terraform plans embed secret values
 infra/terraform/tfplan
+
+# rendered cloud-init for a console-created droplet (public keys only, still kept local)
+infra/terraform/*-user-data.yaml

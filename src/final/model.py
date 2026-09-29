@@ -126,7 +126,16 @@ class Router:
             keep, info = guard_mask(self.german, self.G, B, E_ev, TFIDF_GUARD, E5_GUARD)
         else:
             keep, info = np.ones(len(self.german.texts), bool), {"dropped_total": 0}
-        return channels(self.A, self.y, self.E, B, E_ev, self.G, self.german, keep), info
+        AT, GT = self._transposed()
+        return channels(self.A, self.y, self.E, B, E_ev, self.G, self.german, keep, AT=AT, GT=GT), info
+
+    def _transposed(self):
+        """A and G transposed, built once per process. Rebuilding them on every request was the
+        slowest part of serving one ticket. Kept out of the saved artifact."""
+        cache = self.__dict__.get("_cache")
+        if cache is None:
+            cache = self.__dict__["_cache"] = (self.A.T.tocsr(), self.G.T.tocsr())
+        return cache
 
     def predict_proba(self, texts, *, guard: bool = False, embed_fn=e5_embed) -> np.ndarray:
         """[n, 10] queue probabilities for new tickets, rows sum to one."""
@@ -157,7 +166,8 @@ class Router:
     def save(self, path: str | Path) -> Path:
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        joblib.dump({"format": ARTIFACT_FORMAT, **self.__dict__}, path, compress=3)
+        state = {k: v for k, v in self.__dict__.items() if not k.startswith("_")}
+        joblib.dump({"format": ARTIFACT_FORMAT, **state}, path, compress=3)
         return path
 
     @classmethod

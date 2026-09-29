@@ -111,6 +111,33 @@ leads the list.
 - **Stored for comparison.** `training_runs` and each version's `metrics.json` keep every
   run's numbers, so any two versions can be compared later.
 
+## A real run, end to end
+
+The first cloud training run (2026-09-29, evidence/gpu-training-run.log) produced version
+`v20260929-033811` on the RTX 4000 Ada: validation accuracy 89.79%, macro-F1 0.900,
+calibration error 0.020. It cleared the gate (floor 88.93%, one point under the version in
+production), moved `latest.json`, and the live API loaded it within two minutes without a
+restart. `GET /v1/model` now reports the GPU, the host and the git commit it came from.
+
+## Live traffic on the production endpoint
+
+On 2026-09-29, 250 held-out test tickets were replayed through https://146-190-188-160.sslip.io
+with half of them confirmed through `/v1/feedback` (evidence/live-replay-and-drift.txt):
+
+| Measure | Value |
+| --- | --- |
+| Accuracy of the live API on the 250 tickets | 90.4% |
+| Live accuracy on 131 human-reviewed tickets | 91.6% |
+| Queue mix PSI against the reference | 0.058 |
+| Mean confidence change | +0.012 |
+| Unfamiliar share change | +6.2 points |
+| Drift report status | **warn** |
+
+The warning is real and explainable. About 25 of the 275 tickets in the window were
+hand-written demonstration tickets with no relative in the history, which is exactly what the
+unfamiliar-share signal is there to catch. Replayed tickets carry the `replay` key and never
+become training data.
+
 ## What is not covered yet
 
 A central log store (Loki or a managed service) and Grafana dashboards. Prometheus' own UI

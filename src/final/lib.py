@@ -44,15 +44,17 @@ def baseline_vec(**kw):
     return TfidfVectorizer(**args)
 
 
-def topk_sims(Q, P, k=1, block=1000):
+def topk_sims(Q, P, k=1, block=1000, PT=None):
     """Cosine top-k of each row of Q against rows of P (both L2-normalised sparse).
 
     Returns (sims [n, k], indices [n, k]) sorted best first. Works in blocks of rows so the
-    dense similarity block never exceeds block x len(P) floats.
+    dense similarity block never exceeds block x len(P) floats. PT is P transposed, which a
+    server scoring one ticket at a time passes in precomputed instead of rebuilding it for
+    every request. The result is identical either way.
     """
     sims = np.zeros((Q.shape[0], k), dtype=np.float32)
     idx = np.zeros((Q.shape[0], k), dtype=np.int64)
-    PT = P.T.tocsr()
+    PT = P.T.tocsr() if PT is None else PT
     for s in range(0, Q.shape[0], block):
         d = (Q[s:s + block] @ PT).toarray()
         if k == 1:
