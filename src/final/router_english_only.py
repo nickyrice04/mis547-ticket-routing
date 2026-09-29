@@ -57,7 +57,9 @@ META_SEEDS = (0, 1, 2)
 # ----------------------------------------------------------------------------------------------- embeddings
 def _embed(model_name, prefix, texts, max_seq_length=256, batch_size=64):
     """L2-normalised sentence embeddings from a frozen pretrained model, cached on disk by content hash."""
-    h = hashlib.sha1((model_name + "\x00" + "\x00".join(texts)).encode("utf-8")).hexdigest()[:20]
+    # SHA-1 only names the cache file, it is not a security control.
+    h = hashlib.sha1((model_name + "\x00" + "\x00".join(texts)).encode("utf-8"),  # nosemgrep
+                     usedforsecurity=False).hexdigest()[:20]
     path = EMB_CACHE / f"{h}.npy"
     if path.exists():
         return np.load(path)

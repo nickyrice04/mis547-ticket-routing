@@ -1,0 +1,9 @@
+# Prometheus, the metrics pillar of observability (Lecture 15). Scrapes the router's
+# counters and histograms: requests, latency per stage, confidence, familiarity, feedback.
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: ticket-router
+    static_configs:
+      - targets: ["api:8000"]

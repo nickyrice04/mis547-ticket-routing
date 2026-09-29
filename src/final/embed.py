@@ -23,14 +23,17 @@ from common import ROOT, clean
 
 OUT = ROOT / "data" / "x_german"
 MODEL = "intfloat/multilingual-e5-base"
+# Pinned revision, the exact weights the router was fitted with (also baked into the Docker image).
+REVISION = "d128750597153bb5987e10b1c3493a34e5a4502a"
 
 
 def encoder():
-    """Load the e5 encoder on the Apple GPU when available, capped at 256 tokens per ticket."""
+    """Load the e5 encoder on the best available device (NVIDIA GPU, Apple GPU, or CPU), capped at 256 tokens per ticket."""
     import torch
     from sentence_transformers import SentenceTransformer
-    dev = "mps" if torch.backends.mps.is_available() else "cpu"
-    enc = SentenceTransformer(MODEL, device=dev)
+    dev = os.environ.get("EMBED_DEVICE") or (
+        "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu"))
+    enc = SentenceTransformer(MODEL, device=dev, revision=REVISION)
     enc.max_seq_length = 256
     return enc
 

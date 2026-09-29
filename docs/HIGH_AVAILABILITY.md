@@ -1,78 +1,65 @@
-# Answering the high availability question
+# High availability, answering the midterm feedback
 
-Professor Zara asked four questions about the midterm architecture. One
-container on one droplet does not answer any of them, and the final report
-should not pretend otherwise. Here is what is true today and what has to change.
+Professor Zara asked four questions about the midterm architecture. Here is what the
+final system does, and what the production step adds.
 
 ## How does one container on one droplet support high availability?
 
-It does not. A single droplet is a single point of failure. If it reboots, the
-service is down. If the process dies, the service is down until something
-restarts it. The midterm design was honest about being version one, but the
-final report needs the real answer, which has three parts.
+It does not, and the report should say so. One droplet is a single point of failure. What
+the proof of concept does is shrink how long a failure lasts and make sure someone knows:
 
-1. **More than one droplet.** Two droplets in different availability zones,
-   each running the same container image.
-2. **A load balancer in front of them.** A DigitalOcean regional load balancer
-   costs $12 a month, polls a health check on each droplet, and stops sending
-   traffic to one that fails. This is the piece that turns two droplets into one
-   service.
-3. **A health check the load balancer can poll.** Already built. The API serves
-   `GET /health`, which returns the model version and whether the model actually
-   finished loading, not just whether the process is up.
+- Docker restarts the API container if it crashes or exits (`restart: unless-stopped`).
+  Docker alone does not restart a container that is running but unhealthy, so a watchdog in
+  the five-minute timer (`deploy/update.sh`) restarts the API when its health check is
+  failing. The systemd unit brings the whole stack back after a reboot.
+- Readiness is separate from liveness. `/healthz` says the process is alive. `/readyz` says
+  the model is loaded, warmed up and the audit database answers. A container whose model
+  failed to load is alive but not ready.
+- The API degrades rather than failing. If the database is down it still answers, but sends
+  every ticket to a person, because no automated decision may be made without an audit record.
+- If a new model fails to load, the service keeps serving the one it has.
 
-## How will we know if the container has crashed?
+**The production step** is a second inference droplet and a DigitalOcean load balancer
+($12 a month) that polls `/readyz` and stops routing to a node that fails. Both droplets are
+stateless (the model lives in Spaces, the decisions in PostgreSQL), so either can serve any
+request. In Terraform that is a `count` on the droplet and one load balancer resource. With a
+managed PostgreSQL standby node the database fails over on its own too.
 
-Three layers, and we have the first two running now.
+## How will you know if your container has crashed?
 
-- **The container restarts itself.** It runs with `--restart unless-stopped`, so
-  Docker restarts it after a crash or a droplet reboot.
-- **The container reports its own health.** The `HEALTHCHECK` line in the
-  Dockerfile polls `/health` every 30 seconds. `docker ps` then shows the
-  container as healthy or unhealthy rather than just running.
-- **Something off the droplet has to watch too.** A crashed droplet cannot tell
-  us it crashed. DigitalOcean monitoring can alert on CPU, memory and a droplet
-  going unreachable, and the load balancer's health check is what actually pulls
-  a bad droplet out of rotation.
+Three layers, all running:
 
-The distinction that matters here is that a process can be running and still be
-useless. A container whose model failed to load still answers on port 8000, so
-the health check reports the model version and load state instead of a bare
-"ok".
+1. **Inside the container.** Docker polls `/healthz` every 30 seconds and marks the container
+   unhealthy after three failures. The watchdog restarts an unhealthy container within five
+   minutes, and Docker restarts one that crashed immediately.
+2. **On the droplet.** DigitalOcean's agent alerts on CPU above 85%, memory above 90% and
+   disk above 85%, by email.
+3. **Outside the droplet.** DigitalOcean uptime checks call `https://<host>/healthz` from two
+   regions and email when it is down for two minutes, slower than two seconds, or when the
+   TLS certificate is within 14 days of expiry. A dead droplet cannot report itself, so this
+   is the check that matters most.
 
-## What if the droplet is not responding?
+## What will you do if the droplet is not responding?
 
-With one droplet, someone has to notice and rebuild it. That is the current
-state and it is not acceptable for a service with a 15 day regulatory clock.
-With a load balancer and two droplets, the failure is automatic: the health
-check fails, the load balancer stops routing there, and the other droplet takes
-the traffic. Rebuilding the dead one is then routine rather than urgent.
+With the proof of concept, rebuild it: `terraform apply -replace=digitalocean_droplet.inference`
+creates a fresh droplet from the same cloud-init, and the reserved IP is reassigned to it,
+so the URL and the HTTPS hostname do not change. `infra/scripts/bootstrap.sh` puts the
+secrets back. The model comes from Spaces and the history is in PostgreSQL, so nothing is lost.
+That takes about ten minutes.
 
-Because the droplet holds no state, rebuilding it is quick. The model lives in
-Spaces and the predictions live in the managed database, so a replacement
-droplet pulls the image, downloads the model, and joins the pool.
+With the production step, nothing needs doing in the moment. The load balancer drops the dead
+node and the other droplet takes the traffic.
 
-## How will we handle updates?
+## How will you handle updates to the system and application?
 
-Right now a deploy is a pull and a restart, which means a few seconds of
-downtime. With two droplets behind a load balancer it becomes a rolling update:
-take one out of rotation, update it, put it back, then do the other. No downtime
-and an easy rollback, because the previous image is still in the registry.
+Code, configuration and model versions move separately:
 
-The model and the code version separately. The image tag covers the code, and
-`MODEL_VERSION` covers the weights, which is what the audit log records with
-every prediction. That way a bad model can be rolled back without redeploying
-the code.
-
-## What this costs
-
-| Setup | Monthly |
-| --- | --- |
-| Today: one 4 GB droplet | $24 |
-| Two 4 GB droplets plus a load balancer | $60 |
-| Managed PostgreSQL, smallest plan | $15 |
-| Spaces for models and data | $5 |
-
-High availability roughly doubles the compute bill. That is the honest tradeoff
-to put in the report, next to the cost of missing a regulatory deadline because
-one droplet was down.
+- **Code.** A push to `main` runs CI, which tests, scans and publishes a new image. The droplet
+  checks the registry every five minutes, starts the new image, waits for it to report
+  healthy, and puts the previous image back if it does not within five minutes. With two
+  droplets, the load balancer turns this into a rolling update with no downtime.
+- **Configuration.** Compose, Caddy and update-script changes arrive with the same `git pull`.
+- **Model.** The training job publishes a new version only if it passes the quality gate. The
+  API notices the new `latest.json`, verifies the file's hash, and swaps the model in memory
+  without a restart. Rolling back is pointing `latest.json` at the previous version.
+- **Infrastructure.** Terraform plan, review, apply. Every change is in git.

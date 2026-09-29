@@ -4,13 +4,11 @@ One container, one model, one route. The model and its vectorizer or tokenizer
 load once at startup, exactly as the report describes, and every request is
 logged with the model version so a prediction can be audited later.
 
-    MODEL_KIND=sklearn MODEL_PATH=models/1_tfidf_logreg.joblib uvicorn serve:app
-    MODEL_KIND=hf MODEL_PATH=models/2_distilbert uvicorn serve:app
+    MODEL_KIND=sklearn MODEL_PATH=models/1_tfidf_logreg.joblib uvicorn baseline_api:app
+    MODEL_KIND=hf MODEL_PATH=models/2_distilbert uvicorn baseline_api:app
 
-This service serves the baseline tiers (a scikit-learn joblib or a Hugging Face
-classifier). Serving the final router (src/final/router.py) needs the export step
-described in the README: fit once, save the vectorizer, the pools, the embeddings
-and the stacker as one artifact, and load that here in place of the joblib.
+This is the midterm-era service for the baseline tiers (a scikit-learn joblib or a
+Hugging Face classifier). The final router is served by src/serve/app.py.
 """
 from __future__ import annotations
 

@@ -1,0 +1,5 @@
+# The training job's environment on the GPU droplet. Same pins as the API, plus the pieces
+# only training needs. torch comes from PyPI, whose Linux wheels include CUDA.
+-r requirements-api.txt
+torch==2.14.0
+pyarrow==25.0.1

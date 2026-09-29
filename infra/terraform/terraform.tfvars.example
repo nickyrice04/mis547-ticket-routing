@@ -1,0 +1,14 @@
+# Copy to terraform.tfvars (which git ignores) and fill in. Public keys only.
+team_ssh_keys = {
+  nicky     = "ssh-ed25519 AAAA...nicky's public key"
+  anshul    = "ssh-ed25519 AAAA...anshul's public key"
+  alejandro = "ssh-ed25519 AAAA...alejandro's public key"
+}
+
+# Your current address is `curl -4 ifconfig.me`, add /32. SSH from anywhere else is dropped.
+ssh_allowed_cidrs = ["203.0.113.10/32"]
+
+alert_email = "netid@arizona.edu"
+
+# The GPU droplet costs $0.76 an hour while it exists, powered on or off.
+training_enabled = false

@@ -1,0 +1,44 @@
+flowchart TB
+    client["Client or support portal<br/>POST /v1/route, POST /v1/feedback<br/>X-API-Key over HTTPS"]
+    agent(["Support agent<br/>gets tickets below 0.7 confidence,<br/>sends corrections"])
+
+    subgraph DO["DigitalOcean, region tor1, project MIS547"]
+        direction TB
+        rip["Reserved IP, HTTPS 443<br/>cloud firewall: 80 and 443 in, SSH from team IPs only"]
+        subgraph VPC["VPC 10.140.0.0/24, private network"]
+            direction LR
+            subgraph INF["Inference droplet, 2 vCPU, 4 GB, always on"]
+                direction TB
+                caddy["Caddy<br/>TLS certificate, security headers,<br/>64 KB limit, /metrics blocked"]
+                api["Router API container<br/>auth, rate limit, validation,<br/>translate, retrieve, stack, threshold"]
+                prom["Prometheus<br/>metrics, 30 days"]
+                caddy --> api
+                prom -. scrape .-> api
+            end
+            db[("Managed PostgreSQL 16<br/>audit log, feedback, training runs<br/>trusted sources: our two droplets")]
+            subgraph TRAIN["GPU droplet, RTX 4000 Ada, exists only while training"]
+                job["Training job<br/>translate, embed, validate,<br/>quality gate, fit, publish"]
+            end
+        end
+        spaces[("Spaces bucket, private, versioned<br/>dataset, model versions,<br/>latest.json with SHA-256")]
+        mon["DigitalOcean monitoring<br/>uptime checks from 2 regions,<br/>CPU, memory, disk alerts"]
+    end
+
+    subgraph GH["GitHub"]
+        direction LR
+        ci["Actions CI<br/>tests, Semgrep, Gitleaks,<br/>pip-audit, Trivy, SBOM"]
+        ghcr[("Container Registry")]
+        drift["Daily drift check<br/>opens an issue on drift"]
+        ci --> ghcr
+    end
+
+    client --> rip --> caddy
+    api -- "decision, TLS, least-privilege user" --> db
+    api -- "model, read-only key" --> spaces
+    job -- "corrections in, run record out" --> db
+    job -- "new version, read-write key" --> spaces
+    ghcr -. "image pulled every 5 min" .-> api
+    mon -. checks .-> rip
+    drift -. "GET /v1/drift" .-> rip
+    api -. "not auto-routed" .-> agent
+    agent -. "POST /v1/feedback" .-> rip

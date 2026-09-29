@@ -20,3 +20,17 @@ data/synthetic/seeds/
 !data/synthetic/qwen_think_allocation.json
 !data/synthetic/error_report.json
 !data/synthetic/val_predictions.json
+
+# Terraform: state holds database passwords and Spaces secrets, never commit it (Lecture 12)
+infra/terraform/.terraform/
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.*
+infra/terraform/terraform.tfvars
+infra/terraform/*.tfplan
+infra/terraform/crash.log
+
+# secrets and local runtime files
+*.env
+!deploy/*.env.example
+artifacts/
+evidence/*.sarif.tmp

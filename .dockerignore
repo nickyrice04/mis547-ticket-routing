@@ -1,0 +1,6 @@
+# Only src/ and docker/requirements-api.txt go into the image.
+*
+!src/
+!docker/requirements-api.txt
+src/**/__pycache__
+src/experiments/

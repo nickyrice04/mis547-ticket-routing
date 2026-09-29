@@ -1,0 +1,22 @@
+# Runtime of the inference container. Pinned to the exact versions the model artifact was
+# fitted with, because a scikit-learn model pickled under one version is not guaranteed to
+# load under another. torch is installed separately, CPU-only, from PyTorch's own index.
+numpy==2.5.3
+scipy==1.18.1
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+sentence-transformers==6.1.0
+transformers==5.17.0
+tokenizers==0.23.2
+huggingface-hub==1.32.0
+safetensors==0.8.0
+sentencepiece==0.2.2
+sacremoses==0.2.0
+fastapi==0.141.1
+uvicorn[standard]==0.54.0
+pydantic==2.13.5
+prometheus-client==0.26.0
+sqlalchemy==2.1.1
+psycopg[binary]==3.3.6
+boto3==1.43.104

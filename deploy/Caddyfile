@@ -1,0 +1,30 @@
+# Public entry point of the router. Caddy gets and renews the TLS certificate by itself.
+{
+	email {$ACME_EMAIL}
+}
+
+{$SITE_ADDRESS} {
+	# Prometheus scrapes /metrics inside the Compose network. From the internet it does not exist.
+	@metrics path /metrics
+	respond @metrics 404
+
+	request_body {
+		max_size 64KB
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		-Server
+	}
+
+	encode gzip
+	reverse_proxy api:8000
+
+	log {
+		output stdout
+		format json
+	}
+}

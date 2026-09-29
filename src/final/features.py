@@ -50,6 +50,7 @@ class German:
 
 
 _ENC = None   # the e5 encoder, loaded on first use and kept for the process
+_ENC_LOCK = __import__("threading").Lock()   # two threads must never load it at once
 
 
 def e5_embed(texts):
@@ -61,12 +62,16 @@ def e5_embed(texts):
     import hashlib
     global _ENC
     use_cache = os.environ.get("X_GERMAN_E5_CACHE") == "1"
-    path = DIAG / "e5_cache" / (hashlib.sha1(("\n".join(texts)).encode()).hexdigest()[:16] + ".npy")
+    # SHA-1 here only names a cache file, it protects nothing, so it is marked as not for security.
+    key = hashlib.sha1(("\n".join(texts)).encode(), usedforsecurity=False).hexdigest()[:16]  # nosemgrep
+    path = DIAG / "e5_cache" / (key + ".npy")
     if use_cache and path.exists():
         return np.load(path)
     from final.embed import embed, encoder
     if _ENC is None:
-        _ENC = encoder()
+        with _ENC_LOCK:
+            if _ENC is None:
+                _ENC = encoder()
     E = embed(_ENC, list(texts))
     if use_cache:
         path.parent.mkdir(parents=True, exist_ok=True)

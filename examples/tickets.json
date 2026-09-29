@@ -1,0 +1,25 @@
+[
+  {
+    "why": "English billing complaint. The router is confident and routes it on its own.",
+    "request": {"subject": "Charged twice for my subscription",
+                "body": "I was billed twice this month for the same plan and need the duplicate charge refunded to my card."}
+  },
+  {
+    "why": "The same complaint written in German. It is translated inside the service, then routed.",
+    "request": {"subject": "Rückerstattung für doppelte Abbuchung",
+                "body": "Sehr geehrtes Support-Team, mir wurde mein Abonnement diesen Monat zweimal berechnet. Bitte erstatten Sie den doppelten Betrag auf meine Kreditkarte."}
+  },
+  {
+    "why": "An outage report from a business customer.",
+    "request": {"subject": "Service outage affecting our online banking portal",
+                "body": "Since this morning our customers cannot log in to the online banking portal and the status page shows no incident. Please investigate the outage urgently."}
+  },
+  {
+    "why": "A vague ticket with no close relative in the history. Low confidence, so it goes to a person (auto_routed false).",
+    "request": {"subject": "Question", "body": "Hi, I have a question about something on my account, can someone call me back?"}
+  },
+  {
+    "why": "An invalid request, to show the error message. Neither subject nor body has text.",
+    "request": {"subject": "", "body": "   "}
+  }
+]

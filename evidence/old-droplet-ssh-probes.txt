@@ -1,0 +1,18 @@
+SSH probing observed on the midterm droplet (mis547-project-team3, 174.138.91.2) before it was retired
+Collected 2026-09-28 from /var/log/auth.log*, the last few days of logs kept on the droplet.
+
+The midterm firewall allowed SSH (port 22) from anywhere, with key-only login.
+
+Rejected authentication events        16,547
+Distinct source IP addresses             399
+Attempts with invalid usernames        4,804
+Most tried usernames                   admin (748), ubuntu (340), user (237), debian (217),
+                                       test (138), ec2-user (88), deploy (87), centos (85)
+
+Successful logins                      34 from the team's key (ED25519, SHA256:Yid2jCYR...)
+                                       1 DigitalOcean web console session (droplet agent)
+                                       0 from anyone else
+
+Takeaway for the threat model: an internet-facing SSH port is scanned within hours of a
+droplet existing. Key-only login held, but the final architecture also limits SSH to known
+source addresses at the cloud firewall (Lecture 17, "limit the source IP/CIDR to known sources").

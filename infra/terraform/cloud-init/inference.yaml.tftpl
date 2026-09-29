@@ -1,0 +1,96 @@
+#cloud-config
+# Provisioning for the inference droplet, rendered by Terraform (infra/terraform/main.tf).
+#
+# One login per teammate (no shared keys, no root), SSH hardened, Docker installed, the
+# repository cloned, and two systemd units: one runs the service under Docker Compose,
+# the other checks every five minutes for a newer image that CI published and rolls to it.
+# No secrets here. infra/scripts/bootstrap.sh writes /etc/ticket-routing/*.env over SSH.
+
+groups:
+  - docker
+
+users:
+%{ for name, key in team ~}
+  - name: ${name}
+    groups: [sudo, docker]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ${key}
+%{ endfor ~}
+
+package_update: true
+package_upgrade: true
+packages:
+  - git
+  - ca-certificates
+  - curl
+  - jq
+  - unattended-upgrades
+
+write_files:
+  - path: /etc/ssh/sshd_config.d/99-team3.conf
+    content: |
+      # Key-only logins for named users, never root, few attempts per connection.
+      PermitRootLogin no
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      MaxAuthTries 3
+      AllowGroups sudo
+  - path: /etc/docker/daemon.json
+    content: |
+      {"log-driver": "json-file", "log-opts": {"max-size": "10m", "max-file": "5"}, "live-restore": true}
+  - path: /etc/sysctl.d/99-swap.conf
+    content: |
+      vm.swappiness=10
+  - path: /etc/systemd/system/ticket-router.service
+    content: |
+      [Unit]
+      Description=Ticket router (API, Caddy, Prometheus) under Docker Compose
+      Requires=docker.service
+      After=docker.service network-online.target
+      ConditionPathExists=/etc/ticket-routing/api.env
+      [Service]
+      Type=oneshot
+      RemainAfterExit=yes
+      WorkingDirectory=/srv/ticket-routing/deploy
+      EnvironmentFile=/etc/ticket-routing/compose.env
+      ExecStart=/usr/bin/docker compose up -d --remove-orphans
+      ExecStop=/usr/bin/docker compose down
+      [Install]
+      WantedBy=multi-user.target
+  - path: /etc/systemd/system/ticket-router-update.service
+    content: |
+      [Unit]
+      Description=Roll the API to a newer image if CI published one
+      ConditionPathExists=/etc/ticket-routing/api.env
+      [Service]
+      Type=oneshot
+      ExecStart=/srv/ticket-routing/deploy/update.sh
+  - path: /etc/systemd/system/ticket-router-update.timer
+    content: |
+      [Unit]
+      Description=Check for a new API image every five minutes
+      [Timer]
+      OnBootSec=3min
+      OnUnitActiveSec=5min
+      [Install]
+      WantedBy=timers.target
+
+runcmd:
+  - install -m 0755 -d /etc/apt/keyrings
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  - chmod a+r /etc/apt/keyrings/docker.asc
+  - echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu noble stable" > /etc/apt/sources.list.d/docker.list
+  - apt-get update
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  - systemctl enable --now docker
+  - fallocate -l 2G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile && echo '/swapfile none swap sw 0 0' >> /etc/fstab
+  - install -d -m 0700 /etc/ticket-routing
+  - git clone ${repo_url} /srv/ticket-routing || true
+  - chgrp -R sudo /srv/ticket-routing && chmod -R g+w /srv/ticket-routing
+  - systemctl daemon-reload
+  - systemctl enable ticket-router.service ticket-router-update.timer
+  - systemctl restart ssh
+  - touch /var/lib/cloud/instance/team3-ready

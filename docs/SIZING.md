@@ -1,5 +1,7 @@
 # How much machine does each model need
 
+> Written before the final design. The sizing of the deployed system is in ARCHITECTURE.md. The section below on why the project does not use Kubernetes still stands.
+
 ## Kubernetes is not VRAM
 
 These are unrelated things and it is worth separating them before we size

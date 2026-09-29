@@ -1,0 +1,40 @@
+#cloud-config
+# Provisioning for the GPU training droplet, rendered by Terraform (infra/terraform/main.tf).
+#
+# The image already has the NVIDIA driver and CUDA. This adds one login per teammate,
+# hardens SSH, installs uv for the Python environment, and clones the repository. The
+# training job itself is deploy/train.sh, started over SSH. No secrets here, the job's
+# credentials arrive in /etc/ticket-routing/trainer.env from infra/scripts/bootstrap.sh.
+
+users:
+%{ for name, key in team ~}
+  - name: ${name}
+    groups: [sudo]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ${key}
+%{ endfor ~}
+
+packages:
+  - git
+  - jq
+  - tmux
+
+write_files:
+  - path: /etc/ssh/sshd_config.d/99-team3.conf
+    content: |
+      PermitRootLogin no
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      MaxAuthTries 3
+      AllowGroups sudo
+
+runcmd:
+  - curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
+  - install -d -m 0700 /etc/ticket-routing
+  - git clone ${repo_url} /srv/ticket-routing || true
+  - chgrp -R sudo /srv/ticket-routing && chmod -R g+w /srv/ticket-routing
+  - systemctl restart ssh
+  - touch /var/lib/cloud/instance/team3-ready

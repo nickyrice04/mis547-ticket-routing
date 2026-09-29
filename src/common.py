@@ -33,6 +33,10 @@ def clean(subject: str | None, body: str | None) -> str:
     text = f"{subject or ''} . {body or ''}".lower()
     text = _URL.sub(" ", text)
     text = _EMAIL.sub(" ", text)
+    # Known quirk, kept on purpose: the text is lowercased above, and this pattern only
+    # matches uppercase ids, so ticket ids are NOT actually removed. It affects 39 of the
+    # 18,997 training tickets. Fixing it would change every model's input and invalidate
+    # the recorded results, so it stays as trained. tests/test_common.py pins it.
     text = _TICKET_ID.sub(" ", text)
     text = _WS.sub(" ", text).strip()
     return text[:MAX_CHARS]

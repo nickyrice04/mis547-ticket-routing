@@ -1,139 +1,125 @@
-# Team droplet: what exists and how to use it
+# Infrastructure runbook
 
-## What is running right now
+Everything in DigitalOcean is defined in [terraform/](terraform). Nothing is created by
+clicking in the console, so the account always matches this code (Lecture 12). The design
+is explained in [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md).
 
-| Thing | Value |
-| --- | --- |
-| Droplet name | `mis547-project-team3` |
-| Droplet ID | `602239964` |
-| Public IP | `174.138.91.2` |
-| Size | `s-2vcpu-4gb` (2 vCPU, 4 GB RAM, 80 GB disk) |
-| Cost | $24/month, which is $0.036 per hour |
-| Region | `nyc3` (same region the labs use) |
-| Image | `ubuntu-24-04-x64` |
-| Tags | `project`, `team3`, `nicholasrice` |
-| Firewall | `mis547-project-team3-fw`, inbound SSH only |
+| Resource | Name | Notes |
+| --- | --- | --- |
+| VPC | `team3-ticket-routing-vpc` | tor1, 10.140.0.0/24 |
+| Inference droplet | `team3-ticket-routing-inference` | 2 vCPU, 4 GB, always on, behind a reserved IP |
+| GPU training droplet | `team3-ticket-routing-training-gpu` | RTX 4000 Ada, exists only while `training_enabled = true` |
+| Managed PostgreSQL | `team3-ticket-routing-db` | database `routing`, users `router_api` and `router_trainer` |
+| Spaces bucket | `team3-ticket-routing-mis547` | private, versioned |
+| Firewalls | `team3-ticket-routing-inference-fw`, `-training-fw` | SSH only from `ssh_allowed_cidrs` |
+| Alerts | CPU, memory, disk, uptime (down, latency, certificate) | email to `alert_email` |
 
-It also has a 4 GB swap file. Swap does not make the droplet fast, but it turns
-"the model did not fit and the process was killed" into "the model loaded and
-ran slowly," which is a useful difference when we are measuring where the
-memory ceiling actually is.
+All of it is tagged `team3` and filed under the **MIS547** project.
 
-## Why this size
-
-The labs only ever use `s-1vcpu-1gb` at $6/month. That is enough for Jupyter and
-for the TF-IDF baseline, but a DistilBERT process needs roughly 1.5 GB resident
-before it answers anything, so a 1 GB droplet cannot host it. 4 GB is the
-smallest size that holds the models we are actually comparing.
-
-This is the department's donated account, so keep an eye on it. Destroy the
-droplet when we are done, because **a powered-off droplet still bills**. Only
-destroying it stops the charge.
+## One-time setup on a laptop
 
 ```bash
-# take a snapshot first if we want to rebuild it later
-doctl compute droplet-action snapshot 602239964 --snapshot-name team3-final --wait
-doctl compute droplet delete 602239964
+brew install doctl terraform jq
+doctl auth init --context mis547            # paste the class API token when asked
 ```
 
-## Adding Anshul and Alejandro
+Terraform also needs a Spaces key to manage the bucket. It lives outside the repository in
+`~/.config/team3/spaces-terraform.env` (two lines, `SPACES_ACCESS_KEY_ID=` and
+`SPACES_SECRET_ACCESS_KEY=`, file mode 600). Ask Nicky for it, or create your own with
+`doctl spaces keys create`.
 
-Each of them runs this once on their own machine. The private key never leaves
-their laptop.
+Copy `terraform/terraform.tfvars.example` to `terraform/terraform.tfvars` (git ignores it)
+and fill in the team's public keys, your address for SSH, and the alert email.
+
+## Deploying
 
 ```bash
-ssh-keygen -t ed25519 -C "netid@arizona.edu" -f ~/.ssh/digitalocean_key
-cat ~/.ssh/digitalocean_key.pub
+cd infra/terraform
+source ../scripts/tf-env.sh          # exports the DigitalOcean token and the Spaces key
+terraform init
+terraform plan -out tfplan           # read it
+terraform apply tfplan
+cd ../..
+infra/scripts/bootstrap.sh           # secrets onto the droplets, database schema, dataset upload, start the API
 ```
 
-They send the output of that second command. A public key is safe to paste into
-Slack or email. Then Nicky runs this once per person, replacing the name and the
-key text:
+`bootstrap.sh` generates the API keys once and keeps them in `~/.config/team3/api-keys.env`
+on the laptop that ran it. `GRADER_KEY` is the one for the instructor. Keys never go in git.
+
+Then train and publish the first model version on the GPU droplet:
 
 ```bash
-ssh -i ~/.ssh/digitalocean_key root@174.138.91.2 \
-  "useradd -m -s /bin/bash -G sudo,docker anshul && \
-   mkdir -p /home/anshul/.ssh && \
-   echo 'ssh-ed25519 AAAA...their key... netid@arizona.edu' > /home/anshul/.ssh/authorized_keys && \
-   chown -R anshul:anshul /home/anshul/.ssh && chmod 700 /home/anshul/.ssh && \
-   chmod 600 /home/anshul/.ssh/authorized_keys && \
-   echo 'anshul ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/anshul"
+ssh nicky@$(terraform -chdir=infra/terraform output -raw training_ip) 'sudo /srv/ticket-routing/deploy/train.sh'
 ```
 
-After that they connect with their own account and their own key:
+The API picks the new version up within two minutes (it polls Spaces). Check it:
 
 ```bash
-ssh -i ~/.ssh/digitalocean_key anshul@174.138.91.2
+curl -s $(terraform -chdir=infra/terraform output -raw api_url)/readyz
 ```
 
-Separate accounts are better than sharing one key. We can see who did what, and
-if someone's laptop is lost we remove one account instead of rotating a key that
-all three of us use. The shared work goes in `/srv/ticket-routing`, which is
-group writable, so all three accounts can edit the same checkout.
-
-## Getting the code and models onto the droplet
-
-From the laptop, push the project up without the virtual environment or the raw
-dataset:
+Turn the uptime checks on once the endpoint answers with a certificate:
 
 ```bash
-rsync -avz --exclude .venv --exclude data_tickets.parquet --exclude '__pycache__' \
-  -e "ssh -i ~/.ssh/digitalocean_key" \
-  "/Users/nickyrice/Documents/Cloud Computing/ticket-routing/" \
-  root@174.138.91.2:/srv/ticket-routing/
+terraform -chdir=infra/terraform apply -var uptime_enabled=true
 ```
 
-## Running the API on the droplet
+## The GPU switch
+
+The GPU droplet costs $0.76 an hour while it exists, powered on or off. Turn it off as soon
+as a run finishes and back on for the next one:
 
 ```bash
-ssh -i ~/.ssh/digitalocean_key root@174.138.91.2
-cd /srv/ticket-routing
-docker build --build-arg MODEL_DIR=models/1_tfidf_logreg.joblib -t ticket-api:tfidf .
-docker run -d --name ticket-api -p 127.0.0.1:8000:8000 --restart unless-stopped ticket-api:tfidf
+terraform -chdir=infra/terraform apply -var training_enabled=false    # destroy it
+terraform -chdir=infra/terraform apply -var training_enabled=true     # recreate it, then re-run bootstrap.sh for trainer.env
 ```
 
-Note the `127.0.0.1:` in the port mapping. The API listens only on the droplet's
-own loopback address, so nothing is exposed to the internet. That is why the
-firewall only needs port 22 open.
+## Access for teammates
 
-## Reaching the API from a laptop
-
-Same SSH tunnel idea as the Jupyter server in Lab 1:
+Each teammate has their own login on both droplets (`nicky`, `anshul`, `alejandro`), with
+their own key. Root login and passwords are disabled. SSH is dropped at the cloud firewall
+unless it comes from an address in `ssh_allowed_cidrs`, so a teammate first sends their
+address (`curl -4 ifconfig.me`), it is added as `x.x.x.x/32` in `terraform.tfvars`, and
+someone runs `terraform apply`. Then:
 
 ```bash
-ssh -i ~/.ssh/digitalocean_key -L 8000:localhost:8000 root@174.138.91.2
+ssh -i ~/.ssh/digitalocean_key anshul@<inference-ip>
 ```
 
-Leave that terminal open, then from a second terminal on the laptop:
+The service lives in `/srv/ticket-routing` (a git checkout), its secrets in
+`/etc/ticket-routing/*.env` (root only).
+
+## Operating the service
 
 ```bash
-curl -s localhost:8000/health
-curl -s -X POST localhost:8000/predict \
-  -H 'content-type: application/json' \
-  -d '{"subject":"double charge","body":"I was billed twice for my subscription this month and need the second charge refunded."}'
+sudo systemctl status ticket-router                 # the Compose stack
+cd /srv/ticket-routing/deploy && sudo docker compose ps
+sudo docker compose logs -f api                     # JSON logs, one line per decision
+sudo systemctl list-timers ticket-router-update     # the five-minute updater and watchdog
+sudo journalctl -u ticket-router-update             # what the updater did
 ```
 
-## Resizing when we test the bigger model
+Prometheus from a laptop: `ssh -L 9090:localhost:9090 nicky@<inference-ip>`, then
+http://localhost:9090.
 
-A CPU and RAM resize is reversible as long as we do not grow the disk. Growing
-the disk is permanent, so never pass `--resize-disk`.
+**Roll back the code.** Pin an older image in `/etc/ticket-routing/compose.env`
+(`API_IMAGE=ghcr.io/nickyrice04/mis547-ticket-routing:<commit>`) and
+`sudo systemctl restart ticket-router`.
+
+**Roll back the model.** Point `models/latest.json` in Spaces at the previous version and
+hash. The API follows within two minutes.
+
+**Revoke an API key.** Remove it from `API_KEYS` in `/etc/ticket-routing/api.env` and
+`sudo docker compose up -d api`.
+
+**Rebuild a dead droplet.** `terraform apply -replace=digitalocean_droplet.inference`, then
+`infra/scripts/bootstrap.sh`. The reserved IP moves to the new droplet, so the URL stays the same.
+
+## Tearing it down after grading
 
 ```bash
-doctl compute droplet-action power-off 602239964 --wait
-doctl compute droplet-action resize 602239964 --size s-4vcpu-8gb --wait   # $48/month
-doctl compute droplet-action power-on 602239964 --wait
-# and back down afterwards
-doctl compute droplet-action resize 602239964 --size s-2vcpu-4gb --wait
+terraform -chdir=infra/terraform destroy
 ```
 
-## Still to decide with Professor Zara
-
-The labs never authorize anything above the $6/month droplet, and they never
-mention GPU droplets. Before we spend more on the department's account we should
-ask her about two things.
-
-1. Whether a $24/month droplet for the rest of the term is acceptable, and
-   whether we may resize to $48/month for a few hours of benchmarking.
-2. Whether a GPU droplet is available to the class if we want to fine-tune the
-   language model in the cloud instead of on a laptop. The cheapest one is an
-   RTX 4000 Ada at $0.76/hour, and we would need it for under an hour.
+The bucket has versioning on, so Terraform refuses to delete it while it holds objects.
+Empty it in the console first, or keep it as the archive of every model version.

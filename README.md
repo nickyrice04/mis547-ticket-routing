@@ -1,13 +1,55 @@
 # Support ticket routing
 
 Team 3, MIS 547. A model that reads a customer support ticket and routes it to
-one of ten queues, built to run on rented cloud compute inside a private
-network so no ticket ever leaves the company.
+one of ten queues, served as a live HTTPS endpoint on DigitalOcean. Tickets
+arrive in English and German, and nothing leaves the company's private network.
+
+| | |
+| --- | --- |
+| Endpoint | `https://<reserved-ip-with-dashes>.sslip.io` (the exact URL and the grader's API key are in the report) |
+| Try it | [examples/tickets.json](examples/tickets.json) and `scripts/try_endpoint.sh` |
+| Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), diagram in [docs/architecture.png](docs/architecture.png) |
+| Security | [docs/SECURITY.md](docs/SECURITY.md), STRIDE threat model and scan evidence |
+| Observability | [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md), audit log, metrics, drift detection |
+| Costs | [docs/COSTS.md](docs/COSTS.md), monthly budget and comparison with managed platforms |
+| High availability | [docs/HIGH_AVAILABILITY.md](docs/HIGH_AVAILABILITY.md), answers to the midterm feedback |
+| How the model was found | [docs/MODEL_STORY.md](docs/MODEL_STORY.md) |
+| Infrastructure runbook | [infra/README.md](infra/README.md) |
 
 The repository is laid out in the order the project happened. `src/final/` is
 the model that ships. `src/baselines/` is where it started. `src/experiments/`
 is everything tried in between, kept because the negative results are half
-the story.
+the story. `src/serve/`, `src/mlops/`, `deploy/`, `infra/` and `.github/` are
+how it runs in the cloud.
+
+## Calling the endpoint
+
+```bash
+curl -s -X POST "$ROUTER_URL/v1/route" \
+  -H "Content-Type: application/json" -H "X-API-Key: $ROUTER_API_KEY" \
+  -d '{"subject": "Charged twice for my subscription", "body": "I was billed twice this month for the same plan and need the duplicate charge refunded to my card."}'
+```
+
+```json
+{"ticket_id": "4a2b6cc8-...", "queue": "Billing and Payments", "confidence": 0.9596, "auto_routed": true,
+ "threshold": 0.7, "top_queues": [{"queue": "Billing and Payments", "probability": 0.9596}, ...],
+ "familiarity": 0.305, "language": "en", "translated": false, "model_version": "v20260929-014804",
+ "audit_logged": true, "latency_ms": 33.8, "request_id": "..."}
+```
+
+German works the same way, `{"subject": "Rückerstattung für doppelte Abbuchung", "body": "..."}`
+is translated inside the service and routed to Billing and Payments. Errors come back as JSON
+with a code and a message, for example a missing key (401), an empty ticket (422) or too many
+requests (429). Interactive documentation is at `/docs`.
+
+| Endpoint | Purpose |
+| --- | --- |
+| `POST /v1/route` | route a ticket, returns the queue, confidence, top three and a ticket id |
+| `POST /v1/feedback` | a person confirms or corrects a routing decision, `{"ticket_id", "correct_queue"}` |
+| `GET /v1/queues` | the ten queue names |
+| `GET /v1/model` | the served model version, how it was trained, its validation metrics |
+| `GET /v1/drift` | drift report over recent traffic |
+| `GET /healthz`, `GET /readyz` | liveness and readiness |
 
 ## Results
 
@@ -140,21 +182,51 @@ two final routers. The `x_verify_*` scripts are the independent re-runs.
 ```
 src/common.py                       cleaning, the deduplicated split, the threshold table
 src/final/                          the model that ships
-    router.py                         fit_predict_proba, German pool, 91.8%
+    model.py                          Router, the fit, save, load, predict object the API serves
+    router.py                         fit_predict_proba, German pool, the evaluated code path, 91.8%
     router_english_only.py            same idea, English only, 83.1%
     features.py  stacker.py  lib.py   retrieval channels and the gradient-boosted stacker
     embed.py  translate.py            the sentence embedder and the German translator
     test_once.py                      the one-shot test run
+src/serve/app.py                    the inference API (FastAPI)
+src/mlops/                          training pipeline, Spaces storage, PostgreSQL audit log, drift
 src/baselines/                      TF-IDF models, the width sweep, latency and memory benchmarks
 src/experiments/                    everything else, in story order
-src/serve/serve.py                  the FastAPI service (/health, /predict)
+tests/                              API contract, drift rules, preprocessing, and the model parity check
+Dockerfile                          the inference image
+deploy/                             Compose stack (API, Caddy, Prometheus), updater, training job
+infra/terraform/                    every DigitalOcean resource as code
+infra/scripts/                      credentials helper and post-apply bootstrap
+.github/workflows/                  CI (tests, Semgrep, Gitleaks, pip-audit, Terraform, Trivy, SBOM) and the daily drift check
+docs/                               architecture, security, observability, costs, high availability, model story
+evidence/                           scanner reports, SBOM, drift demonstration, SSH probe log
+examples/  scripts/                 sample tickets, endpoint and traffic replay scripts
 configs/                            LoRA configs for the fine-tuning runs
-scripts/                            shell runners for the long training ladders
-infra/                              droplet, firewall, cloud-init, deploy script, teammate access
-docs/                               MODEL_STORY.md is the narrative, HIGH_AVAILABILITY.md and SIZING.md the cloud design
 results/                            one JSON per system, logs, and test probabilities
 data/                               see data/README.md, large derived files are not in git
 ```
+
+## Continuous integration and deployment
+
+Every push and pull request runs [.github/workflows/ci.yml](.github/workflows/ci.yml):
+
+| Job | What it checks |
+| --- | --- |
+| test | unit tests of the API contract, the drift rules and preprocessing |
+| sast | Semgrep with the Python, security-audit and secrets rule packs on the shipped code |
+| secrets | Gitleaks over the whole git history |
+| deps | pip-audit of the pinned runtime dependencies |
+| terraform | `terraform fmt` and `validate` |
+| image | builds the inference image, Trivy scan (fails on fixable CRITICAL), CycloneDX SBOM, and on `main` publishes `ghcr.io/nickyrice04/mis547-ticket-routing:main` |
+
+Deployment is pull-based. The inference droplet checks the registry every five minutes
+(`deploy/update.sh`), rolls to a new image, and rolls back if it is not healthy within five
+minutes. CI holds no cloud credentials and never connects to a server.
+[.github/workflows/drift-check.yml](.github/workflows/drift-check.yml) calls `/v1/drift`
+daily and opens an issue when drift is detected.
+
+Local scan results are in [evidence/](evidence): no secrets in history, 0 Semgrep findings
+on the shipped code, 0 fixable HIGH or CRITICAL vulnerabilities in the image, and the SBOM.
 
 ## Reproducing the final number
 
@@ -178,20 +250,12 @@ The baselines are `src/baselines/train_tfidf.py` and `src/baselines/train_mlp.py
 Not because the model is big. The final router is small. It is because of the
 shape of the work and where it has to run.
 
-The heavy steps are bursts. Translating the German tickets took 11 minutes on
-a GPU, embedding the pool takes a few, refitting the stacker takes five. Then
-nothing until the next refresh. That is a poor fit for owning a GPU and a good
-fit for renting one for the job. Serving is the opposite, small and always on,
-and it has to survive a dead container or droplet, which is what the load
-balancer and the second droplet in `docs/HIGH_AVAILABILITY.md` are for. Every
-ticket a person corrects goes back into the pool as a real relative with a
-real label, so a nightly refresh keeps improving the model without anyone
-retraining anything by hand. And since customer tickets cannot go to an
-outside translation or model API, all of it has to run inside the company's
-own private network, which a rented VPC provides cheaply and a SaaS product
-cannot provide at all.
-
-What exists today is one droplet with the container, a firewall, a deploy
-script and a health check (`infra/`). What the final system still needs is a
-ticket database with a feedback endpoint, object storage for the fitted model,
-a refresh job on its own droplet, and the serving pair behind the balancer.
+The heavy steps are bursts. Translating the German tickets, embedding the pools and
+refitting the stacker need a GPU for a short while, then nothing until the next refresh.
+A company still searching for the right model, as this project did, runs many such bursts.
+That is a poor fit for owning a GPU and a good fit for renting one by the hour, which is why
+the GPU droplet exists only while `training_enabled` is on. Serving is the opposite, small
+and always on, so it runs on a $24 CPU droplet. Every ticket a person corrects goes back into
+the pool as a real relative with a real label, so each refresh improves the model. And since
+customer tickets cannot go to an outside translation or model API, all of it runs inside the
+company's own private network, which a rented VPC provides cheaply and a SaaS product cannot.

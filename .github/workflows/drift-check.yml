@@ -1,0 +1,40 @@
+# Daily model drift check against the live endpoint.
+#
+# Calls GET /v1/drift, which compares the last seven days of routed tickets in the audit
+# log with the reference the training job recorded (unfamiliar share, queue mix PSI,
+# confidence, live accuracy from corrections). If the report says "drift", the job opens
+# a GitHub issue so the team sees it and can run the training job.
+#
+# Needs a repository secret ROUTER_API_KEY and a repository variable ROUTER_URL.
+name: Drift check
+
+on:
+  schedule:
+    - cron: "0 13 * * *"      # 06:00 in Arizona
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask the router for its drift report
+        id: report
+        env:
+          URL: ${{ vars.ROUTER_URL }}
+          KEY: ${{ secrets.ROUTER_API_KEY }}
+        run: |
+          curl -sf "$URL/v1/drift?days=7" -H "X-API-Key: $KEY" -o drift.json
+          cat drift.json
+          echo "status=$(jq -r .status drift.json)" >> "$GITHUB_OUTPUT"
+      - name: Open an issue when drift is detected
+        if: steps.report.outputs.status == 'drift'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --repo "${{ github.repository }}" \
+            --title "Model drift detected $(date -u +%F)" \
+            --body "$(printf 'The daily drift check reported drift.\n\n```json\n%s\n```\n\nRun the training job (deploy/train.sh) and review the gate result.' "$(jq . drift.json)")"
