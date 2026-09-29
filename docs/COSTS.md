@@ -1,8 +1,9 @@
 # Costs and budget
 
 DigitalOcean prices are the list prices the account reported through the API in September
-2026. Other providers' prices are approximate public on-demand list prices (US East) and
-must be checked against each vendor's pricing page, and cited, before they go in the report.
+2026. Other providers' prices are approximate public on-demand list prices (US East), from
+the vendors' pricing pages cited in [REFERENCES.md](REFERENCES.md). Prices change, so confirm
+each one on its page on the day the report is written.
 
 ## What the proof of concept costs per month
 
@@ -56,14 +57,14 @@ Check the current managed database pricing page before quoting a number.
 
 ## The same system elsewhere
 
-Approximate, verify before citing.
+Approximate list prices, see the note at the top.
 
 | Option | What it would be | Monthly, HA production |
 | --- | --- | --- |
 | DigitalOcean IaaS (this project) | 2 droplets, load balancer, managed PostgreSQL with standby, Spaces, GPU by the hour | about $97 to $127 |
 | AWS IaaS | 2 EC2 t3.medium (about $30 each), Application Load Balancer (about $18 plus usage), RDS PostgreSQL db.t4g.micro Multi-AZ (about $25), S3 (under $1), public IPv4 addresses (about $4 each), 3 hours of g6.xlarge with an L4 GPU (about $0.80 an hour) | about $115 to $130 |
 | AWS SageMaker (managed MLOps) | Real-time endpoint on 2 ml.m5.large instances for HA (about $0.115 an hour each), training jobs on ml.g5.xlarge (about $1.41 an hour), RDS and S3 as above | about $190 to $210 |
-| Google Vertex AI or Azure Machine Learning | Similar shape to SageMaker, a managed online endpoint on two small nodes plus GPU training jobs | about $150 to $250 |
+| Google Vertex AI (its pricing page is now titled Gemini Enterprise Agent Platform) or Azure Machine Learning | Similar shape to SageMaker, a managed online endpoint on two small nodes plus GPU training jobs | about $150 to $250 |
 | Databricks Model Serving | Serverless CPU serving billed per DBU, workspace and storage on the underlying cloud | about $150 to $300, highly usage dependent |
 | SaaS helpdesk AI (Zendesk, Salesforce Service Cloud, Freshdesk add-ons) | Built-in triage, priced per agent seat, typically tens of dollars per agent per month | $500 to $1,500 for 20 agents, and the tickets leave the bank's network |
 

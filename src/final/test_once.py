@@ -58,6 +58,7 @@ def ece(conf, correct, bins=15):
 
 
 def main() -> None:
+    """Fit one router on the full training set, score the test set once, write results/12*_<router>.json."""
     name = sys.argv[1]
     module, tier, desc = ROUTERS[name]
     out = RESULTS / f"{tier}.json"

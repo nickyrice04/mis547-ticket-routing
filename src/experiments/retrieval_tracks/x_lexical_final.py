@@ -44,7 +44,7 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.naive_bayes import ComplementNB
 from sklearn.svm import LinearSVC
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[3]   # retrieval_tracks -> experiments -> src -> repository root
 EXTRA_FILES = {"en": ROOT / "data/x_lexical/extra_en_pool.jsonl", "de": ROOT / "data/x_lexical/extra_de_translated.jsonl"}
 N_CLASSES = 10
 GUARD_SIM = 0.95

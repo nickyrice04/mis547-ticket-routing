@@ -249,6 +249,7 @@ class Translator:
         self.model = MarianMTModel.from_pretrained(model_name, revision=REVISION).to(self.device).eval()
 
     def _pieces(self, s: str) -> list[str]:
+        """Cut a sentence longer than MAX_SRC_TOKENS at commas, the same rule the batch job uses."""
         if len(self.tok.encode(s)) <= MAX_SRC_TOKENS:
             return [s]
         pieces, cur = [], ""

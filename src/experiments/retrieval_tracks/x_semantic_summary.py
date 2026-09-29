@@ -1,7 +1,7 @@
 """Collect the semantic track's headline numbers into results/x_semantic_summary.json (no model fitting here)."""
 import json
 from pathlib import Path
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[3]   # retrieval_tracks -> experiments -> src -> repository root
 R = ROOT / "results"
 final = json.loads((R / "x_semantic_final_run.json").read_text())
 cv1 = json.loads((R / "x_semantic_cv1.json").read_text())

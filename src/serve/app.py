@@ -172,6 +172,7 @@ def warm_up() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Startup: load the model in the background so /healthz answers at once, and start the model poller."""
     threading.Thread(target=warm_up, daemon=True).start()
     if not ARTIFACT_PATH and storage.configured():
         threading.Thread(target=poll_for_new_models, daemon=True).start()
@@ -189,23 +190,27 @@ app = FastAPI(
 
 # ------------------------------------------------------------------------------------------ errors
 def error(status: int, code: str, message: str, request: Request | None = None, headers=None) -> JSONResponse:
+    """The one error shape every failure uses: an HTTP status, a machine-readable code, a human message, the request id."""
     rid = getattr(getattr(request, "state", None), "request_id", None) if request else None
     return JSONResponse(status_code=status, headers=headers,
                         content={"error": {"code": code, "message": message}, "request_id": rid})
 
 
 class ApiError(Exception):
+    """An expected failure (bad key, unknown ticket, rate limit) that becomes a clean JSON error response."""
     def __init__(self, status: int, code: str, message: str, headers: dict | None = None):
         self.status, self.code, self.message, self.headers = status, code, message, headers
 
 
 @app.exception_handler(ApiError)
 async def _api_error(request: Request, exc: ApiError):
+    """Turn an ApiError into the standard JSON error response."""
     return error(exc.status, exc.code, exc.message, request, exc.headers)
 
 
 @app.exception_handler(RequestValidationError)
 async def _validation_error(request: Request, exc: RequestValidationError):
+    """Invalid request bodies (422) get a readable message naming the field, instead of FastAPI's raw list."""
     def one(e):
         where = ".".join(str(p) for p in e["loc"] if p != "body")
         msg = e["msg"].removeprefix("Value error, ")
@@ -216,11 +221,13 @@ async def _validation_error(request: Request, exc: RequestValidationError):
 
 @app.exception_handler(StarletteHTTPException)
 async def _http_error(request: Request, exc: StarletteHTTPException):
+    """Framework errors such as 404 or 405 use the same JSON error shape."""
     return error(exc.status_code, "http_error", str(exc.detail), request)
 
 
 @app.exception_handler(Exception)
 async def _unexpected(request: Request, exc: Exception):
+    """Anything unforeseen is logged with its request id and answered with a generic 500, never a stack trace."""
     jlog("unhandled_error", request_id=getattr(request.state, "request_id", None), error=repr(exc))
     return error(500, "internal_error", "the service hit an unexpected error, it has been logged", request)
 
@@ -255,6 +262,7 @@ _WINDOWS: dict[str, deque] = {}
 
 
 def authenticate(request: Request, key: str | None = Depends(API_KEY_HEADER)) -> str:
+    """Check the X-API-Key header against API_KEYS and apply the per-key rate limit. Returns the key's name for the audit log."""
     keys = _keys()
     if not keys:
         raise ApiError(503, "not_configured", "no API keys are configured on this server")
@@ -281,6 +289,7 @@ def authenticate(request: Request, key: str | None = Depends(API_KEY_HEADER)) ->
 
 # ------------------------------------------------------------------------------------------ schemas
 class Ticket(BaseModel):
+    """The request body for /v1/route. Subject and body are cleaned exactly like the training tickets."""
     model_config = ConfigDict(extra="forbid", json_schema_extra={"examples": [{
         "subject": "Charged twice for my subscription",
         "body": "I was billed twice this month for the same plan and need the duplicate charge refunded."}]})
@@ -291,17 +300,20 @@ class Ticket(BaseModel):
 
     @model_validator(mode="after")
     def not_empty(self):
+        """Reject a ticket with neither a subject nor a body."""
         if not (self.subject.strip() or self.body.strip()):
             raise ValueError("a ticket needs a subject or a body")
         return self
 
 
 class QueueScore(BaseModel):
+    """One queue and the probability the router gives it."""
     queue: str
     probability: float
 
 
 class RouteResult(BaseModel):
+    """The response of /v1/route: the decision, how sure the router is, and what was recorded."""
     ticket_id: str
     queue: str
     confidence: float
@@ -318,6 +330,7 @@ class RouteResult(BaseModel):
 
 
 class Feedback(BaseModel):
+    """The request body for /v1/feedback: a person's verdict on a routed ticket."""
     model_config = ConfigDict(extra="forbid")
     ticket_id: str = Field(min_length=36, max_length=36)
     correct_queue: str = Field(max_length=64)
@@ -346,6 +359,7 @@ def _predict(text: str) -> dict:
 
 
 def require_model():
+    """Answer 503 with Retry-After until the model is loaded and warmed up."""
     if STATE.router is None or not STATE.ready:
         raise ApiError(503, "model_loading", STATE.error or "the model is still loading, retry shortly",
                        headers={"Retry-After": "30"})
@@ -371,6 +385,7 @@ def readyz():
 
 @app.get("/", tags=["info"])
 def root():
+    """A short description of the service and its endpoints."""
     return {"service": SERVICE, "model_version": STATE.version, "docs": "/docs",
             "auth": "X-API-Key header", "confidence_threshold": THRESHOLD,
             "endpoints": {"POST /v1/route": "route a ticket", "POST /v1/feedback": "correct a routing decision",
@@ -380,6 +395,7 @@ def root():
 
 @app.post("/v1/route", response_model=RouteResult, tags=["routing"])
 def route(ticket: Ticket, request: Request, key_name: str = Depends(authenticate)):
+    """Route one support ticket to one of ten queues. Tickets at or above the confidence threshold are routed automatically, the rest are flagged for a person. German sentences are translated first. Every decision is written to the audit log and the response carries a ticket_id for feedback."""
     require_model()
     t0 = time.perf_counter()
     stage_ms = {}
@@ -458,12 +474,14 @@ def post_feedback(fb: Feedback, request: Request, key_name: str = Depends(authen
 
 @app.get("/v1/queues", tags=["info"])
 def queues(_: str = Depends(authenticate)):
+    """The ten queue names, the valid values for correct_queue in /v1/feedback."""
     require_model()
     return {"queues": STATE.router.labels}
 
 
 @app.get("/v1/model", tags=["info"])
 def model_info(_: str = Depends(authenticate)):
+    """The model version being served, where and when it was trained, and its validation metrics."""
     require_model()
     m = STATE.router.meta
     return {"version": STATE.version, "pointer": STATE.pointer,
@@ -473,6 +491,7 @@ def model_info(_: str = Depends(authenticate)):
 
 @app.get("/v1/drift", tags=["monitoring"])
 def drift_report(days: int = 7, _: str = Depends(authenticate)):
+    """Compare the last N days of routed tickets with the reference recorded at training time: unfamiliar share, queue mix (PSI), confidence, and live accuracy from corrections. Status is ok, warn or drift."""
     require_model()
     if not db.url():
         raise ApiError(503, "no_database", "drift is computed from the audit log, which is not configured")

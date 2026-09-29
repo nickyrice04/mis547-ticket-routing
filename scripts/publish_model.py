@@ -21,6 +21,7 @@ from mlops import storage  # noqa: E402
 
 
 def main() -> None:
+    """Upload the version if it is not in Spaces yet, then point latest.json at it with its hash and metrics."""
     d = Path(sys.argv[1])
     version = d.name
     artifact, metrics_file = d / "router.joblib", d / "metrics.json"

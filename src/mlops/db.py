@@ -96,10 +96,12 @@ def redact(text_: str) -> str:
 
 
 def url() -> str | None:
+    """The database URL from the environment, or None when the service runs without an audit log."""
     return os.environ.get("DATABASE_URL")
 
 
 def engine():
+    """One SQLAlchemy engine per process, with a small connection pool and a liveness check on each checkout."""
     global _engine
     if _engine is None:
         u = url()
@@ -115,6 +117,7 @@ def engine():
 
 
 def ping() -> bool:
+    """True if the database answers a trivial query. Used by /readyz."""
     try:
         with engine().connect() as c:
             c.execute(text("select 1"))
@@ -124,36 +127,43 @@ def ping() -> bool:
 
 
 def now():
+    """The current time in UTC, the only timezone the audit log uses."""
     return datetime.now(timezone.utc)
 
 
 def new_id() -> str:
+    """A random UUID, the ticket_id returned to the caller."""
     return str(uuid.uuid4())
 
 
 def record_prediction(row: dict) -> None:
+    """Insert one routing decision into the audit log."""
     with engine().begin() as c:
         c.execute(insert(predictions).values(**row))
 
 
 def get_prediction(ticket_id: str) -> dict | None:
+    """One routed ticket by its id, or None."""
     with engine().connect() as c:
         r = c.execute(select(predictions).where(predictions.c.id == ticket_id)).mappings().first()
     return dict(r) if r else None
 
 
 def record_feedback(row: dict) -> int:
+    """Insert a person's correction and return its id."""
     with engine().begin() as c:
         res = c.execute(insert(feedback).values(**row))
         return int(res.inserted_primary_key[0])
 
 
 def record_training_run(row: dict) -> None:
+    """Insert one training run, whatever its outcome."""
     with engine().begin() as c:
         c.execute(insert(training_runs).values(**row))
 
 
 def recent_predictions(days: int = 7, limit: int = 50_000) -> list[dict]:
+    """The fields drift needs, for decisions made in the last N days, newest first."""
     since = now() - timedelta(days=days)
     q = (select(predictions.c.queue, predictions.c.confidence, predictions.c.auto_routed,
                 predictions.c.nearest_similarity, predictions.c.language, predictions.c.model_version)
@@ -163,6 +173,7 @@ def recent_predictions(days: int = 7, limit: int = 50_000) -> list[dict]:
 
 
 def recent_feedback(days: int = 30) -> list[dict]:
+    """Corrections made in the last N days."""
     since = now() - timedelta(days=days)
     q = select(feedback.c.agreed, feedback.c.correct_queue, feedback.c.predicted_queue).where(
         feedback.c.created_at >= since)
@@ -188,6 +199,7 @@ def corrected_tickets(exclude_keys=("replay",)) -> list[tuple[str, str]]:
 
 
 def counts() -> dict:
+    """Row counts of the three tables, a quick health view."""
     with engine().connect() as c:
         return {t.name: c.execute(select(func.count()).select_from(t)).scalar_one()
                 for t in (predictions, feedback, training_runs)}

@@ -22,7 +22,9 @@ from pydantic import BaseModel
 
 import sys
 
-sys.path.insert(0, str(Path(__file__).parent))
+# common.py sits next to this file inside the baseline image and one level up in the repository
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from common import clean, load_meta  # noqa: E402
 
 MODEL_KIND = os.environ.get("MODEL_KIND", "sklearn")

@@ -53,6 +53,7 @@ OUT = ROOT / "artifacts"
 
 
 def device_name() -> str:
+    """The GPU model if one is present, so every training run records what hardware it used."""
     import torch
     if torch.cuda.is_available():
         return torch.cuda.get_device_name(0)
@@ -60,6 +61,7 @@ def device_name() -> str:
 
 
 def git_sha() -> str | None:
+    """The commit the job ran from, so every model version traces back to its code."""
     try:
         return subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True,
                               check=True).stdout.strip()
@@ -68,6 +70,7 @@ def git_sha() -> str | None:
 
 
 def ece(conf, correct, bins=15) -> float:
+    """Expected calibration error: how far confidence is from actual accuracy, averaged over 15 bins."""
     edges = np.linspace(0, 1, bins + 1)
     e = 0.0
     for lo, hi in zip(edges[:-1], edges[1:]):
@@ -78,6 +81,7 @@ def ece(conf, correct, bins=15) -> float:
 
 
 class Timer:
+    """Times each stage of the job and prints it, the source of the stage_seconds recorded for every run."""
     def __init__(self):
         self.stages = {}
 
@@ -96,6 +100,7 @@ class Timer:
 
 
 def stage_data(remote: bool) -> dict:
+    """Make sure the dataset and the deduplicated split exist, and fingerprint both so a run records exactly what it used."""
     parquet = ROOT / "data_tickets.parquet"
     if not parquet.exists() and remote:
         storage.download("data/data_tickets.parquet", parquet)
@@ -122,6 +127,7 @@ def stage_translate(remote: bool, reuse: bool) -> str:
 
 
 def stage_embed(source: str) -> None:
+    """Embed the German pool with e5 whenever it was freshly translated or the embeddings are missing."""
     from final import embed
     if source == "translated on this run" or not (GDIR / "e5_german_translated.npy").exists():
         embed.main()
@@ -153,6 +159,7 @@ def stage_validate(labels) -> dict:
 
 
 def stage_feedback(remote: bool) -> list[tuple[str, str]]:
+    """Human corrections from the audit log, or none if the database is not configured or unreachable."""
     if not remote or not db.url():
         return []
     try:
@@ -163,6 +170,7 @@ def stage_feedback(remote: bool) -> list[tuple[str, str]]:
 
 
 def main() -> None:
+    """Run every stage, then record the run in the database whether it was promoted, rejected or failed."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--reuse-german", action="store_true", help="skip translation if the pool exists")
     ap.add_argument("--local-only", action="store_true", help="no Spaces, no database")

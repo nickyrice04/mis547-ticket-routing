@@ -29,10 +29,12 @@ LATEST = "models/latest.json"
 
 
 def configured() -> bool:
+    """True when all four Spaces variables are set."""
     return all(os.environ.get(k) for k in ("SPACES_REGION", "SPACES_BUCKET", "SPACES_KEY", "SPACES_SECRET"))
 
 
 def _client():
+    """An S3 client pointed at the DigitalOcean Spaces endpoint for the configured region."""
     import boto3
 
     region = os.environ["SPACES_REGION"]
@@ -42,10 +44,12 @@ def _client():
 
 
 def _bucket() -> str:
+    """The bucket name from the environment."""
     return os.environ["SPACES_BUCKET"]
 
 
 def sha256(path: str | Path) -> str:
+    """The SHA-256 of a file, read in 1 MB chunks so large artifacts do not load into memory."""
     h = hashlib.sha256()
     with open(path, "rb") as f:
         for chunk in iter(lambda: f.read(1 << 20), b""):
@@ -59,6 +63,7 @@ def upload(local: str | Path, key: str) -> None:
 
 
 def download(key: str, local: str | Path) -> Path:
+    """Download an object to a local path, creating folders as needed."""
     local = Path(local)
     local.parent.mkdir(parents=True, exist_ok=True)
     _client().download_file(_bucket(), key, str(local))
@@ -66,6 +71,7 @@ def download(key: str, local: str | Path) -> Path:
 
 
 def exists(key: str) -> bool:
+    """True if an object exists in the bucket."""
     try:
         _client().head_object(Bucket=_bucket(), Key=key)
         return True
@@ -74,6 +80,7 @@ def exists(key: str) -> bool:
 
 
 def read_json(key: str) -> dict | None:
+    """Read a JSON object from the bucket, or None if it is missing."""
     try:
         obj = _client().get_object(Bucket=_bucket(), Key=key)
     except Exception:
@@ -82,6 +89,7 @@ def read_json(key: str) -> dict | None:
 
 
 def write_json(key: str, payload: dict) -> None:
+    """Write a JSON object to the bucket as a private file."""
     _client().put_object(Bucket=_bucket(), Key=key, Body=json.dumps(payload, indent=2).encode(),
                          ContentType="application/json", ACL="private")
 

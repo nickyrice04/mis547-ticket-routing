@@ -19,6 +19,7 @@ from mlops import db, storage  # noqa: E402
 
 
 def main() -> None:
+    """Build the training_runs row from the saved metrics and artifact, and insert it."""
     d = Path(sys.argv[1])
     m = json.loads((d / "metrics.json").read_text())
     from final.model import Router

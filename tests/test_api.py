@@ -11,10 +11,12 @@ QUEUES = ["Billing and Payments", "Technical Support", "Human Resources"]
 
 
 class FakeRouter:
+    """Stands in for the real router: confident on tickets mentioning a charge, unsure on anything else."""
     labels = QUEUES
     meta = {"version": "test", "reference": None}
 
     def route(self, texts, embed_fn=None):
+        """Send one ticket to /v1/route with a key."""
         out = []
         for t in texts:
             p = np.array([0.9, 0.08, 0.02]) if "charge" in t else np.array([0.4, 0.35, 0.25])
@@ -26,6 +28,7 @@ class FakeRouter:
 
 @pytest.fixture()
 def client(tmp_path, monkeypatch):
+    """A test client with two API keys, a throwaway SQLite audit log, and the fake router loaded."""
     monkeypatch.setenv("API_KEYS", "team:team-key,grader:grader-key")
     monkeypatch.setenv("DATABASE_URL", f"sqlite:///{tmp_path / 'audit.db'}")
     monkeypatch.setenv("ARTIFACT_PATH", str(tmp_path / "missing.joblib"))

@@ -7,13 +7,16 @@ arrive in English and German, and nothing leaves the company's private network.
 | | |
 | --- | --- |
 | Endpoint | **https://146-190-188-160.sslip.io** (the grader's API key is in the report, never in git) |
-| Try it | [examples/tickets.json](examples/tickets.json) and `scripts/try_endpoint.sh` |
+| Try it | [examples/tickets.json](examples/tickets.json) and [scripts/try_endpoint.sh](scripts/try_endpoint.sh) |
 | Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), diagram in [docs/architecture.png](docs/architecture.png) |
 | Security | [docs/SECURITY.md](docs/SECURITY.md), STRIDE threat model and scan evidence |
 | Observability | [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md), audit log, metrics, drift detection |
 | Costs | [docs/COSTS.md](docs/COSTS.md), monthly budget and comparison with managed platforms |
 | High availability | [docs/HIGH_AVAILABILITY.md](docs/HIGH_AVAILABILITY.md), answers to the midterm feedback |
 | How the model was found | [docs/MODEL_STORY.md](docs/MODEL_STORY.md) |
+| Other people's results | [docs/EXTERNAL_BENCHMARKS.md](docs/EXTERNAL_BENCHMARKS.md), the public Kaggle notebooks on this dataset |
+| Evidence | [evidence/](evidence/README.md), scanner reports, the GPU training log, the live replay |
+| Works cited | [docs/REFERENCES.md](docs/REFERENCES.md) |
 | Infrastructure runbook | [infra/README.md](infra/README.md) |
 
 The repository is laid out in the order the project happened. `src/final/` is
@@ -21,6 +24,28 @@ the model that ships. `src/baselines/` is where it started. `src/experiments/`
 is everything tried in between, kept because the negative results are half
 the story. `src/serve/`, `src/mlops/`, `deploy/`, `infra/` and `.github/` are
 how it runs in the cloud.
+
+## For graders
+
+Where each part of the rubric lives.
+
+| Criterion | Where to look |
+| --- | --- |
+| Inference endpoint | [Calling the endpoint](#calling-the-endpoint) below, sample tickets in [examples/tickets.json](examples/tickets.json). Errors come back as JSON with a code and a message |
+| Code repositories | This README, one repository for the whole system. CI and the scanners in [.github/workflows/ci.yml](.github/workflows/ci.yml), Terraform in [infra/terraform/](infra/terraform), the image at `ghcr.io/nickyrice04/mis547-ticket-routing:main` (public, `docker pull` works without a login), scan results in [evidence/](evidence/README.md) |
+| Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [Why this runs in the cloud](#why-this-runs-in-the-cloud) below |
+| Dataset and data requirements | [data/README.md](data/README.md), the preprocessing shared by training and serving in [src/common.py](src/common.py), the audit database in [src/mlops/db.py](src/mlops/db.py) |
+| Security | [docs/SECURITY.md](docs/SECURITY.md) and [evidence/](evidence/README.md) |
+| Observability | [docs/OBSERVABILITY.md](docs/OBSERVABILITY.md), the live drift report at `GET /v1/drift` |
+| Cloud spend | [docs/COSTS.md](docs/COSTS.md) |
+| Implementation | [docs/MODEL_STORY.md](docs/MODEL_STORY.md), [docs/HIGH_AVAILABILITY.md](docs/HIGH_AVAILABILITY.md), [Team](#team) |
+| Citations | [docs/REFERENCES.md](docs/REFERENCES.md) |
+
+In the DigitalOcean account everything is filed under the **MIS547** project and tagged
+`team3`. That is the inference droplet, its reserved IP, the PostgreSQL cluster, the Spaces
+bucket, the VPC, two firewalls, the alerts and the uptime checks. The GPU training droplet
+only exists while a training run is going, so it is normally absent. That is by design,
+see below.
 
 ## Calling the endpoint
 
@@ -31,20 +56,20 @@ curl -s -X POST "$ROUTER_URL/v1/route" \
 ```
 
 ```json
-{"ticket_id": "4a2b6cc8-...", "queue": "Billing and Payments", "confidence": 0.9596, "auto_routed": true,
- "threshold": 0.7, "top_queues": [{"queue": "Billing and Payments", "probability": 0.9596}, ...],
- "familiarity": 0.305, "language": "en", "translated": false, "model_version": "v20260929-014804",
- "audit_logged": true, "latency_ms": 808.0, "request_id": "..."}
+{"ticket_id": "119b9691-...", "queue": "Billing and Payments", "confidence": 0.9571, "auto_routed": true,
+ "threshold": 0.7, "top_queues": [{"queue": "Billing and Payments", "probability": 0.9571}, ...],
+ "familiarity": 0.305, "language": "en", "translated": false, "model_version": "v20260929-033811",
+ "audit_logged": true, "latency_ms": 792.5, "request_id": "..."}
 ```
 
-On the live droplet an English ticket takes a median of 0.8 seconds and a German one about 4.5,
-most of it the sentence embedding and translation on shared CPUs. See the latency section of
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+German works the same way. `{"subject": "Rückerstattung für doppelte Abbuchung", "body": "..."}`
+is translated inside the service and routed to Billing and Payments with `"translated": true`.
+On the live droplet an English ticket takes a median of 0.8 seconds and a German one about
+4.5, most of it the sentence embedding and translation on shared CPUs (see the latency section
+of [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)).
 
-German works the same way, `{"subject": "Rückerstattung für doppelte Abbuchung", "body": "..."}`
-is translated inside the service and routed to Billing and Payments. Errors come back as JSON
-with a code and a message, for example a missing key (401), an empty ticket (422) or too many
-requests (429). Interactive documentation is at `/docs`.
+Errors come back as JSON with a code and a message, for example a missing key (401), an
+empty ticket (422) or too many requests (429). Interactive documentation is at `/docs`.
 
 | Endpoint | Purpose |
 | --- | --- |
@@ -53,7 +78,7 @@ requests (429). Interactive documentation is at `/docs`.
 | `GET /v1/queues` | the ten queue names |
 | `GET /v1/model` | the served model version, how it was trained, its validation metrics |
 | `GET /v1/drift` | drift report over recent traffic |
-| `GET /healthz`, `GET /readyz` | liveness and readiness |
+| `GET /healthz`, `GET /readyz` | liveness and readiness, no key needed |
 
 ## Results
 
@@ -77,6 +102,8 @@ validation slice of the training data.
 
 Laya, an open decision model, reached 57.8% on the validation slice after an
 hour of GPU and was stopped before a test run (`experiments/bigger_models/train_laya.py`).
+The only public notebook that measures the same task on this dataset reports 53.2%
+([docs/EXTERNAL_BENCHMARKS.md](docs/EXTERNAL_BENCHMARKS.md)).
 
 The midterm reported 70.5% for the network. That number was inflated. A
 quarter of the test tickets had exact copies in the training set, and the
@@ -105,7 +132,10 @@ translated (they are real relatives with real labels).
 
 ## The final model
 
-`src/final/router.py`, one function, `fit_predict_proba(train_texts, train_labels, eval_texts)`.
+`src/final/model.py` is the object the API serves (fit, save, load, predict).
+`src/final/router.py` is the same recipe as the one function that was evaluated,
+`fit_predict_proba(train_texts, train_labels, eval_texts)`, and a test proves the two agree
+to the bit.
 
 1. Every labelled ticket, English and translated German, sits in one pool.
 2. A new ticket is compared against the pool two ways, by word overlap
@@ -121,9 +151,9 @@ translated (they are real relatives with real labels).
 5. Non-English tickets are translated first with an open 74M-parameter model
    (`final/translate.py`). It is run, never retrained.
 
-The heavy part is a lookup and the learned part is small. Fitting takes about
-five minutes on a GPU, routing one ticket takes milliseconds, and every model
-involved is open and runs on the company's own machines.
+The heavy part is a lookup and the learned part is small. A full retrain takes
+8 minutes on a rented GPU, routing an English ticket takes under a second on a small CPU,
+and every model involved is open and runs on the company's own machines.
 
 Because the confidence is calibrated (expected calibration error 0.012), the
 threshold means what it says.
@@ -136,6 +166,75 @@ threshold means what it says.
 
 Every queue is between 87% and 96% recall, including the small ones. Per-queue
 numbers are in `results/12b_stack_german.json`.
+
+## Why this runs in the cloud
+
+The final router is small. It needs 2 GB of memory to serve and no GPU at all. So
+the case for cloud computing is not size. It is the shape of the work, which has two
+very different halves, and the rule that customer text stays inside the company.
+
+| Step | Where it runs | Measured |
+| --- | --- | --- |
+| Translate the German pool (76,327 sentences) | Rented GPU, only during a refresh | 3.5 minutes, against about 11 on a laptop GPU |
+| Embed the pools, validate, fit the model | Rented GPU | 4.3 minutes |
+| Publish the new model | GPU droplet to Spaces, same region | 185 MB |
+| Route a ticket | $24 a month CPU droplet, always on | median 0.8 s English, 4.5 s German |
+| Record the decision | Managed PostgreSQL, private network only | about 2 KB per ticket |
+
+**Training is a burst, and a burst is cheaper to rent than to own.** A refresh needs a
+GPU for a few minutes, then nothing until the next one. The measured retrain on a rented
+NVIDIA RTX 4000 Ada took 8 minutes end to end, about $0.10 of GPU time, or about $0.19 once
+droplet boot and setup are counted ([evidence/gpu-training-run.log](evidence/gpu-training-run.log)).
+Terraform creates the GPU droplet for a run and destroys it right after, because it bills by
+the hour whether it is working or not. Rented for a weekly refresh it costs under $1 a month.
+Left running it would cost $555 a month.
+
+**Serving is small and constant, so it gets a small machine that never sleeps.** Tickets
+arrive at any hour and are routed one at a time, the moment they are submitted. A GPU here
+would sit idle between tickets, so the API runs on 2 shared vCPUs and 4 GB for $24 a month.
+If the bank wanted steadier latency, a dedicated-CPU droplet is $18 a month more and a
+one-line Terraform change.
+
+**Customer text never leaves the bank's network.** Tickets carry names, account numbers and
+card fragments. Every model in the pipeline, the translator, the embedder and the classifier,
+is open and runs on machines the team controls inside a private network (a VPC). Nothing is
+sent to an outside translation service or language model API. The database only accepts
+connections from the team's own droplets, and the bucket holding the models is private. A
+SaaS triage product would need the tickets to leave.
+
+**Managed services take the undifferentiated work.** The audit log lives in Managed
+PostgreSQL, where backups, patching and engine failover are DigitalOcean's job. The dataset
+and every model version live in Spaces with versioning on, so any past model can be restored
+by moving one pointer.
+
+**The whole system is code.** Every resource is defined in Terraform. A push to `main` is
+tested, scanned and published by GitHub Actions, and the droplet rolls to the new image by
+itself, 19 seconds from rollout to healthy in the recorded run
+([evidence/cd-rollout-and-latency.txt](evidence/cd-rollout-and-latency.txt)), or rolls back
+if the new image is unhealthy. A dead droplet is rebuilt with one command and keeps its address.
+
+**Growing is a change to a number, not a purchase.** A second droplet behind a load
+balancer and a standby database node add about $51 to $81 a month
+([docs/HIGH_AVAILABILITY.md](docs/HIGH_AVAILABILITY.md), [docs/COSTS.md](docs/COSTS.md)).
+
+**Renting has one real catch, and the design plans for it.** When the GPU was first
+requested, both the RTX 4000 Ada and the larger RTX 6000 Ada were sold out in the region.
+A retry script ([infra/scripts/wait-for-gpu.sh](infra/scripts/wait-for-gpu.sh)) got an
+RTX 4000 Ada a few minutes later. Because the API keeps serving the last approved model, a delayed retrain
+never stops routing.
+
+**What it costs.** About $45 a month for the proof of concept with weekly retraining, and
+about $97 to $127 with high availability. The same shape on AWS SageMaker is roughly $190 to
+$210, and per-seat SaaS triage roughly $500 to $1,500 for 20 agents, with the tickets leaving
+the network. Details are in [docs/COSTS.md](docs/COSTS.md) and the pricing sources in
+[docs/REFERENCES.md](docs/REFERENCES.md).
+
+**Why the model search ran on a laptop.** Most of the model search, about twenty
+systems ([results/SUMMARY.md](results/SUMMARY.md)), ran on a team member's laptop GPU to keep
+the class account's spending down. A month of exploration like this one is about 40 GPU
+hours, around $30 on the rented GPU. A company usually would not have that option, since its
+ticket data cannot sit on a personal machine. So the final pipeline runs where production
+would, on the rented GPU, and scored 89.8% on validation there against 89.9% on the laptop.
 
 ## How the test set was protected
 
@@ -164,7 +263,7 @@ tickets, and a Qwen fine-tuned to reword real tickets (siblings). The last one
 matched the real data's style (similarity 0.64, real siblings 0.635) and moved
 retrieval by 0.0 points. It did give the small network +3.2 on validation, and
 a pool made only of synthetic siblings keeps 95% of retrieval accuracy, which
-is a privacy result. A real-versus-synthetic test settled it: 2,850 real
+is a privacy result. A real-versus-synthetic test settled it. 2,850 real
 tickets added +3.1 points, 7,700 synthetic ones added +0.7.
 `weak_check.py` holds the paired bootstrap used for every such comparison.
 
@@ -180,6 +279,28 @@ parallel once the family structure was understood. Lexical stacking, dense
 embeddings, parametric classifiers, a specialist for tickets with no relative,
 and the German translation track. The semantic and German tracks produced the
 two final routers. The `x_verify_*` scripts are the independent re-runs.
+
+## Continuous integration and deployment
+
+Every push and pull request runs [.github/workflows/ci.yml](.github/workflows/ci.yml).
+
+| Job | What it checks |
+| --- | --- |
+| test | unit tests of the API contract, the drift rules and preprocessing |
+| sast | Semgrep with the Python, security-audit and secrets rule packs on the shipped code |
+| secrets | Gitleaks over the whole git history |
+| deps | pip-audit of the pinned runtime dependencies |
+| terraform | `terraform fmt` and `validate` |
+| image | builds the inference image, Trivy scan (fails on fixable CRITICAL), CycloneDX SBOM, and on `main` publishes `ghcr.io/nickyrice04/mis547-ticket-routing:main` |
+
+Deployment is pull-based. The inference droplet checks the registry every five minutes
+(`deploy/update.sh`), rolls to a new image, and rolls back if it is not healthy within five
+minutes. CI holds no cloud credentials and never connects to a server.
+[.github/workflows/drift-check.yml](.github/workflows/drift-check.yml) calls `/v1/drift`
+daily and opens an issue when drift is detected.
+
+Local scan results are in [evidence/](evidence/README.md). No secrets in history, 0 Semgrep
+findings on the shipped code, 0 vulnerabilities in the image, and the SBOM.
 
 ## Layout
 
@@ -200,37 +321,15 @@ tests/                              API contract, drift rules, preprocessing, an
 Dockerfile                          the inference image
 deploy/                             Compose stack (API, Caddy, Prometheus), updater, training job
 infra/terraform/                    every DigitalOcean resource as code
-infra/scripts/                      credentials helper and post-apply bootstrap
+infra/scripts/                      credentials helper, post-apply bootstrap, database migration, GPU retry
 .github/workflows/                  CI (tests, Semgrep, Gitleaks, pip-audit, Terraform, Trivy, SBOM) and the daily drift check
-docs/                               architecture, security, observability, costs, high availability, model story
-evidence/                           scanner reports, SBOM, drift demonstration, SSH probe log
-examples/  scripts/                 sample tickets, endpoint and traffic replay scripts
+docs/                               architecture, security, observability, costs, high availability, model story, works cited
+evidence/                           scanner reports, SBOM, GPU training log, live replay, CD rollout, SSH probe log
+examples/  scripts/                 sample tickets, endpoint test, traffic replay, model publish and rollback
 configs/                            LoRA configs for the fine-tuning runs
 results/                            one JSON per system, logs, and test probabilities
 data/                               see data/README.md, large derived files are not in git
 ```
-
-## Continuous integration and deployment
-
-Every push and pull request runs [.github/workflows/ci.yml](.github/workflows/ci.yml):
-
-| Job | What it checks |
-| --- | --- |
-| test | unit tests of the API contract, the drift rules and preprocessing |
-| sast | Semgrep with the Python, security-audit and secrets rule packs on the shipped code |
-| secrets | Gitleaks over the whole git history |
-| deps | pip-audit of the pinned runtime dependencies |
-| terraform | `terraform fmt` and `validate` |
-| image | builds the inference image, Trivy scan (fails on fixable CRITICAL), CycloneDX SBOM, and on `main` publishes `ghcr.io/nickyrice04/mis547-ticket-routing:main` |
-
-Deployment is pull-based. The inference droplet checks the registry every five minutes
-(`deploy/update.sh`), rolls to a new image, and rolls back if it is not healthy within five
-minutes. CI holds no cloud credentials and never connects to a server.
-[.github/workflows/drift-check.yml](.github/workflows/drift-check.yml) calls `/v1/drift`
-daily and opens an issue when drift is detected.
-
-Local scan results are in [evidence/](evidence): no secrets in history, 0 Semgrep findings
-on the shipped code, 0 fixable HIGH or CRITICAL vulnerabilities in the image, and the SBOM.
 
 ## Reproducing the final number
 
@@ -240,26 +339,22 @@ VIRTUAL_ENV=.venv uv pip install torch transformers sentence-transformers scikit
 export PYTHONPATH=src HF_HUB_DISABLE_XET=1
 .venv/bin/python src/common.py                     # the deduplicated split, seed 42
 .venv/bin/python src/final/translate.py extract    # the German rows of the parquet, to data/x_german/
-.venv/bin/python src/final/translate.py translate  # German to English, about 11 GPU minutes, resumable
+.venv/bin/python src/final/translate.py translate  # German to English, 3.5 GPU minutes on the RTX 4000 Ada, resumable
 .venv/bin/python src/final/translate.py assemble   # rebuild the tickets, write the pool file
 .venv/bin/python src/final/embed.py                # embed the German pool once
 .venv/bin/python src/final/router.py               # core to validation, 89.9%
 .venv/bin/python src/final/test_once.py german     # the test run, refuses if results/12b_stack_german.json exists
 ```
 
-The baselines are `src/baselines/train_tfidf.py` and `src/baselines/train_mlp.py`.
+The baselines are `src/baselines/train_tfidf.py` and `src/baselines/train_mlp.py`. Tests run
+with `pytest` (the slow model parity check with `pytest -m slow`).
 
-## Why this is a cloud project
+## Team
 
-Not because the model is big. The final router is small. It is because of the
-shape of the work and where it has to run.
+Team 3, MIS 547, Professor Zara Ahmad-Post, University of Arizona.
 
-The heavy steps are bursts. Translating the German tickets, embedding the pools and
-refitting the stacker need a GPU for a short while, then nothing until the next refresh.
-A company still searching for the right model, as this project did, runs many such bursts.
-That is a poor fit for owning a GPU and a good fit for renting one by the hour, which is why
-the GPU droplet exists only while `training_enabled` is on. Serving is the opposite, small
-and always on, so it runs on a $24 CPU droplet. Every ticket a person corrects goes back into
-the pool as a real relative with a real label, so each refresh improves the model. And since
-customer tickets cannot go to an outside translation or model API, all of it runs inside the
-company's own private network, which a rented VPC provides cheaply and a SaaS product cannot.
+| Member | Focus |
+| --- | --- |
+| Nicky Rice | Machine learning, model training and evaluation |
+| Anshul Shah | Cloud infrastructure and network security |
+| Alejandro Emmanuel | The API, containers and the database |

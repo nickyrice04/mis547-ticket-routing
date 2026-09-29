@@ -38,7 +38,7 @@ from sklearn.model_selection import StratifiedKFold
 
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[3]   # retrieval_tracks -> experiments -> src -> repository root
 CACHE_DIR = ROOT / "data" / "x_unfamiliar"
 ENCODERS = {"mpnet": "sentence-transformers/all-mpnet-base-v2", "bge_base": "BAAI/bge-base-en-v1.5"}
 N_CLASSES = 10

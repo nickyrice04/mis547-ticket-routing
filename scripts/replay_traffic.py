@@ -36,6 +36,7 @@ OFF_TOPIC = [
 
 
 def call(url, key, path, payload=None, method="POST"):
+    """POST or GET one endpoint with the API key, returning the JSON body even for error statuses."""
     req = urllib.request.Request(url + path, method=method, headers={"X-API-Key": key, "Content-Type": "application/json"},
                                  data=json.dumps(payload).encode() if payload is not None else None)
     try:
@@ -46,6 +47,7 @@ def call(url, key, path, payload=None, method="POST"):
 
 
 def main() -> None:
+    """Replay held-out tickets, send corrections for a share of them, optionally send off-topic traffic, print the drift report."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", required=True)
     ap.add_argument("--key", required=True)

@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 from common import load_meta, load_split
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[3]   # retrieval_tracks -> experiments -> src -> repository root
 RESULTS = ROOT / "results"
 VAL_LOG = RESULTS / "x_classifier_val_runs.jsonl"
 CV_LOG = RESULTS / "x_classifier_cv_runs.jsonl"

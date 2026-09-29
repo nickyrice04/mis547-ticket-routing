@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 from common import clean, load_meta, load_split
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[3]   # retrieval_tracks -> experiments -> src -> repository root
 SPLIT = ROOT / "data/synthetic/split.json"
 
 

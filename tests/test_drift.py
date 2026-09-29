@@ -7,6 +7,7 @@ REF = {"rows": 1000, "queue_mix": {"a": 0.5, "b": 0.3, "c": 0.2}, "unfamiliar_sh
 
 
 def rows(n, mix, unfamiliar, conf):
+    """Fake audit-log rows with a chosen queue mix, unfamiliar share and confidence."""
     out = []
     for i in range(n):
         q = "a" if i < n * mix[0] else ("b" if i < n * (mix[0] + mix[1]) else "c")

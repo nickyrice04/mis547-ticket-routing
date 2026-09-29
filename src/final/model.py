@@ -56,11 +56,13 @@ class GermanPool:
 
     @classmethod
     def from_disk(cls) -> "GermanPool":
+        """The German pool from data/x_german/, as built by final/translate.py and final/embed.py."""
         g = German()
         return cls(g.texts, g.labels, g.e5_trans, g.e5_orig)
 
     @classmethod
     def empty(cls, dim: int = 768) -> "GermanPool":
+        """A pool with no German tickets, for fitting an English-only router or for tests."""
         return cls([], np.zeros(0, int), np.zeros((0, dim), np.float32), np.zeros((0, dim), np.float32))
 
 
@@ -164,6 +166,7 @@ class Router:
 
     # ------------------------------------------------------------------------------- persistence
     def save(self, path: str | Path) -> Path:
+        """Write the fitted router to one compressed file. Process-local caches are left out."""
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
         state = {k: v for k, v in self.__dict__.items() if not k.startswith("_")}
@@ -172,6 +175,7 @@ class Router:
 
     @classmethod
     def load(cls, path: str | Path) -> "Router":
+        """Load a router saved by save(), refusing files of another format version."""
         d = joblib.load(path)
         if d.pop("format", None) != ARTIFACT_FORMAT:
             raise ValueError(f"{path} is not a router artifact of format {ARTIFACT_FORMAT}")

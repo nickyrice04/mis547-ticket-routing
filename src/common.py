@@ -96,15 +96,18 @@ def build_splits() -> dict:
 
 
 def load_split(name: str):
+    """Texts and queue ids of one split, train or test, as written by build_splits()."""
     rows = json.loads((SPLITS / f"{name}.json").read_text())
     return [r["text"] for r in rows], [r["label"] for r in rows]
 
 
 def load_meta() -> dict:
+    """The label list and split sizes written by build_splits()."""
     return json.loads((SPLITS / "meta.json").read_text())
 
 
 def save_result(payload: dict) -> None:
+    """Write one model tier's result JSON into results/."""
     RESULTS.mkdir(exist_ok=True)
     path = RESULTS / f"{payload['tier']}.json"
     path.write_text(json.dumps(payload, indent=2))

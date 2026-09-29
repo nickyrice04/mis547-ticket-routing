@@ -18,7 +18,7 @@ import numpy as np
 import final.router_english_only as M
 from common import load_split
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[3]   # retrieval_tracks -> experiments -> src -> repository root
 MODE = sys.argv[1]
 CACHE = Path(sys.argv[2])
 TRACK_CACHE = M.EMB_CACHE
