@@ -46,6 +46,9 @@ echo "==> waiting for cloud-init on the inference droplet ($INF)"
   exit 1
 }
 
+# The checkout is owned by root and shared by the sudo group, so git needs to be told it is safe.
+"${SSH[@]}" "$USER_NAME@$INF" "sudo git config --system --add safe.directory /srv/ticket-routing"
+
 echo "==> writing /etc/ticket-routing/compose.env and api.env (root-only)"
 "${SSH[@]}" "$USER_NAME@$INF" "sudo install -m 600 /dev/stdin /etc/ticket-routing/compose.env" <<EOF
 SITE_ADDRESS=$SITE
@@ -65,15 +68,17 @@ MODEL_POLL_SECONDS=120
 EOF
 
 echo "==> getting the API image (from the registry if CI has published it, else built on the droplet)"
-"${SSH[@]}" "$USER_NAME@$INF" "cd /srv/ticket-routing/deploy && set -a && . /etc/ticket-routing/compose.env && set +a && \
-  (sudo -E docker compose pull --quiet api 2>/dev/null || sudo -E docker compose build api)"
+# Run as root, because the env files are readable by root only.
+"${SSH[@]}" "$USER_NAME@$INF" 'sudo bash -c "cd /srv/ticket-routing/deploy && set -a && . /etc/ticket-routing/compose.env && set +a && \
+  (docker compose pull --quiet api || docker compose build api)"'
 
 echo "==> creating the audit-log schema and grants"
-# The admin URL goes over stdin so it never shows up in a process list or a file.
-ADMIN_URL="postgresql+psycopg://$(out db_admin_user):$(urlq "$(out db_admin_password)")@$DB?sslmode=require"
-"${SSH[@]}" "$USER_NAME@$INF" 'read -r ADMIN_DATABASE_URL; export ADMIN_DATABASE_URL; cd /srv/ticket-routing/deploy && \
-  set -a && . /etc/ticket-routing/compose.env && set +a && \
-  sudo -E docker compose run --rm --no-deps -e PYTHONPATH=/app/src -e ADMIN_DATABASE_URL api python -m mlops.db migrate' <<<"$ADMIN_URL"
+if [ -n "$(terraform output -raw db_admin_password 2>/dev/null)" ]; then
+  DB_ADMIN_PASSWORD="$(out db_admin_password)" "$ROOT/infra/scripts/migrate-db.sh"
+else
+  echo "   The DigitalOcean token cannot read the database admin password, so this step needs you."
+  echo "   Run infra/scripts/migrate-db.sh, it asks for the doadmin password from the control panel."
+fi
 
 echo "==> uploading the dataset to Spaces"
 SPACES_REGION=$REGION SPACES_BUCKET=$BUCKET SPACES_KEY=$(out spaces_training_key) SPACES_SECRET=$(out spaces_training_secret) \

@@ -34,3 +34,6 @@ infra/terraform/crash.log
 !deploy/*.env.example
 artifacts/
 evidence/*.sarif.tmp
+
+# saved Terraform plans embed secret values
+infra/terraform/tfplan

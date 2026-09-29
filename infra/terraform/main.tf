@@ -124,11 +124,21 @@ resource "digitalocean_database_db" "routing" {
 resource "digitalocean_database_user" "api" {
   cluster_id = digitalocean_database_cluster.tickets.id
   name       = "router_api"
+  # The API returns an empty settings block after creation, and the provider then tries to
+  # "remove" it with an update the API rejects. Nothing here is managed through settings.
+  lifecycle {
+    ignore_changes = [settings]
+  }
 }
 
 resource "digitalocean_database_user" "trainer" {
   cluster_id = digitalocean_database_cluster.tickets.id
   name       = "router_trainer"
+  # The API returns an empty settings block after creation, and the provider then tries to
+  # "remove" it with an update the API rejects. Nothing here is managed through settings.
+  lifecycle {
+    ignore_changes = [settings]
+  }
 }
 
 # Trusted sources: only droplets carrying these tags can open a connection at all.

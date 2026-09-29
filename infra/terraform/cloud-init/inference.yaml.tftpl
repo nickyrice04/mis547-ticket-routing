@@ -90,6 +90,7 @@ runcmd:
   - install -d -m 0700 /etc/ticket-routing
   - git clone ${repo_url} /srv/ticket-routing || true
   - chgrp -R sudo /srv/ticket-routing && chmod -R g+w /srv/ticket-routing
+  - git config --system --add safe.directory /srv/ticket-routing
   - systemctl daemon-reload
   - systemctl enable ticket-router.service ticket-router-update.timer
   - systemctl restart ssh
