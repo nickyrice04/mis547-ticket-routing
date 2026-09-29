@@ -37,7 +37,7 @@ defaults to off. A GPU droplet bills while it exists, even powered off.
 
 ## Optional, predictable latency
 
-The shared-CPU inference droplet measured 20% CPU steal and 1 to 4 seconds per English ticket.
+The shared-CPU inference droplet measured 20% CPU steal, a median of 0.8 s per English ticket with spikes to 2.5 s, and 4.5 s per German ticket.
 A CPU-Optimized droplet (`c-2`, 2 dedicated vCPU, 4 GB) costs $42 instead of $24, **+$18 a month**,
 and is a one-line Terraform change (`inference_size = "c-2"`).
 

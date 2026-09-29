@@ -96,7 +96,8 @@ sudo systemctl status ticket-router                 # the Compose stack
 cd /srv/ticket-routing/deploy && sudo docker compose ps
 sudo docker compose logs -f api                     # JSON logs, one line per decision
 sudo systemctl list-timers ticket-router-update     # the five-minute updater and watchdog
-sudo journalctl -u ticket-router-update             # what the updater did
+sudo grep update.sh /var/log/syslog | tail           # what the updater did (this image logs to syslog, not the journal)
+sudo grep -E "Accepted|Failed" /var/log/auth.log     # who logged in over SSH
 ```
 
 Prometheus from a laptop: `ssh -L 9090:localhost:9090 nicky@<inference-ip>`, then

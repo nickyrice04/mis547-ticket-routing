@@ -67,7 +67,7 @@ every five minutes and rolls to the new image, with a health check and automatic
 | Component | What it is | Why it is needed | Sizing and justification |
 | --- | --- | --- | --- |
 | VPC `team3-ticket-routing-vpc` | Private network 10.140.0.0/24 in tor1 | Keeps database and droplet traffic off the public internet | Free. tor1 because it is the only region with the RTX 4000 Ada GPU, and every component must share the GPU's region to share its private network |
-| Inference droplet | Ubuntu 24.04, 2 shared vCPU, 4 GB, Docker Compose (API, Caddy, Prometheus) | Always-on online inference, answers while a ticket is submitted | $24/month. The router holds 2.0 GB resident (two pretrained models plus 185 MB of pools). Measured on the live droplet: about 1.3 s per English ticket (0.9 to 3.8 s) and 4.7 s per German one (3.5 to 5.3 s), see Latency below. A GPU here would sit idle, since serving is one ticket at a time |
+| Inference droplet | Ubuntu 24.04, 2 shared vCPU, 4 GB, Docker Compose (API, Caddy, Prometheus) | Always-on online inference, answers while a ticket is submitted | $24/month. The router holds 2.0 GB resident (two pretrained models plus 185 MB of pools). Measured on the live droplet: a median of 0.81 s per English ticket and 4.5 s per German one, see Latency below. A GPU here would sit idle, since serving is one ticket at a time |
 | Reserved IP | Fixed public IPv4 attached to the inference droplet | The URL in the report survives a rebuilt droplet, which is also the disaster recovery path | Free while attached |
 | GPU training droplet | 1x NVIDIA RTX 4000 Ada 20 GB, 8 vCPU, 32 GB, DigitalOcean AI/ML image | Burst compute for translation, embedding and fitting | $0.76/hour, only while a refresh runs. The measured full retrain took 8 minutes, about $0.12. Translating 76,327 German sentences took 3.5 minutes on this GPU against about 11 on the laptop. A company still exploring models would run many such jobs |
 | Managed PostgreSQL 16 | 1 vCPU, 1 GB, 10 GB disk, private network only | Audit log of every decision, human corrections, training runs. Structured records with one text field, which fits a relational database | $15/month. A year of traffic at 1,000 tickets a day is about 365,000 rows of roughly 2 KB, under 1 GB. Managed, so backups, patching and failover of the engine are DigitalOcean's job |
@@ -92,7 +92,7 @@ Measured on the RTX 4000 Ada training droplet on 2026-09-29 (evidence/gpu-traini
 | Fitting the production model | GPU and CPU, 82 s | 8 GB RAM | none | Each training run |
 | Publishing | none | none | 185 MB to Spaces, same region | Each training run |
 | Model download to the API | none | 185 MB | 185 MB from Spaces, same region | Each promoted version |
-| Online inference | CPU, about 1.3 s (English), 4.7 s (German) on the shared 2 vCPU droplet | 2.0 GB | about 2 KB per request | Every ticket |
+| Online inference | CPU, median 0.81 s (English), 4.5 s (German) on the shared 2 vCPU droplet | 2.0 GB | about 2 KB per request | Every ticket |
 | Image pull | none | none | about 1.5 GB compressed from GHCR | Each code release |
 
 Serving is light and constant. Training is heavy and rare. That split is the reason for
@@ -100,7 +100,7 @@ renting a GPU only for the burst and running inference on a small CPU droplet.
 
 ## Latency, measured on the live droplet
 
-Server-side time per ticket on 2026-09-29, from the `stage_ms` field of the audit log:
+Server-side time per ticket on 2026-09-29, from the `stage_ms` field of the audit log, before the fix described below:
 
 | Stage | English ticket | German ticket |
 | --- | --- | --- |
@@ -111,8 +111,11 @@ Server-side time per ticket on 2026-09-29, from the `stage_ms` field of the audi
 
 Two causes, both measured. The droplet's vCPUs are shared, and `top` showed 20% CPU steal on
 an idle machine, which is why the same ticket's embedding varies eightfold. And retrieval rebuilt
-two large matrices on every request. That second one was a bug, fixed so the matrices are built
-once per process. The results are bit-identical and retrieval is four times faster on the laptop.
+two large matrices on every request. That second one was a bug, fixed in commit 0ec8182 so the
+matrices are built once per process. The results are bit-identical. After the fix went out
+through the pipeline, the live English median fell from about 1.3 s to **0.81 s** (retrieval from
+about 0.45 s to 0.20 s) and the German median from about 4.7 s to 4.5 s
+(evidence/cd-rollout-and-latency.txt).
 
 For tickets arriving by email or web form, a few seconds is invisible to the customer, because
 routing happens after submission. If the bank wanted a sub-second target, the fix is a dedicated

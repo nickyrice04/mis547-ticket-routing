@@ -1,0 +1,26 @@
+Continuous deployment and production latency, 2026-09-29
+
+Pull-based rollouts, from /var/log/syslog on the inference droplet (deploy/update.sh, every 5 minutes)
+2026-09-29T03:37:38Z update.sh: new image d9d8dd248d8b, rolling the api container
+2026-09-29T03:38:04Z update.sh: api healthy on d9d8dd248d8b
+2026-09-29T04:50:39Z update.sh: new image de3177a7de71, rolling the api container
+2026-09-29T04:50:58Z update.sh: api healthy on de3177a7de71
+
+Commit 0ec8182 was pushed at 04:38 UTC. CI (test, sast, secrets, deps, terraform, image) passed and
+published the image. The droplet pulled it on its own and the API was healthy on the new image
+19 seconds after the rollout started. Nobody logged in to deploy it. The running container's
+org.opencontainers.image.revision label is 0ec8182271c453c0004c8badb70751b78ea2684d.
+
+Server-side latency per ticket on the live droplet (2 shared vCPU), from the audit log's stage_ms,
+before and after commit 0ec8182 (pool transposes cached instead of rebuilt per request):
+
+                      before (median)   after (median, min to max)
+English total         about 1,300 ms    808 ms (392 to 2,452)
+  embedding (e5)      about 700 ms      696 ms
+  retrieval + stack   about 450 ms      201 ms (43 to 750)
+German total          about 4,700 ms    4,464 ms (3,156 to 6,392)
+  translation         about 3,400 ms    2,879 ms
+
+The remaining time is the sentence embedding and the translation on shared CPUs, where `top`
+showed 20% CPU steal on an idle machine. A dedicated-CPU droplet (c-2) is the fix if the bank
+needs a tighter latency target.

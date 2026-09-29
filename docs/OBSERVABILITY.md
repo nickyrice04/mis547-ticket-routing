@@ -15,6 +15,8 @@ how drift is detected, and how model quality is evaluated over time.
 | Training runs, table `training_runs` | Every run: host, GPU, git commit, rows used, validation accuracy, macro-F1 and ECE, time per stage, status (promoted, rejected, failed), artifact | PostgreSQL, plus `metrics.json` next to each model in Spaces |
 | Application log | One JSON object per line: model loaded, ready, routed, feedback, authentication failures, audit-write failures, model updates | Docker's log, rotated at 10 MB times 5 |
 | Access log | Every HTTP request through Caddy, as JSON | Docker's log |
+| Deployments | Every image rollout, health result and rollback by `deploy/update.sh` | `/var/log/syslog` on the droplet |
+| Logins | Every SSH login and failed attempt, by user | `/var/log/auth.log` on the droplet |
 
 Because every decision row carries the request id, the key name, the model version and
 the per-stage timings, questions nobody planned for can still be answered with one SQL

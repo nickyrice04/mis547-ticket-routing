@@ -34,10 +34,10 @@ curl -s -X POST "$ROUTER_URL/v1/route" \
 {"ticket_id": "4a2b6cc8-...", "queue": "Billing and Payments", "confidence": 0.9596, "auto_routed": true,
  "threshold": 0.7, "top_queues": [{"queue": "Billing and Payments", "probability": 0.9596}, ...],
  "familiarity": 0.305, "language": "en", "translated": false, "model_version": "v20260929-014804",
- "audit_logged": true, "latency_ms": 1161.0, "request_id": "..."}
+ "audit_logged": true, "latency_ms": 808.0, "request_id": "..."}
 ```
 
-On the live droplet an English ticket takes about 1.3 seconds and a German one about 4.7,
+On the live droplet an English ticket takes a median of 0.8 seconds and a German one about 4.5,
 most of it the sentence embedding and translation on shared CPUs. See the latency section of
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
