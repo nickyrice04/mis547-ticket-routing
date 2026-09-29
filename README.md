@@ -226,8 +226,7 @@ never stops routing.
 **What it costs.** About $45 a month for the proof of concept with weekly retraining, and
 about $97 to $127 with high availability. The same shape on AWS SageMaker is roughly $190 to
 $210, and per-seat SaaS triage roughly $500 to $1,500 for 20 agents, with the tickets leaving
-the network. Details are in [docs/COSTS.md](docs/COSTS.md) and the pricing sources in
-[docs/REFERENCES.md](docs/REFERENCES.md).
+the network. Details are in [docs/COSTS.md](docs/COSTS.md).
 
 **Why the model search ran on a laptop.** Most of the model search, about twenty
 systems ([results/SUMMARY.md](results/SUMMARY.md)), ran on a team member's laptop GPU to keep

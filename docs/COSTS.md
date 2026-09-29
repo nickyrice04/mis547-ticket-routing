@@ -2,8 +2,8 @@
 
 DigitalOcean prices are the list prices the account reported through the API in September
 2026. Other providers' prices are approximate public on-demand list prices (US East), from
-the vendors' pricing pages cited in [REFERENCES.md](REFERENCES.md). Prices change, so confirm
-each one on its page on the day the report is written.
+each vendor's pricing page. Prices change, so confirm each one on its page on the day the
+report is written.
 
 ## What the proof of concept costs per month
 
