@@ -1,6 +1,7 @@
 # Results
 
-One JSON per system on the same 4,750 test tickets, with accuracy, macro-F1,
+One JSON per system on the 4,750 test tickets (the slow Gemma 3 and DeBERTa runs use a
+random sample of 500 of them, see `eval_tickets` in each file), with accuracy, macro-F1,
 the confidence threshold table and, for the final routers, accuracy by
 similarity to the nearest training ticket and per-queue recall. `*_probs.npy`
 are the test probabilities behind each JSON.

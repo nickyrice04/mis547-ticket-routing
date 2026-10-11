@@ -24,9 +24,9 @@ with a classification head.
 | After 8 epochs | 88.6% | 53.2% |
 
 Their final test accuracy is 53.2%. On our deduplicated test set of 4,750 tickets the final
-router gets 91.8%, the English-only version 83.1%, and our simple bag-of-words network
-(the midterm baseline) 68.3%. This is the only public result we found that measures the
-same thing we do.
+router gets 91.8%, the English-only version 83.1%, our bag-of-words neural network 68.3%,
+and the midterm baseline, TF-IDF with logistic regression, 61.6%. This is the only public
+result we found that measures the same thing we do.
 
 It is also a textbook picture of overfitting. Training accuracy climbed to 88.6% while test
 accuracy moved from 44.3% to 53.2%, and the test loss went up from 1.56 to 2.20 over the
